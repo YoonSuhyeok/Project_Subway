@@ -1,0 +1,7 @@
+{
+  "name": "Subway",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
