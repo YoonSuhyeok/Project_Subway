@@ -4,7 +4,7 @@
       <ion-tab-bar slot="bottom">
         <ion-tab-button tab="tab1" href="/tabs/tab1">
           <ion-icon :icon="triangle" />
-          <ion-label>회원정보</ion-label>
+          <ion-label>회원 정보</ion-label>
         </ion-tab-button>
           
         <ion-tab-button tab="tab2" href="/tabs/tab2">
