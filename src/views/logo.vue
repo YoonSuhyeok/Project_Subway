@@ -9,9 +9,21 @@
 </template>
 
 <style>
-    .logo {
-        width: 100%;
-        height: auto;
+    
+
+    @media (max-width: 600px) {
+        .logo {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    @media (min-width: 600px) {
+        .logo {
+            width: 40%;
+            height: auto;
+        }
+        .background { text-align: center;}
     }
 
     .background {
