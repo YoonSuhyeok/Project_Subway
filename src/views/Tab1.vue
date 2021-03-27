@@ -37,7 +37,7 @@
                 <ion-card-subtitle class="card-box_user">
                   <span class="card-box_user-name">윤수혁</span> 님의
                 </ion-card-subtitle>
-                <ion-card-title class="bold-title">머리가 자라는 미트볼</ion-card-title>
+                <ion-card-title class="bold-title">무야호 샌드</ion-card-title>
               </ion-card-header>
               <ion-card-content class="bold-title">3.7K</ion-card-content>
             </ion-card>
@@ -55,7 +55,7 @@
       </div>
         </ion-slide>
         <ion-slide>
-          <h1>Slide 2</h1>
+          <img src="/assets/img/temporary-ad.JPG">
         </ion-slide>
         <ion-slide>
           <h1>Slide 3</h1>
@@ -81,12 +81,13 @@
 
   .second, .third {padding: 2% 2% 2% 2%;}
 
-  .first {padding: 5% 2% 5% 2%;}
+  .first {padding: 4% 2% 4% 2%;}
 
   .card-box {
     flex-basis: 25%;
     text-align: center;
     border-radius: 20px;
+    box-shadow: 0px 3px 10px gray;
   }
 
   .bold-title {
