@@ -15,48 +15,52 @@
         </ion-toolbar>
       </ion-header>
     
-      <div class="card-container">
+      
 
-        <ion-card class="card-box second">
-          <img src="/assets/img/temporary-img.png" class="temporary-img-card">
-          <ion-card-header>
-            <ion-card-subtitle class="card-box_user">
-              <span class="card-box_user-name">윤수혁</span> 님의
-            </ion-card-subtitle>
-            <ion-card-title class="bold-title">무야호 샌드</ion-card-title>
-          </ion-card-header>
-          <ion-card-content class="bold-title">
-            3.7K
-          </ion-card-content>
-        </ion-card>
+      <ion-slides pager="true" :options="slideOpts">
+        <ion-slide>
+          <div class="card-container">
+            <ion-card class="card-box second">
+              <img src="/assets/img/temporary-img.png" class="temporary-img-card">
+              <ion-card-header>
+                <ion-card-subtitle class="card-box_user">
+                  <span class="card-box_user-name">윤수혁</span> 님의
+                </ion-card-subtitle>
+                <ion-card-title class="bold-title">무야호 샌드</ion-card-title>
+              </ion-card-header>
+              <ion-card-content class="bold-title">3.7K</ion-card-content>
+            </ion-card>
 
-        <ion-card class="card-box first">
-          <img src="/assets/img/temporary-img.png" class="temporary-img-card">
-          <ion-card-header>
-            <ion-card-subtitle class="card-box_user">
-              <span class="card-box_user-name">윤수혁</span> 님의
-            </ion-card-subtitle>
-            <ion-card-title class="bold-title">머리가 자라는 미트볼</ion-card-title>
-          </ion-card-header>
-          <ion-card-content class="bold-title">
-            3.7K
-          </ion-card-content>
-        </ion-card>
+            <ion-card class="card-box first">
+              <img src="/assets/img/temporary-img.png" class="temporary-img-card">
+              <ion-card-header>
+                <ion-card-subtitle class="card-box_user">
+                  <span class="card-box_user-name">윤수혁</span> 님의
+                </ion-card-subtitle>
+                <ion-card-title class="bold-title">머리가 자라는 미트볼</ion-card-title>
+              </ion-card-header>
+              <ion-card-content class="bold-title">3.7K</ion-card-content>
+            </ion-card>
 
-        <ion-card class="card-box third">
-          <img src="/assets/img/temporary-img.png" class="temporary-img-card">
-          <ion-card-header>
-            <ion-card-subtitle class="card-box_user">
-              <span class="card-box_user-name">윤수혁</span> 님의
-            </ion-card-subtitle>
-            <ion-card-title class="bold-title">무야호 샌드</ion-card-title>
-          </ion-card-header>
-          <ion-card-content class="bold-title">
-            3.7K
-          </ion-card-content>
-        </ion-card>
-
+            <ion-card class="card-box third">
+              <img src="/assets/img/temporary-img.png" class="temporary-img-card">
+              <ion-card-header>
+                <ion-card-subtitle class="card-box_user">
+                  <span class="card-box_user-name">윤수혁</span> 님의
+                </ion-card-subtitle>
+                <ion-card-title class="bold-title">무야호 샌드</ion-card-title>
+              </ion-card-header>
+              <ion-card-content class="bold-title">3.7K</ion-card-content>
+            </ion-card>
       </div>
+        </ion-slide>
+        <ion-slide>
+          <h1>Slide 2</h1>
+        </ion-slide>
+        <ion-slide>
+          <h1>Slide 3</h1>
+        </ion-slide>
+      </ion-slides>
 
       <ExploreContainer name="Tab 1 page" />
     </ion-content>
@@ -115,11 +119,21 @@
 </style>
 
 <script lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent} from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
+IonSlides, IonSlide} from '@ionic/vue';
 import ExploreContainer from '@/components/ExploreContainer.vue';
 
 export default  {
   name: 'Tab1',
-  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage},
+  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage,
+  IonSlides, IonSlide},
+  setup() {
+    // Optional parameters to pass to the swiper instance. See http://idangero.us/swiper/api/ for valid options.
+    const slideOpts = {
+      initialSlide: 1,
+      speed: 400
+    };
+    return { slideOpts }
+  }
 }
 </script>
