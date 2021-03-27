@@ -1,10 +1,12 @@
 <template>
   <ion-page>
     <ion-header>
-      <!-- <ion-toolbar>
-        <ion-title>hello</ion-title>
-      </ion-toolbar> -->
-      <h1 class="title">나만의 조합식</h1>
+      <ion-toolbar>
+        <ion-title>
+          <img src="/assets/img/temporary-subway.png" class="temporary-img-title">
+          <h1 class="title">나만의 조합식</h1>
+        </ion-title>
+      </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
@@ -14,17 +16,11 @@
       </ion-header>
     
       <div class="card-container">
+
         <ion-card class="card-box second">
-          <ion-list>
-            <ion-item v-for="img in imgs" :key="img.src">
-              <ion-thumbnail>
-                <ion-img :src="img.src"></ion-img>
-              </ion-thumbnail>
-              <!-- <ion-label>{{img.name}}</ion-label> -->
-            </ion-item>
-          </ion-list>
+            <img src="/assets/img/temporary-img.png" class="temporary-img-card">
           <ion-card-header>
-            <ion-card-subtitle>
+            <ion-card-subtitle class="card-box_user">
               <span class="card-box_user-name">윤수혁</span> 님의
             </ion-card-subtitle>
             <ion-card-title class="bold-title">무야호 샌드</ion-card-title>
@@ -35,16 +31,9 @@
         </ion-card>
 
         <ion-card class="card-box first">
-          <ion-list>
-            <ion-item v-for="img in imgs" :key="img.src">
-              <ion-thumbnail>
-                <ion-img :src="img.src"></ion-img>
-              </ion-thumbnail>
-              <!-- <ion-label>{{img.name}}</ion-label> -->
-            </ion-item>
-          </ion-list>
+          <img src="/assets/img/temporary-img.png" class="temporary-img-card">
           <ion-card-header>
-            <ion-card-subtitle>
+            <ion-card-subtitle class="card-box_user">
               <span class="card-box_user-name">윤수혁</span> 님의
             </ion-card-subtitle>
             <ion-card-title class="bold-title">머리가 자라는 미트볼</ion-card-title>
@@ -55,16 +44,9 @@
         </ion-card>
 
         <ion-card class="card-box third">
-          <ion-list>
-            <ion-item v-for="img in imgs" :key="img.src">
-              <ion-thumbnail>
-                <ion-img :src="img.src"></ion-img>
-              </ion-thumbnail>
-              <!-- <ion-label>{{img.name}}</ion-label> -->
-            </ion-item>
-          </ion-list>
+          <img src="/assets/img/temporary-img.png" class="temporary-img-card">
           <ion-card-header>
-            <ion-card-subtitle>
+            <ion-card-subtitle class="card-box_user">
               <span class="card-box_user-name">윤수혁</span> 님의
             </ion-card-subtitle>
             <ion-card-title class="bold-title">무야호 샌드</ion-card-title>
@@ -73,6 +55,7 @@
             3.7K
           </ion-card-content>
         </ion-card>
+
       </div>
 
       <ExploreContainer name="Tab 1 page" />
@@ -83,43 +66,57 @@
 <style>
   .title {
     text-align: center;
+    padding-bottom: 2%;
   }
 
   .card-container {
     display: flex;
+    justify-content: center;
+    align-items: center;
   }
+  
+  .first, .second, .third {padding: 2% 2% 2% 2%;}
 
   .card-box {
-    justify-content: space-between;
-    align-items: center;
-    flex-basis: 30%;
+    flex-basis: 25%;
     text-align: center;
   }
 
   .bold-title {
     color: black;
     font-weight: bold;
+    font-size: 1em;
   }
 
-  .card-box_user-name { color: green; }
+  .card-box_user {font-size: 5px;}
+
+  .card-box_user-name {color: green;}
+
+  .temporary-img-title {
+    margin-top: 2%;
+    width: 40%; 
+    height: auto; 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .temporary-img-card {
+    width: 100%; 
+    height: auto; 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
 </style>
 
 <script lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-IonImg, IonItem, IonList, IonThumbnail  } from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent} from '@ionic/vue';
 import ExploreContainer from '@/components/ExploreContainer.vue';
 
 export default  {
   name: 'Tab1',
-  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage,
-  IonImg, IonItem, IonList, IonThumbnail },
-  setup() {
-    const imgs = [{
-      'name': 'tImg1',
-      'src': '/assets/img/temporary-img.png'
-    }];
-    return { imgs }
-  }
+  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage},
 }
 </script>
