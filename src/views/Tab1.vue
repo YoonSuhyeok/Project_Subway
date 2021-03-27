@@ -4,7 +4,7 @@
       <ion-toolbar>
         <ion-title>
           <img src="/assets/img/temporary-subway.png" class="temporary-img-title">
-          <h1 class="title">나만의 조합식</h1>
+          <p class="title">나만의 조합식</p>
         </ion-title>
       </ion-toolbar>
     </ion-header>
@@ -18,7 +18,7 @@
       <div class="card-container">
 
         <ion-card class="card-box second">
-            <img src="/assets/img/temporary-img.png" class="temporary-img-card">
+          <img src="/assets/img/temporary-img.png" class="temporary-img-card">
           <ion-card-header>
             <ion-card-subtitle class="card-box_user">
               <span class="card-box_user-name">윤수혁</span> 님의
@@ -66,7 +66,7 @@
 <style>
   .title {
     text-align: center;
-    padding-bottom: 2%;
+    font-weight: bold;
   }
 
   .card-container {
@@ -74,12 +74,15 @@
     justify-content: center;
     align-items: center;
   }
-  
-  .first, .second, .third {padding: 2% 2% 2% 2%;}
+
+  .second, .third {padding: 2% 2% 2% 2%;}
+
+  .first {padding: 5% 2% 5% 2%;}
 
   .card-box {
     flex-basis: 25%;
     text-align: center;
+    border-radius: 20px;
   }
 
   .bold-title {
