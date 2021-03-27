@@ -62,6 +62,14 @@
         </ion-slide>
       </ion-slides>
 
+      <div class="bottom-box-container">
+        <div class="left">
+          <div class="box1">나만의 레시피</div>
+          <div class="box2">오늘의 섭웨이</div>
+        </div>
+        <div class="right"></div>
+      </div>
+
       <ExploreContainer name="Tab 1 page" />
     </ion-content>
   </ion-page>
@@ -115,6 +123,37 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .bottom-box-container {
+    margin-top: 100px;
+    padding: 5% 5% 5% 5%;
+    background-color: green;
+    border-radius: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+  }
+
+  .box1 {
+    background-color: pink;
+    padding: 30%;
+    border-radius: 20px;
+    margin: 20px;
+  }
+
+  .box2 {
+    background-color: skyblue;
+    padding: 30%;
+    border-radius: 20px;
+    margin: 20px;
+  }
+
+  .right {
+    background-color: khaki;
+    padding: 35%;
+    border-radius: 20px;
+    margin: 20px;
   }
 
 </style>
