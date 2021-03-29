@@ -11,19 +11,19 @@
 <style>
     
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
         .logo {
             width: 100%;
             height: auto;
         }
     }
 
-    @media (min-width: 600px) {
+    @media (min-width: 768px) {
         .logo {
             width: 40%;
             height: auto;
         }
-        .background { text-align: center;}
+        .background {text-align: center;}
     }
 
     .background {
