@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 import component from '../views/Tabs.vue';
 import Tabs from '../views/Tabs.vue'
+import logo from '../views/logo.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -36,7 +37,6 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/Tab3.vue')
       },
     ]
-  }
 ]
 
 const router = createRouter({
