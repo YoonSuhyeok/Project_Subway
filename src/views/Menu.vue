@@ -1,23 +1,29 @@
 <template>
   <ion-slides pager="true" :options="slideOpts">
     <ion-slide>
-      <h1>Slide 1</h1>
+      <div class="slide_title">메뉴 선택하기</div>
     </ion-slide>
     <ion-slide>
-      <h1>Slide 2</h1>
+        <div class="slide_title">빵 선택하기</div>
     </ion-slide>
     <ion-slide>
-      <h1>Slide 3</h1>
+        <div class="slide_title">추가토핑 선택하기</div>
     </ion-slide>
     <ion-slide>
-      <h1>Slide 4</h1>
+        <div class="slide_title">야채&소스 선택하기</div>
     </ion-slide>
     <ion-slide>
-      <h1>Slide 5</h1>
+        <div class="slide_title">세트 선택하기</div>
     </ion-slide>
   </ion-slides>
 </template>
 
+<style>
+    .slide_title {
+        text-align: center;
+        font-weight: bold;
+    }
+</style>
 
 <script>
 import { IonSlides, IonSlide } from '@ionic/vue';
