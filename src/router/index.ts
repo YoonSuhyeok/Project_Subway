@@ -3,12 +3,11 @@ import { RouteRecordRaw } from 'vue-router';
 import component from '../views/Tabs.vue';
 import Tabs from '../views/Tabs.vue';
 import logo from '../views/logo.vue';
-import menu from '../views/Menu.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/menu'
+    redirect: '/tabs/tab2'
   },{
     path: '/signup',
     component: () => import('@/views/SignUp.vue')
@@ -16,10 +15,6 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/logins',
     component: () => import('@/views/Logins.vue')
-  },
-  {
-    path: '/menu',
-    component: () => import('@/views/Menu.vue')
   },
   {
     path: '/tabs/',
