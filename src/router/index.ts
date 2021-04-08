@@ -7,7 +7,10 @@ import logo from '../views/logo.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/signup'
+    redirect: '/provision'
+  },{
+    path: '/provision',
+    component: () => import('@/views/Provision.vue')
   },{
     path: '/signup',
     component: () => import('@/views/SignUp.vue')
@@ -35,8 +38,9 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'tab3',
         component: () => import('@/views/Tab3.vue')
-      },
+      }
     ]
+  }
 ]
 
 const router = createRouter({

@@ -24,9 +24,13 @@
         </div>
 
         <div class="cls_logins">
-            <div id="cls_logins_buttons">
-                <ion-button expand="block">로그인</ion-button>
-                <ion-button expand="block">회원가입</ion-button>
+            <div class="cls_logins_buttons">
+                <ion-button expand="block" fill="default">
+                    <ion-label>로그인</ion-label>
+                </ion-button>
+                <ion-button expand="block" fill="default">
+                    <ion-label>회원가입</ion-label>
+                </ion-button>
             </div>
             <div id="cls_logins_service">
                 <ion-button fill="clear" style="font-size: 10px">아이디 찾기</ion-button>
@@ -63,6 +67,9 @@
 </template>
 
 <style>
+    .cls_logins_buttons ion-button {
+        background: linear-gradient(to right, #1CDE97, #11FADE, #00B573)
+    }
     .cls_totaldisplay { 
         display: flex; 
         flex-direction: column;
@@ -88,12 +95,12 @@
         padding: 0px 30px;
     }
     #ID { 
-        border:0; 
-        border-bottom: 1px solid; 
+        border: 0;
+        border-bottom: 1px solid #009132; 
     }
     #pwd { 
-        border:0; 
-        border-bottom: 1px solid; 
+        border: 0;
+        border-bottom: 1px solid #009132;
     }
     #cls_logins_service {
         display: flex; 
@@ -118,12 +125,6 @@
 import { IonToolbar, IonTitle, IonInput, IonItem, IonButton, IonLabel, IonIcon, IonList, IonCheckbox } from '@ionic/vue'
 import { square, alert } from 'ionicons/icons'
 export default  {
-    components: { IonToolbar, IonTitle, IonInput, IonItem, IonButton, IonLabel, IonIcon, IonList,  IonCheckbox},
-    setup(){
-        return{
-            square,
-            alert
-        }
-    }
+    components: { IonToolbar, IonTitle, IonInput, IonItem, IonButton, IonLabel, IonIcon, IonList,  IonCheckbox}
 }
 </script>
