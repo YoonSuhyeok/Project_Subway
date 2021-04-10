@@ -23,38 +23,38 @@
 
               <ion-card class="menu-box">
                 <ion-card-header>
-                  <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-                  <ion-card-title>Card Title</ion-card-title>
+                  <ion-card-title>미트볼</ion-card-title>
+                  <ion-card-subtitle>480Kcal</ion-card-subtitle>
                 </ion-card-header>
 
-                <ion-card-content>
+                <!-- <ion-card-content>
                   Keep close to Nature's heart... and break clear away, once in awhile,
                   and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content>
+                </ion-card-content> -->
               </ion-card>
 
               <ion-card class="menu-box">
                 <ion-card-header>
-                  <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-                  <ion-card-title>Card Title</ion-card-title>
+                  <ion-card-title>비엘티</ion-card-title>
+                  <ion-card-subtitle>380Kcal</ion-card-subtitle>
                 </ion-card-header>
 
-                <ion-card-content>
+                <!-- <ion-card-content>
                   Keep close to Nature's heart... and break clear away, once in awhile,
                   and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content>
+                </ion-card-content> -->
               </ion-card>
 
               <ion-card class="menu-box">
                 <ion-card-header>
-                  <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-                  <ion-card-title>Card Title</ion-card-title>
+                  <ion-card-title>에그마요</ion-card-title>
+                  <ion-card-subtitle>480Kcal</ion-card-subtitle>
                 </ion-card-header>
 
-                <ion-card-content>
+                <!-- <ion-card-content>
                   Keep close to Nature's heart... and break clear away, once in awhile,
                   and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content>
+                </ion-card-content> -->
               </ion-card>
 
             </div>
@@ -70,38 +70,38 @@
 
               <ion-card class="bread-box">
                 <ion-card-header>
-                  <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-                  <ion-card-title>Card Title</ion-card-title>
+                  <ion-card-title>위트</ion-card-title>
+                  <ion-card-subtitle>378Kcal</ion-card-subtitle>
                 </ion-card-header>
 
-                <ion-card-content>
+                <!-- <ion-card-content>
                   Keep close to Nature's heart... and break clear away, once in awhile,
                   and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content>
+                </ion-card-content> -->
               </ion-card>
 
               <ion-card class="bread-box">
                 <ion-card-header>
-                  <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-                  <ion-card-title>Card Title</ion-card-title>
+                  <ion-card-title>파마산 오레가노</ion-card-title>
+                  <ion-card-subtitle>378Kcal</ion-card-subtitle>
                 </ion-card-header>
 
-                <ion-card-content>
+                <!-- <ion-card-content>
                   Keep close to Nature's heart... and break clear away, once in awhile,
                   and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content>
+                </ion-card-content> -->
               </ion-card>
 
               <ion-card class="bread-box">
                 <ion-card-header>
-                  <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-                  <ion-card-title>Card Title</ion-card-title>
+                  <ion-card-title>플랫 브레드</ion-card-title>
+                  <ion-card-subtitle>378Kcal</ion-card-subtitle>
                 </ion-card-header>
 
-                <ion-card-content>
+                <!-- <ion-card-content>
                   Keep close to Nature's heart... and break clear away, once in awhile,
                   and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content>
+                </ion-card-content> -->
               </ion-card>
 
             </div>
@@ -117,38 +117,38 @@
 
               <ion-card class="toping-box">
                 <ion-card-header>
-                  <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-                  <ion-card-title>Card Title</ion-card-title>
+                  <ion-card-title>더블업</ion-card-title>
+                  <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
                 </ion-card-header>
 
-                <ion-card-content>
+                <!-- <ion-card-content>
                   Keep close to Nature's heart... and break clear away, once in awhile,
                   and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content>
+                </ion-card-content> -->
               </ion-card>
 
               <ion-card class="toping-box">
                 <ion-card-header>
-                  <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-                  <ion-card-title>Card Title</ion-card-title>
+                  <ion-card-title>더블치즈</ion-card-title>
+                  <ion-card-subtitle>44Kcal</ion-card-subtitle>
                 </ion-card-header>
 
-                <ion-card-content>
+                <!-- <ion-card-content>
                   Keep close to Nature's heart... and break clear away, once in awhile,
                   and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content>
+                </ion-card-content> -->
               </ion-card>
 
               <ion-card class="toping-box">
                 <ion-card-header>
-                  <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-                  <ion-card-title>Card Title</ion-card-title>
+                  <ion-card-title>베이컨 비츠</ion-card-title>
+                  <ion-card-subtitle>51Kcal</ion-card-subtitle>
                 </ion-card-header>
 
-                <ion-card-content>
+                <!-- <ion-card-content>
                   Keep close to Nature's heart... and break clear away, once in awhile,
                   and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content>
+                </ion-card-content> -->
               </ion-card>
 
             </div>
@@ -164,38 +164,38 @@
 
               <ion-card class="salary-box">
                 <ion-card-header>
-                  <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-                  <ion-card-title>Card Title</ion-card-title>
+                  <ion-card-title>베이컨 비츠</ion-card-title>
+                  <ion-card-subtitle>51Kcal</ion-card-subtitle>
                 </ion-card-header>
 
-                <ion-card-content>
+                <!-- <ion-card-content>
                   Keep close to Nature's heart... and break clear away, once in awhile,
                   and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content>
+                </ion-card-content> -->
               </ion-card>
 
               <ion-card class="salary-box">
                 <ion-card-header>
-                  <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-                  <ion-card-title>Card Title</ion-card-title>
+                  <ion-card-title>베이컨 비츠</ion-card-title>
+                  <ion-card-subtitle>51Kcal</ion-card-subtitle>
                 </ion-card-header>
 
-                <ion-card-content>
+                <!-- <ion-card-content>
                   Keep close to Nature's heart... and break clear away, once in awhile,
                   and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content>
+                </ion-card-content> -->
               </ion-card>
 
               <ion-card class="salary-box">
                 <ion-card-header>
-                  <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-                  <ion-card-title>Card Title</ion-card-title>
+                  <ion-card-title>베이컨 비츠</ion-card-title>
+                  <ion-card-subtitle>51Kcal</ion-card-subtitle>
                 </ion-card-header>
 
-                <ion-card-content>
+                <!-- <ion-card-content>
                   Keep close to Nature's heart... and break clear away, once in awhile,
                   and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content>
+                </ion-card-content> -->
               </ion-card>
 
             </div>
@@ -211,38 +211,38 @@
 
               <ion-card class="set-box">
                 <ion-card-header>
-                  <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-                  <ion-card-title>Card Title</ion-card-title>
+                  <ion-card-title>베이컨 비츠</ion-card-title>
+                  <ion-card-subtitle>51Kcal</ion-card-subtitle>
                 </ion-card-header>
 
-                <ion-card-content>
+                <!-- <ion-card-content>
                   Keep close to Nature's heart... and break clear away, once in awhile,
                   and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content>
+                </ion-card-content> -->
               </ion-card>
 
               <ion-card class="set-box">
                 <ion-card-header>
-                  <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-                  <ion-card-title>Card Title</ion-card-title>
+                  <ion-card-title>베이컨 비츠</ion-card-title>
+                  <ion-card-subtitle>51Kcal</ion-card-subtitle>
                 </ion-card-header>
 
-                <ion-card-content>
+                <!-- <ion-card-content>
                   Keep close to Nature's heart... and break clear away, once in awhile,
                   and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content>
+                </ion-card-content> -->
               </ion-card>
 
               <ion-card class="set-box">
                 <ion-card-header>
-                  <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-                  <ion-card-title>Card Title</ion-card-title>
+                  <ion-card-title>베이컨 비츠</ion-card-title>
+                  <ion-card-subtitle>51Kcal</ion-card-subtitle>
                 </ion-card-header>
 
-                <ion-card-content>
+                <!-- <ion-card-content>
                   Keep close to Nature's heart... and break clear away, once in awhile,
                   and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content>
+                </ion-card-content> -->
               </ion-card>
 
             </div>
@@ -260,8 +260,8 @@
 
   .box-container {
     display: flex;
-    justify-content: flex-start;
-    align-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 
   .bread-box {
