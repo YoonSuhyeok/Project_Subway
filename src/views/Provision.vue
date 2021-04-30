@@ -1,3 +1,5 @@
+<!--약관 동의 창-->
+
 <template>
     <div class="cls_totaldisplay">
         <div class="cls_header">
@@ -7,18 +9,26 @@
                         <ion-icon slot="icon-only" ios="chevron-back" md="chevron-back"></ion-icon>
                     </ion-button>
                 </ion-buttons>
-                <ion-title>약관동의</ion-title>
+                <ion-title><b>약관동의</b></ion-title>
             </ion-toolbar>
         </div>
 
         <div class="cls_section">
             <div class="cls_section_item">
                 <ion-checkbox />
-                <div><ion-label>이용약관 동의 (필수)</ion-label></div>
+                <div style="width:80%; display:flex; justify-content:space-between; align-items:center;">
+                    <ion-label><b>이용약관 동의 (필수)</b></ion-label>
+                    <ionic-button style="font-size:13px;"><b><U>상세보기</U></b></ionic-button>
+                </div>
+                
             </div>
             <div class="cls_section_item">
                 <ion-checkbox /> 
-                <div><ion-label>개인정보처리방침 (필수)</ion-label></div>
+                <div style="width:80%; display:flex; justify-content:space-between; align-items:cetner;">
+                    <ion-label><b>개인정보처리방침 (필수)</b></ion-label>
+                    <ionic-button style="font-size:13px;"><b><U>상세보기</U></b></ionic-button>
+                </div>
+                
             </div>
             <div class="cls_section_item">
                 <ion-checkbox /> 
@@ -34,11 +44,15 @@
                     <ion-text style="font-size:5px">다양한 이벤트와 쿠폰, 할인정보를 보내드립니다.</ion-text>
                 </div>
             </div>
-            
+        </div>
+        <div class="cls_section_all">
             <div class="cls_section_item">
                 <ion-checkbox />
-                <ion-label>약관 전체 동의</ion-label>
+                <ion-label><b>약관 전체 동의</b></ion-label>
             </div>
+        </div>
+        <div class="cls_plaintext">
+            <p>이곳은 아무거나 쓸 수 있도록 남겨둔 공간</p>
         </div>
     </div>
 </template>
@@ -49,20 +63,44 @@
         flex-direction: column;
 
     }
-    .cls_header {
-
+    ion-toolbar {
+        border: 1px inset grey;
     }
     .cls_section {
         display: flex;
         flex-direction: column;
+        margin: 5px 10px;
+        background: #f8f8f8;
     }
     .cls_section_item {
+        width: 95%;
+        height: 100%;
         display: flex;
         align-content: center;
         justify-content: flex-start;
         margin: 15px 5px;
-    } ion-checkbox {
+    } 
+    .cls_section_all {
+        display: flex;
+        align-content: center;
+        justify-content: flex-start;
+        margin: 0px 10px;
+        background: #f8f8f8;
+    }
+    ion-checkbox {
         margin: 0px 15px;
+        width: 7%; 
+        height: 7%;
+        --border-radius: 4px;
+        --background-checked: #128D15;
+        --checkmark-color: #FFC20D;
+    }
+    .cls_plaintext {
+        display: flex;
+        height: 100%;
+        margin: 10px;
+        padding: 5px 10px;
+        border: 1px solid red;
     }
 </style>
 

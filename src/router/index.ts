@@ -7,7 +7,7 @@ import logo from '../views/logo.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/provision'
+    redirect: '/signup'
   },{
     path: '/provision',
     component: () => import('@/views/Provision.vue')
