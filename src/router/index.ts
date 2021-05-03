@@ -9,6 +9,9 @@ const routes: Array<RouteRecordRaw> = [
     path: '/',
     redirect: '/tabs/tab2'
   },{
+    path: '/logo',
+    component: () => import('@/views/logo.vue')
+  },{
     path: '/signup',
     component: () => import('@/views/SignUp.vue')
   },

@@ -1,36 +1,77 @@
 <template>
     <ion-page>
         <ion-content>
-            <div class="background">
-                <img src="/assets/img/subway-logo.png" class="logo">
+            <div class="wrap">
+                <img src="/assets/img/logo(nomal).png" class="logo">
+                <h1 class="logo_text"><b>나만의 서브웨이 레시피</b></h1>
+                <div class="box_left"><img src="/assets/img/splash_left.png" alt=""></div>
+                <div class="box_right"><img src="/assets/img/splash_right.png" alt=""></div>
             </div>
         </ion-content>
     </ion-page>
 </template>
 
 <style>
-    
 
-    @media (max-width: 768px) {
+    .box_left, .box_right {
+        display: inline-block;
+        position: relative;
+    }
+
+    .box_left {
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+    }
+    .box_right {
+        position: fixed;
+        bottom: 0px;
+        right: 0px;
+    }
+
+    @media screen and (max-width: 480px) {
         .logo {
-            width: 100%;
+            width: 180px;
             height: auto;
+            margin-top:30%;
+            margin-bottom: 5%;
+        }
+
+        .logo_text {
+            margin-top:70px;
         }
     }
 
-    @media (min-width: 768px) {
+    @media screen and (min-width: 480px) and (max-width:768px) {
         .logo {
-            width: 40%;
+            width: 130px;
             height: auto;
+            margin-top:20%;
+            margin-bottom: 5%;
         }
-        .background {text-align: center;}
+
+        .logo_text {
+            margin-top:70px;
+        }
     }
 
-    .background {
-        background-image: url('/assets/img/splash-background.png');
-        width: 100%;
-        height: 100%;
+    @media screen and (min-width: 768px) {
+        .logo {
+            width: 130px;
+            height: auto;
+            margin-top:10%;
+            margin-bottom: 5%;
+        }
+
+        .logo_text {
+            margin-top:130px;
+        }
     }
+
+    .wrap {
+        text-align: center;
+    }
+
 </style>
 
 <script>
