@@ -7,8 +7,13 @@ import logo from '../views/logo.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/signup'
-  },{
+    redirect: '/idfind'
+  },
+  {
+    path: '/idfind',
+    component: () => import('@/views/Idfind.vue')
+  },
+  {
     path: '/provision',
     component: () => import('@/views/Provision.vue')
   },{
