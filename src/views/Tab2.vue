@@ -23,38 +23,23 @@
 
               <ion-card class="menu-box">
                 <ion-card-header>
-                  <ion-card-title>미트볼</ion-card-title>
-                  <ion-card-subtitle>480Kcal</ion-card-subtitle>
+                  <ion-card-title class="menu-name">미트볼</ion-card-title>
+                  <ion-card-subtitle class="menu-kcal">480Kcal</ion-card-subtitle>
                 </ion-card-header>
-
-                <!-- <ion-card-content>
-                  Keep close to Nature's heart... and break clear away, once in awhile,
-                  and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content> -->
               </ion-card>
 
               <ion-card class="menu-box">
                 <ion-card-header>
-                  <ion-card-title>비엘티</ion-card-title>
-                  <ion-card-subtitle>380Kcal</ion-card-subtitle>
+                  <ion-card-title class="menu-name">비엘티</ion-card-title>
+                  <ion-card-subtitle class="menu-kcal">380Kcal</ion-card-subtitle>
                 </ion-card-header>
-
-                <!-- <ion-card-content>
-                  Keep close to Nature's heart... and break clear away, once in awhile,
-                  and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content> -->
               </ion-card>
 
               <ion-card class="menu-box">
                 <ion-card-header>
-                  <ion-card-title>에그마요</ion-card-title>
-                  <ion-card-subtitle>480Kcal</ion-card-subtitle>
+                  <ion-card-title class="menu-name">에그마요</ion-card-title>
+                  <ion-card-subtitle class="menu-kcal">480Kcal</ion-card-subtitle>
                 </ion-card-header>
-
-                <!-- <ion-card-content>
-                  Keep close to Nature's heart... and break clear away, once in awhile,
-                  and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content> -->
               </ion-card>
 
             </div>
@@ -268,10 +253,17 @@
 
   .bread-box {
     border-radius: 100%;
+    width: 100px;
+    height: 100px;
   }
 
   .slide-title {
     width: 100%;
+  }
+
+  .menu-box, .toping-box, .salary-box, .set-box {
+    width: 100px;
+    height: 100px;
   }
 
 </style>
