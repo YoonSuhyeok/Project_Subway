@@ -3,8 +3,11 @@
     <ion-header>
       <ion-toolbar>
         <ion-title>
-          <img src="/assets/img/temporary-subway.png" class="temporary-img-title">
-          <p class="title">나만의 조합식</p>
+          <div class="title">
+            <img src="/assets/img/logo(nomal).png" class="title_img">
+            <img src="/assets/img/SUBWAY MASTER.png" class="title_logo">
+          </div>
+          <p class="title">이번주 베스트 조합</p>
         </ion-title>
       </ion-toolbar>
     </ion-header>
@@ -108,11 +111,16 @@
 
   .card-box_user-name {color: green;}
 
-  .temporary-img-title {
-    margin-top: 2%;
-    width: 40%; 
+  .title_img {
+    margin: 3%;
+    width: 35px;
+  }
+
+  .title_logo {
+    margin: 4%;
+    width: 200px; 
     height: auto; 
-    display: block;
+    display: inline;
     margin-left: auto;
     margin-right: auto;
   }
