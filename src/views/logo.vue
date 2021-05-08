@@ -31,14 +31,18 @@
 
     @media screen and (max-width: 480px) {
         .logo {
-            width: 180px;
+            width: 120px;
             height: auto;
             margin-top:30%;
             margin-bottom: 5%;
         }
 
         .logo_text {
-            margin-top:70px;
+            margin-top:50px;
+        }
+
+        .box_left, .box_right {
+            width: 150px;
         }
     }
 
@@ -53,18 +57,22 @@
         .logo_text {
             margin-top:70px;
         }
+
+        .box_left, .box_right {
+            width: 180px;
+        }
     }
 
     @media screen and (min-width: 768px) {
         .logo {
-            width: 130px;
+            width: 150px;
             height: auto;
             margin-top:10%;
             margin-bottom: 5%;
         }
 
         .logo_text {
-            margin-top:130px;
+            margin-top:100px;
         }
     }
 
