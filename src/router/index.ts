@@ -10,7 +10,16 @@ const routes: Array<RouteRecordRaw> = [
     redirect: '/tabs/tab2'
   },{
     path: '/logo',
-    component: () => import('@/views/logo.vue')
+    component: () => import('@/views/logo.vue'),
+    redirect: '/idfind'
+  },
+  {
+    path: '/idfind',
+    component: () => import('@/views/Idfind.vue')
+  },
+  {
+    path: '/provision',
+    component: () => import('@/views/Provision.vue')
   },{
     path: '/signup',
     component: () => import('@/views/SignUp.vue')
@@ -38,7 +47,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'tab3',
         component: () => import('@/views/Tab3.vue')
-      },
+      }
     ]
   },
 ]

@@ -4,7 +4,7 @@
     <div class="cls_totaldisplay">
         <div class="cls_header">
             <ion-toolbar style="text-align:center;">
-                <ion-title id="titles">로그인</ion-title>
+                <ion-title><b>로그인</b></ion-title>
             </ion-toolbar>
         </div>
 
@@ -14,48 +14,52 @@
         </div>
         <div class="cls_radio">
             <div style="display:flex; align-items: center;">
-                <ion-checkbox style="margin: 0px 10px;"/>
-                <ion-label>아이디 저장</ion-label>
+                <ion-checkbox />
+                <ion-label><b>아이디 저장</b></ion-label>
             </div>
             <div style="display:flex; align-items: center;">
-                <ion-checkbox style="margin: 0px 10px"/>
-                <ion-label>자동 로그인</ion-label>
+                <ion-checkbox />
+                <ion-label><b>자동 로그인</b></ion-label>
             </div>
         </div>
 
         <div class="cls_logins">
-            <div id="cls_logins_buttons">
-                <ion-button expand="block">로그인</ion-button>
-                <ion-button expand="block">회원가입</ion-button>
+            <div class="cls_logins_buttons">
+                <ion-button expand="block" fill="default">
+                    <ion-label style="color: #FFFFFF;"><b>로그인</b></ion-label>
+                </ion-button>
+                <ion-button expand="block" fill="default">
+                    <ion-label style="color: #FFFFFF;"><b>회원가입</b></ion-label>
+                </ion-button>
             </div>
             <div id="cls_logins_service">
-                <ion-button fill="clear" style="font-size: 10px">아이디 찾기</ion-button>
+                <ion-button fill="clear" style="font-size: 10px; color: black;"><b>아이디 찾기</b></ion-button>
                 <ion-text>  |   </ion-text>
-                <ion-button fill="clear" style="font-size: 10px">비밀번호 찾기</ion-button>
+                <ion-button fill="clear" style="font-size: 10px; color: black;"><b>비밀번호 찾기</b></ion-button>
             </div>
         </div>
 
         <div class="cls_simplelogins">
-            <ion-item>
+            <ion-item style="--background: rgba(255,255,255,0);">
                 <ion-icon :icon="alert" />
                 <ion-label>간편 로그인</ion-label>
             </ion-item>
-            <ion-list>
-                <ion-button expand="block" fill="outline" size="large">
+            <ion-list style="background: rgba(255, 255, 255, 0);">
+                <ion-button expand="block" fill="outline" size="large" style="color: black; --border-color: #F9E83B;">
                     <ion-icon class="icons" :icon="square"/>
-                    <ion-label class="lables">Kakao Talk 으로 계속하기</ion-label>
+                    <ion-label class="lables"><b>Kakao Talk 으로 계속하기</b></ion-label>
                 </ion-button>
-                <ion-button expand="block" fill="outline" size="large">
+                <ion-button expand="block" fill="outline" size="large" style="color: black; --border-color: #1ED600;">
                     <ion-icon class="icons" :icon="square"/>
-                    <ion-label class="lables">Naver ID 로 계속하기</ion-label>
+                    <ion-label class="lables"><b>Naver ID 로 계속하기</b></ion-label>
                 </ion-button>
-                <ion-button expand="block" fill="outline" size="large">
+                <ion-button expand="block" fill="outline" size="large" style="color: black; --border-color: #EB5042;">
                     <ion-icon class="icons" :icon="square"/>
-                    <ion-label class="lables">Google ID 로 계속하기</ion-label>
+                    <ion-label class="lables"><b>Google ID 로 계속하기</b></ion-label>
                 </ion-button>
-                <ion-button expand="block" fill="outline" size="large">
+                <ion-button expand="block" fill="outline" size="large" style="color: black; --border-color: #3C599F;">
                     <ion-icon class="icons" :icon="square"/>
-                    <ion-label class="lables">FaceBook 으로 계속하기</ion-label>
+                    <ion-label class="lables"><b>FaceBook 으로 계속하기</b></ion-label>
                 </ion-button>
             </ion-list>
         </div>
@@ -63,6 +67,19 @@
 </template>
 
 <style>
+    ion-checkbox {
+        margin: 0px 10px;
+        --border-radius: 4px;
+        --background-checked: #128D15;
+        --checkmark-color: #FFC20D;
+    }
+    ion-toolbar {
+        border: 1px inset grey;
+    }
+    .cls_logins_buttons ion-button {
+        border-radius: 6px;
+        background: linear-gradient(to right, #00B573, 90%, #1CDE97);
+    }
     .cls_totaldisplay { 
         display: flex; 
         flex-direction: column;
@@ -86,14 +103,15 @@
         flex-direction: column;
         align-items: stretch;
         padding: 0px 30px;
+        background: #FAFFEB;
     }
     #ID { 
-        border:0; 
-        border-bottom: 1px solid; 
+        border: 0;
+        border-bottom: 1px solid #009132; 
     }
     #pwd { 
-        border:0; 
-        border-bottom: 1px solid; 
+        border: 0;
+        border-bottom: 1px solid #009132;
     }
     #cls_logins_service {
         display: flex; 
@@ -118,12 +136,6 @@
 import { IonToolbar, IonTitle, IonInput, IonItem, IonButton, IonLabel, IonIcon, IonList, IonCheckbox } from '@ionic/vue'
 import { square, alert } from 'ionicons/icons'
 export default  {
-    components: { IonToolbar, IonTitle, IonInput, IonItem, IonButton, IonLabel, IonIcon, IonList,  IonCheckbox},
-    setup(){
-        return{
-            square,
-            alert
-        }
-    }
+    components: { IonToolbar, IonTitle, IonInput, IonItem, IonButton, IonLabel, IonIcon, IonList,  IonCheckbox}
 }
 </script>
