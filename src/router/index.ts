@@ -11,7 +11,6 @@ const routes: Array<RouteRecordRaw> = [
   },{
     path: '/logo',
     component: () => import('@/views/logo.vue'),
-    redirect: '/idfind'
   },
   {
     path: '/idfind',
