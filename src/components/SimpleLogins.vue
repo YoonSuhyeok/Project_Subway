@@ -5,6 +5,7 @@
     </ion-button>
 </template>
 
+
 <script>
     export default {
         name: 'SimpleLogins',
