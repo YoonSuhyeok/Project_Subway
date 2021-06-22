@@ -45,7 +45,7 @@
                 <ion-label>간편 로그인</ion-label>
             </ion-item>
             <ion-list style="background: rgba(255, 255, 255, 0);">
-                <ion-button expand="block" fill="outline" size="large" style="color: black; --border-color: #F9E83B;">
+                <!--<ion-button expand="block" fill="outline" size="large" style="color: black; --border-color: #F9E83B;">
                     <ion-icon class="icons" :icon="square"/>
                     <ion-label class="lables"><b>Kakao Talk 으로 계속하기</b></ion-label>
                 </ion-button>
@@ -60,7 +60,11 @@
                 <ion-button expand="block" fill="outline" size="large" style="color: black; --border-color: #3C599F;">
                     <ion-icon class="icons" :icon="square"/>
                     <ion-label class="lables"><b>FaceBook 으로 계속하기</b></ion-label>
-                </ion-button>
+                </ion-button>-->
+                <SimpleLogins v-bind="kakao"></SimpleLogins>
+                <SimpleLogins v-bind="naver"></SimpleLogins>
+                <SimpleLogins v-bind="google"></SimpleLogins>
+                <SimpleLogins v-bind="facebook"></SimpleLogins>
             </ion-list>
         </div>
     </div>
@@ -133,9 +137,30 @@
 </style>
 
 <script>
-import { IonToolbar, IonTitle, IonInput, IonItem, IonButton, IonLabel, IonIcon, IonList, IonCheckbox } from '@ionic/vue'
-import { square, alert } from 'ionicons/icons'
-export default  {
-    components: { IonToolbar, IonTitle, IonInput, IonItem, IonButton, IonLabel, IonIcon, IonList,  IonCheckbox}
+import SimpleLogins from '../components/SimpleLogins.vue'
+
+export default {
+    name: 'logins',
+    components: { SimpleLogins },
+    data () {
+        return{
+            kakao: {
+                idkind:'Kakao Talk',
+                clr: '#F9E83B'
+            },
+            naver: {
+                idkind: 'Naver ID',
+                clr: '#1ED600'
+            },
+            google: {
+                idkind: 'Google Id',
+                clr: '#EB5042'
+            },
+            facebook: {
+                idkind: 'FaceBook',
+                clr: '#3C599F'
+            }
+        }
+    }
 }
 </script>
