@@ -10,16 +10,17 @@
     </div>
     <div>
         <ion-toolbar>
-            <ion-segment value="findid" v-model="segmentModel" >
-                <ion-segment-button v-on:click="segmentChanged($event)" value="findid" style="--color-checked:#128D15;">
+            <ion-segment value="find" v-model="segmentModel" >
+                <ion-segment-button value="findid" style="--color-checked:#128D15;">
                     <ion-label>ID 찾기</ion-label>
                 </ion-segment-button>
-                <ion-segment-button v-on:click="segmentChanged($event)" value="findpw" style="--color-checked:#128D15;">
+                <ion-segment-button value="findpw" style="--color-checked:#128D15;">
                     <ion-label>PW 찾기</ion-label>
                 </ion-segment-button>
             </ion-segment>
         </ion-toolbar>
 
+        <!--아이디찾기-->
         <div class="cls_segmentview" v-if="segmentModel === 'findid'">
             <div class="cls_input">
                 <ion-input id="NAME_id" key="id-input" placeholder="이름" />
@@ -35,7 +36,8 @@
             </ion-text>
         </div>
 
-        <div class="cls_segmentview" v-if="segmentModel === 'findpw'">
+        <!--비밀번호 찾기-->
+        <div class="cls_segmentview" v-else-if="segmentModel === 'findpw'">
             <div class="cls_input">
                 <ion-input id="NAME_pw" key="pw-input" placeholder="이름" />
                 <ion-input id="EMAIL_pw" key="pw-input" placeholder="이메일 주소"/>
@@ -49,6 +51,11 @@
                 - 네이버, 카카오톡, 삼성 앱카드, 애플아이디로 가입하신 회원님은 각 해당 
                 서비스를 통해 아이디/비밀번호를 찾아 주시기 바랍니다.
             </ion-text>
+        </div>
+
+        <!--페이지 로드 실패-->
+        <div class="cls_segmentview" v-else>
+            <ion-text>페이지 로딩 오류...!<br><br>페이지 렌더링 중 오류가 발생했습니다.</ion-text>
         </div>
     </div>
 </div>
@@ -87,22 +94,17 @@
 </style>
 
 <script>
-import { IonSegment, IonButton, IonSegmentButton, IonTitle, IonToolbar, IonText } from '@ionic/vue'
+import { IonLabel, IonInput, IonApp, IonSegment, IonButton, IonSegmentButton, IonTitle, IonToolbar, IonText } from '@ionic/vue'
 
 export default {
     name: 'Idfind',
-    components: { IonSegment, IonButton, IonSegmentButton, IonTitle, IonToolbar ,IonText },
+    components: { IonLabel, IonInput, IonApp, IonSegment, IonButton, IonSegmentButton, IonTitle, IonToolbar ,IonText },
     data () {
-
         return {
             segmentModel: 'findid'
         }
     },
     method: {
-        segmentChanged: function(ev){
-            console.log();
-            this.name = event.target.innerHTML;
-        }
     }
 }
 </script>
