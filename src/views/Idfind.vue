@@ -10,20 +10,20 @@
     </div>
     <div>
         <ion-toolbar>
-            <ion-segment value="idfind">
-                <ion-segment-button value="idfind" style="--color-checked:#128D15;">
+            <ion-segment value="findid" v-model="segmentModel" >
+                <ion-segment-button v-on:click="segmentChanged($event)" value="findid" style="--color-checked:#128D15;">
                     <ion-label>ID 찾기</ion-label>
                 </ion-segment-button>
-                <ion-segment-button value="pwfind" style="--color-checked:#128D15;">
+                <ion-segment-button v-on:click="segmentChanged($event)" value="findpw" style="--color-checked:#128D15;">
                     <ion-label>PW 찾기</ion-label>
                 </ion-segment-button>
             </ion-segment>
         </ion-toolbar>
 
-        <div class="cls_segmentview">
+        <div class="cls_segmentview" v-if="segmentModel === 'findid'">
             <div class="cls_input">
-                <ion-input id="NAME" placeholder="이름" />
-                <ion-input id="PHONE" placeholder="휴대폰 번호" />
+                <ion-input id="NAME_id" key="id-input" placeholder="이름" />
+                <ion-input id="PHONE_id" key="id-input" placeholder="휴대폰 번호" />
             </div>
             <ion-button expand="block">아이디 찾기</ion-button>
             <ion-text>
@@ -31,6 +31,22 @@
                 찾을 수 있습니다<br><br>
 
                 -네이버, 카카오톡, 삼성 앱카드, 애플아이디로 가입하신 회원님은 각해당
+                서비스를 통해 아이디/비밀번호를 찾아 주시기 바랍니다.
+            </ion-text>
+        </div>
+
+        <div class="cls_segmentview" v-if="segmentModel === 'findpw'">
+            <div class="cls_input">
+                <ion-input id="NAME_pw" key="pw-input" placeholder="이름" />
+                <ion-input id="EMAIL_pw" key="pw-input" placeholder="이메일 주소"/>
+            </div>
+            <ion-button expand="block">비밀번호 재설정</ion-button>
+            <ion-text>
+                - 비밀번호 재설정 선택 후 이메일을 확인해주세요.<br><br>
+                
+                - 메일을 확인할 수 없는 경우, 스펨메일함을 확인해주세요.<br><br>
+
+                - 네이버, 카카오톡, 삼성 앱카드, 애플아이디로 가입하신 회원님은 각 해당 
                 서비스를 통해 아이디/비밀번호를 찾아 주시기 바랍니다.
             </ion-text>
         </div>
@@ -51,7 +67,6 @@
         padding: 15px;
         width: 100%;
         height: 50%;
-        border: 1px solid red;
     }
     .cls_input {
         margin: 5px 15px;
@@ -72,9 +87,22 @@
 </style>
 
 <script>
-import { IonToolbar, IonTitle } from '@ionic/vue'
+import { IonSegment, IonButton, IonSegmentButton, IonTitle, IonToolbar, IonText } from '@ionic/vue'
 
 export default {
-    components: { IonToolbar, IonTitle }
+    name: 'Idfind',
+    components: { IonSegment, IonButton, IonSegmentButton, IonTitle, IonToolbar ,IonText },
+    data () {
+
+        return {
+            segmentModel: 'findid'
+        }
+    },
+    method: {
+        segmentChanged: function(ev){
+            console.log();
+            this.name = event.target.innerHTML;
+        }
+    }
 }
 </script>

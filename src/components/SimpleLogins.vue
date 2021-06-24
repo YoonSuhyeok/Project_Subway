@@ -1,5 +1,5 @@
 <template>
-    <ion-button expand="block" fill="outline" size="large" style="color:clr;">
+    <ion-button v-bind:style="mystyle" expand="block" fill="outline" size="large" >
                 <ion-icon :icon="square"/>
                 <ion-label><b>{{idkind}} 으로 계속하기</b></ion-label>
     </ion-button>
@@ -9,13 +9,17 @@
 <script>
     export default {
         name: 'SimpleLogins',
-        props: ['idkind', 'clr']
+        props: ['idkind', 'clr'],
+        data () {
+            return {
+                mystyle: 'color: black;'
+            }
+        }
     }
 </script>
 
 <style scoped>
-    ion-button {
-        color: black;
+    ion-button { 
         /*--border-color: #F9E83B;*/
     }
     ion-icon { 
