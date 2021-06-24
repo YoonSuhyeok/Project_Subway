@@ -37,21 +37,21 @@
 
             <div class="box-container" v-if="selectMenu === 'classic'">
 
-              <ion-card class="menu-box" key="classic_card">
+              <ion-card class="menu-box">
                 <ion-card-header>
                   <ion-card-title class="menu-name">클래식1</ion-card-title>
                   <ion-card-subtitle class="menu-kcal">480Kcal</ion-card-subtitle>
                 </ion-card-header>
               </ion-card>
 
-              <ion-card class="menu-box" key="classic_card">
+              <ion-card class="menu-box">
                 <ion-card-header>
                   <ion-card-title class="menu-name">클래식2</ion-card-title>
                   <ion-card-subtitle class="menu-kcal">380Kcal</ion-card-subtitle>
                 </ion-card-header>
               </ion-card>
 
-              <ion-card class="menu-box" key="classic_card">
+              <ion-card class="menu-box">
                 <ion-card-header>
                   <ion-card-title class="menu-name">클래식3</ion-card-title>
                   <ion-card-subtitle class="menu-kcal">480Kcal</ion-card-subtitle>
@@ -62,21 +62,21 @@
 
             <div class="box-container" v-else-if="selectMenu === 'freshLight'">
 
-              <ion-card class="menu-box" key="fresh_card">
+              <ion-card class="menu-box">
                 <ion-card-header>
                   <ion-card-title class="menu-name">프레쉬</ion-card-title>
                   <ion-card-subtitle class="menu-kcal">480Kcal</ion-card-subtitle>
                 </ion-card-header>
               </ion-card>
 
-              <ion-card class="menu-box" key="fresh_card">
+              <ion-card class="menu-box">
                 <ion-card-header>
                   <ion-card-title class="menu-name">프레쉬</ion-card-title>
                   <ion-card-subtitle class="menu-kcal">380Kcal</ion-card-subtitle>
                 </ion-card-header>
               </ion-card>
 
-              <ion-card class="menu-box" key="fresh_card">
+              <ion-card class="menu-box">
                 <ion-card-header>
                   <ion-card-title class="menu-name">프레쉬</ion-card-title>
                   <ion-card-subtitle class="menu-kcal">480Kcal</ion-card-subtitle>
@@ -87,21 +87,21 @@
 
             <div class="box-container" v-else-if="selectMenu === 'premium'">
 
-              <ion-card class="menu-box" key="premium_card">
+              <ion-card class="menu-box">
                 <ion-card-header>
                   <ion-card-title class="menu-name">프리미엄</ion-card-title>
                   <ion-card-subtitle class="menu-kcal">480Kcal</ion-card-subtitle>
                 </ion-card-header>
               </ion-card>
 
-              <ion-card class="menu-box" key="premium_card">
+              <ion-card class="menu-box">
                 <ion-card-header>
                   <ion-card-title class="menu-name">프리미엄</ion-card-title>
                   <ion-card-subtitle class="menu-kcal">380Kcal</ion-card-subtitle>
                 </ion-card-header>
               </ion-card>
 
-              <ion-card class="menu-box" key="premium_card">
+              <ion-card class="menu-box">
                 <ion-card-header>
                   <ion-card-title class="menu-name">프리미엄</ion-card-title>
                   <ion-card-subtitle class="menu-kcal">480Kcal</ion-card-subtitle>
@@ -394,6 +394,12 @@ export default  {
   components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, 
   IonSlides, IonSlide, IonSegment, IonSegmentButton, IonLabel
    },
+  data() {
+    return {
+      selectMenu: 'classic',
+      selectVegitableSource: 'vegitable'
+    }
+  },
   setup() {
     // Optional parameters to pass to the swiper instance. See http://idangero.us/swiper/api/ for valid options.
     const slideOpts = {
@@ -401,9 +407,7 @@ export default  {
       speed: 400
     };
     return { 
-      slideOpts,
-      selectMenu: 'classic',
-      selectVegitableSource: 'vegitable'
+      slideOpts
     }
   }
 }
