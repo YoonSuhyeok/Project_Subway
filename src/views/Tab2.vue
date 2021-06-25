@@ -12,11 +12,11 @@
           </ion-button>
         </ion-buttons>
         <ion-title style="text-align: center;">
-          <ion-checkbox checked="true" color="dark"></ion-checkbox>
-          <ion-checkbox checked="false" color="dark"></ion-checkbox>
-          <ion-checkbox checked="false" color="dark"></ion-checkbox>
-          <ion-checkbox checked="false" color="dark"></ion-checkbox>
-          <ion-checkbox checked="false" color="dark"></ion-checkbox>          
+          <ion-checkbox class="upperCheckbox" checked="true" color="dark"></ion-checkbox>
+          <ion-checkbox class="upperCheckbox" checked="false" color="dark"></ion-checkbox>
+          <ion-checkbox class="upperCheckbox" checked="false" color="dark"></ion-checkbox>
+          <ion-checkbox class="upperCheckbox" checked="false" color="dark"></ion-checkbox>
+          <ion-checkbox class="upperCheckbox" checked="false" color="dark"></ion-checkbox>          
         </ion-title>
       </ion-toolbar>
     </ion-header>
@@ -232,7 +232,7 @@
               </ion-segment-button>
             </ion-segment>
 
-            <div class="box-container" v-if="selectVegitableSource === 'vegitable'">
+            <div class="box-container" v-if="selectVegitableSource === 'vegitable'" style="height:300px;">
 
               <ion-card class="salary-box">
                 <ion-card-header>
@@ -269,6 +269,13 @@
                   and climb a mountain or spend a week in the woods. Wash your spirit clean.
                 </ion-card-content> -->
               </ion-card>
+              
+              <div class="bottomsForVegi" style="position:absolute; bottom:0px;">
+                <h1>all/del 오이벤</h1>
+                <h3>
+                  <ion-checkbox class="checkAllOrNothing" checked="true" color="danger"></ion-checkbox>전체선택
+                </h3>
+              </div>
 
             </div>
 
@@ -370,7 +377,6 @@
 
 
 <style scoped>
-
   .box-container {
     display: flex;
     flex-direction: row;
@@ -394,15 +400,14 @@
     height: 100px;
   }
 
-  .white-circle, .dark-circle {
-    border-radius: 50%;
-    border: black solid 1px;
-    width: 30px;
-    height: 30px;
-    display: flex;
+  ion-segment-button {
+    --color-checked: #111111;
+    --background-hover: none;
+    --color: #c4c4c4;
+    --color-checked: #111111;
+    --indicator-color	: none;
   }
-
-  ion-checkbox {
+  .upperCheckbox {
     --border-radius: 50%; 
     --checkmark-color: dark; 
     --border-color: #c4c4c4; 
@@ -410,14 +415,18 @@
     width: 10px;
     height: 10px;
     margin: 5px;
-  }
-
-  ion-segment-button {
     --color-checked: #111111;
     --background-hover: none;
     --color: #c4c4c4;
-    --color-checked: #111111;
     --indicator-color	: none;
+  }
+
+  .checkAllOrNothing {
+    --border-color: #111111;
+    --border-color-checked: #111111;
+    --checkmark-color: red; 
+    --background-checked: none;
+    --background: none;
   }
 
 </style>
@@ -426,7 +435,6 @@
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, 
 IonSlides, IonSlide, IonSegment, IonSegmentButton, IonLabel } from '@ionic/vue';
 import ExploreContainer from '@/components/ExploreContainer.vue';
-
 export default  {
   name: 'Tab2',
   components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, 
@@ -449,5 +457,4 @@ export default  {
     }
   }
 }
-
 </script>
