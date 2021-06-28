@@ -40,27 +40,11 @@
         </div>
 
         <div class="cls_simplelogins">
-            <ion-item style="--background: rgba(255,255,255,0);">
-                <ion-icon :icon="alert" />
+            <ion-item style="--background: rgba(250, 255, 235, 0);">
+                <ion-icon />
                 <ion-label>간편 로그인</ion-label>
             </ion-item>
-            <ion-list style="background: rgba(255, 255, 255, 0);">
-                <!--<ion-button expand="block" fill="outline" size="large" style="color: black; --border-color: #F9E83B;">
-                    <ion-icon class="icons" :icon="square"/>
-                    <ion-label class="lables"><b>Kakao Talk 으로 계속하기</b></ion-label>
-                </ion-button>
-                <ion-button expand="block" fill="outline" size="large" style="color: black; --border-color: #1ED600;">
-                    <ion-icon class="icons" :icon="square"/>
-                    <ion-label class="lables"><b>Naver ID 로 계속하기</b></ion-label>
-                </ion-button>
-                <ion-button expand="block" fill="outline" size="large" style="color: black; --border-color: #EB5042;">
-                    <ion-icon class="icons" :icon="square"/>
-                    <ion-label class="lables"><b>Google ID 로 계속하기</b></ion-label>
-                </ion-button>
-                <ion-button expand="block" fill="outline" size="large" style="color: black; --border-color: #3C599F;">
-                    <ion-icon class="icons" :icon="square"/>
-                    <ion-label class="lables"><b>FaceBook 으로 계속하기</b></ion-label>
-                </ion-button>-->
+            <ion-list style="background: rgba(250, 255, 235, 0);">
                 <SimpleLogins v-bind="kakao"></SimpleLogins>
                 <SimpleLogins v-bind="naver"></SimpleLogins>
                 <SimpleLogins v-bind="google"></SimpleLogins>
@@ -85,9 +69,10 @@
         background: linear-gradient(to right, #00B573, 90%, #1CDE97);
     }
     .cls_totaldisplay { 
-        display: flex; 
+        display: flex;
         flex-direction: column;
-        width: 100%
+        width: 100%;
+        height: 100%;
     }
     .cls_input { 
         padding: 10px 30px 20px 
@@ -97,7 +82,7 @@
         align-items: center;
         justify-content: space-around;
         text-align: center;
-        padding: 0px 10px 5px
+        padding: 0px 10px 5px;
     }
     .cls_logins { 
         padding: 0px 25px;
@@ -108,6 +93,7 @@
         align-items: stretch;
         padding: 0px 30px;
         background: #FAFFEB;
+        height: 100%;
     }
     #ID { 
         border: 0;
@@ -128,20 +114,29 @@
     }
     .lables { 
         margin-right: auto; 
-        font-size: 15px
+        font-size: 15px;
     }
 
-    @media screen and (min-width: 769px) {
+    @media screen and (max-width: 480px) {
+        
+    }
 
+    @media screen and (min-width: 480px) and (max-width:768px) {
+        
+    }
+
+    @media screen and (min-width: 768px) {
+        
     }
 </style>
 
 <script>
+import { IonToolbar, IonTitle, IonLabel, IonInput, IonItem, IonList, IonButton, IonText, IonCheckbox, IonIcon } from '@ionic/vue'
 import SimpleLogins from '../components/SimpleLogins.vue'
 
 export default {
     name: 'logins',
-    components: { SimpleLogins },
+    components: { IonToolbar, IonTitle, IonLabel, IonInput, IonItem, IonList, IonButton, IonText, IonCheckbox, SimpleLogins, IonIcon },
     data () {
         return{
             kakao: {
