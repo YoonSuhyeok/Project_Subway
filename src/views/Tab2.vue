@@ -33,7 +33,7 @@
         <ion-slide>
           <div>
             <h1 class="slide-title">메뉴 선택하기</h1>
-            {{ breadlist }}
+            <!-- {{ breadlist }} -->
             <ion-segment value="menu" v-model="selectMenu" >
                 <ion-segment-button value="classic">
                     <ion-label>클래식</ion-label>
@@ -48,60 +48,32 @@
 
             <div class="box-container" v-if="selectMenu === 'classic'">
 
-              <div v-for="item in classic" :key="item[0]">
+              <div v-for="item in classic" :key="item.name">
                 <Items :info="{ name: item.name , kcal: item.kcal }" />
               </div>
-              
 
             </div>
 
             <div class="box-container" v-else-if="selectMenu === 'freshLight'">
 
-              <ion-card class="menu-box">
-                <ion-card-header>
-                  <ion-card-title class="menu-name">프레쉬</ion-card-title>
-                  <ion-card-subtitle class="menu-kcal">480Kcal</ion-card-subtitle>
-                </ion-card-header>
-              </ion-card>
-
-              <ion-card class="menu-box">
-                <ion-card-header>
-                  <ion-card-title class="menu-name">프레쉬</ion-card-title>
-                  <ion-card-subtitle class="menu-kcal">380Kcal</ion-card-subtitle>
-                </ion-card-header>
-              </ion-card>
-
-              <ion-card class="menu-box">
-                <ion-card-header>
-                  <ion-card-title class="menu-name">프레쉬</ion-card-title>
-                  <ion-card-subtitle class="menu-kcal">480Kcal</ion-card-subtitle>
-                </ion-card-header>
-              </ion-card>
+              <div v-for="item in fresh" :key="item.name">
+                <Items :info="{ name: item.name , kcal: item.kcal }" />
+              </div>
 
             </div>
 
             <div class="box-container" v-else-if="selectMenu === 'premium'">
 
-              <ion-card class="menu-box">
+              <div v-for="item in premium" :key="item.name">
+                <Items :info="{ name: item.name , kcal: item.kcal }" />
+              </div>
+
+              <!-- <ion-card class="menu-box">
                 <ion-card-header>
                   <ion-card-title class="menu-name">프리미엄</ion-card-title>
                   <ion-card-subtitle class="menu-kcal">480Kcal</ion-card-subtitle>
                 </ion-card-header>
-              </ion-card>
-
-              <ion-card class="menu-box">
-                <ion-card-header>
-                  <ion-card-title class="menu-name">프리미엄</ion-card-title>
-                  <ion-card-subtitle class="menu-kcal">380Kcal</ion-card-subtitle>
-                </ion-card-header>
-              </ion-card>
-
-              <ion-card class="menu-box">
-                <ion-card-header>
-                  <ion-card-title class="menu-name">프리미엄</ion-card-title>
-                  <ion-card-subtitle class="menu-kcal">480Kcal</ion-card-subtitle>
-                </ion-card-header>
-              </ion-card>
+              </ion-card> -->
 
             </div>
 
@@ -431,6 +403,16 @@ export default  {
           {name: '클래식1', kcal: 480},
           {name: '클래식2', kcal: 380},
           {name: '클래식3', kcal: 480}
+        ],
+        fresh: [
+          {name: '프레쉬1', kcal: 480},
+          {name: '프레쉬2', kcal: 480},
+          {name: '프레쉬3', kcal: 480},
+        ],
+        premium: [
+          {name: '프리미엄1', kcal: 480},
+          {name: '프리미엄2', kcal: 480},
+          {name: '프리미엄3', kcal: 480}, 
         ],
         selectMenu: 'classic',
         selectVegitableSource: 'vegitable'
