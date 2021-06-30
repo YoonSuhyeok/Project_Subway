@@ -22,6 +22,7 @@
 import { IonButton, IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
 import ExploreContainer from '@/components/ExploreContainer.vue';
 import { useStore } from "vuex";
+import { computed } from '@vue/runtime-core';
 
 export default  {
   name: 'Tab3',
@@ -29,11 +30,10 @@ export default  {
   setup(){
     const store = useStore();
 
+    store.dispatch('initData');
+
     return {
-      bread: store.state.breadList,
-      hi: () => {
-        store.dispatch('initData')
-      } 
+      bread: computed(() => store.state.breadList),
     }
   }
 }
