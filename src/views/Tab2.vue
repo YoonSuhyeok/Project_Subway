@@ -32,11 +32,11 @@
       <ion-slides pager="false" :options="slideOpts" style="--bullet-background-active:#111111; --bullet-background:#C4C4C4;">
         <ion-slide>
           <div>
-            <h3 class="slide-title"><b>메뉴 선택하기</b></h3>
+            <h5 class="slide-title"><b>메뉴 선택하기</b></h5>
 
-            <ion-button color="light" strong="true" class="menu_btn" v-on:click="clickedClassic">클래식</ion-button>
-            <ion-button color="light" strong="true" class="menu_btn" v-on:click="clickedFresh">프래쉬&라이트</ion-button>
-            <ion-button color="light" strong="true" class="menu_btn" v-on:click="clickedPremium">프리미엄</ion-button>
+            <ion-button strong="true" :class="{menu_btn: !state.ActiveMb1, mb_active: state.isActiveMb1}" v-on:click="clickedClassic"><h5><b>클래식</b></h5></ion-button>
+            <ion-button strong="true" class="menu_btn" :class="{mb_active: state.isActiveMb2}" v-on:click="clickedFresh"><h5><b>프래쉬&라이트</b></h5></ion-button>
+            <ion-button strong="true" class="menu_btn" :class="{mb_active: state.isActiveMb3}" v-on:click="clickedPremium"><h5><b>프리미엄</b></h5></ion-button>
             
             <div class="box-container" v-if="state.selectMenu === 'classic_menu'">
 
@@ -355,7 +355,7 @@
     margin: 5px;
     --color-checked: #111111;
     --background-hover: none;
-    --color: #c4c4c4;
+    --color: #8a7d7d;
     --indicator-color	: none;
   }
 
@@ -368,9 +368,20 @@
   }
 
   .menu_btn {
+    --color: #949494;
     --background: #ffffff;
     --border-radius: 0;
     --box-shadow: none;
+    font-weight: bold;
+    height: 50px;
+  }
+
+  .mb_active {
+    --color: #111111;
+    --background: #ffffff;
+    --border-radius: 0;
+    --box-shadow: none;
+    font-weight: bold;
     height: 50px;
   }
 
@@ -426,6 +437,7 @@ export default  {
           {name: '프리미엄3', kcal: 480}, 
         ]
       }
+      
     },
     setup() {
       // Optional parameters to pass to the swiper instance. See http://idangero.us/swiper/api/ for valid options.
@@ -434,8 +446,11 @@ export default  {
         speed: 400
       };
       const state = reactive({
-        selectMenu: 'classic_menu'
+        selectMenu: 'classic_menu',
         // selectVegitableSource: 'vegitable'
+        isActiveMb1: true,
+        isActiveMb2: false,
+        isActiveMb3: false
       })
       const clickedClassic = () => {
         state.selectMenu = 'classic_menu'
