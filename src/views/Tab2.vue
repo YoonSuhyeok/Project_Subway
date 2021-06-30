@@ -32,21 +32,13 @@
       <ion-slides pager="false" :options="slideOpts" style="--bullet-background-active:#111111; --bullet-background:#C4C4C4;">
         <ion-slide>
           <div>
-            <h1 class="slide-title">메뉴 선택하기</h1>
-            <!-- {{ breadlist }} -->
-            <ion-segment value="menu" v-model="selectMenu" >
-                <ion-segment-button value="classic">
-                    <ion-label>클래식</ion-label>
-                </ion-segment-button>
-                <ion-segment-button value="freshLight">
-                    <ion-label>프레쉬&라이트</ion-label>
-                </ion-segment-button>
-                <ion-segment-button value="premium">
-                    <ion-label>프리미엄</ion-label>
-                </ion-segment-button>
-            </ion-segment>
+            <h3 class="slide-title"><b>메뉴 선택하기</b></h3>
 
-            <div class="box-container" v-if="selectMenu === 'classic'">
+            <ion-button color="light" strong="true" class="menu_btn" v-on:click="clickedClassic">클래식</ion-button>
+            <ion-button color="light" strong="true" class="menu_btn" v-on:click="clickedFresh">프래쉬&라이트</ion-button>
+            <ion-button color="light" strong="true" class="menu_btn" v-on:click="clickedPremium">프리미엄</ion-button>
+            
+            <div class="box-container" v-if="state.selectMenu === 'classic_menu'">
 
               <div v-for="item in classic" :key="item.name">
                 <Items :info="{ name: item.name , kcal: item.kcal }" />
@@ -54,7 +46,7 @@
 
             </div>
 
-            <div class="box-container" v-else-if="selectMenu === 'freshLight'">
+            <div class="box-container" v-if="state.selectMenu === 'fresh_menu'">
 
               <div v-for="item in fresh" :key="item.name">
                 <Items :info="{ name: item.name , kcal: item.kcal }" />
@@ -62,21 +54,13 @@
 
             </div>
 
-            <div class="box-container" v-else-if="selectMenu === 'premium'">
+            <div class="box-container" v-if="state.selectMenu === 'premium_menu'">
 
               <div v-for="item in premium" :key="item.name">
                 <Items :info="{ name: item.name , kcal: item.kcal }" />
               </div>
 
-              <!-- <ion-card class="menu-box">
-                <ion-card-header>
-                  <ion-card-title class="menu-name">프리미엄</ion-card-title>
-                  <ion-card-subtitle class="menu-kcal">480Kcal</ion-card-subtitle>
-                </ion-card-header>
-              </ion-card> -->
-
             </div>
-
           </div>
         </ion-slide>
     
@@ -330,6 +314,7 @@
 
 
 <style scoped>
+
   .box-container {
     display: flex;
     flex-direction: row;
@@ -348,18 +333,18 @@
     width: 100%;
   }
 
-  .menu-box, .toping-box, .salary-box, .set-box {
+  /* .menu-box, .toping-box, .salary-box, .set-box {
     width: 100px;
     height: 100px;
-  }
+  } */
 
-  ion-segment-button {
+  /* ion-segment-button {
     --color-checked: #111111;
     --background-hover: none;
     --color: #c4c4c4;
     --color-checked: #111111;
     --indicator-color	: none;
-  }
+  } */
   .upperCheckbox {
     --border-radius: 50%; 
     --checkmark-color: dark; 
@@ -382,6 +367,31 @@
     --background: none;
   }
 
+  .menu_btn {
+    --background: #ffffff;
+    --border-radius: 0;
+    --box-shadow: none;
+    height: 50px;
+  }
+
+  @media screen and (max-width: 480px) {
+    .menu_btn {
+      width: 130px;
+    }
+  }
+
+  @media screen and (min-width: 480px) and (max-width:768px) {
+    .menu_btn {
+      width: 150px;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .menu_btn {
+      width: 250px;
+    }
+  }
+
 </style>
 
 <script lang="ts">
@@ -390,6 +400,7 @@
   import Items from '@/components/Itmes.vue'
   import { useStore } from 'vuex';
   import axios from 'axios';
+import { reactive } from '@vue/reactivity';
 
   
 export default  {
@@ -405,17 +416,15 @@ export default  {
           {name: '클래식3', kcal: 480}
         ],
         fresh: [
-          {name: '프레쉬1', kcal: 480},
-          {name: '프레쉬2', kcal: 480},
-          {name: '프레쉬3', kcal: 480},
+          {name: '프래쉬1', kcal: 480},
+          {name: '프래쉬2', kcal: 480},
+          {name: '프래쉬3', kcal: 480},
         ],
         premium: [
           {name: '프리미엄1', kcal: 480},
           {name: '프리미엄2', kcal: 480},
           {name: '프리미엄3', kcal: 480}, 
-        ],
-        selectMenu: 'classic',
-        selectVegitableSource: 'vegitable'
+        ]
       }
     },
     setup() {
@@ -424,8 +433,25 @@ export default  {
         initialSlide: 0,
         speed: 400
       };
+      const state = reactive({
+        selectMenu: 'classic_menu'
+        // selectVegitableSource: 'vegitable'
+      })
+      const clickedClassic = () => {
+        state.selectMenu = 'classic_menu'
+      }
+      const clickedFresh = () => {
+        state.selectMenu = 'fresh_menu'
+      }
+      const clickedPremium = () => {
+        state.selectMenu = 'premium_menu'
+      }
       return { 
-        slideOpts
+        slideOpts,
+        state,
+        clickedClassic,
+        clickedFresh,
+        clickedPremium
       }
     }
   }
