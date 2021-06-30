@@ -2,9 +2,9 @@ import { createStore } from 'vuex';
 import AxiosService from "@/service/axios.service"
 import { AxiosResponse } from "axios";
 
-export const sotres = createStore({
+export const store = createStore({
   state: {
-    breadList: 'a',
+    breadList: 'bread sample',
   },
   mutations: {
     setBreadList(state, breadList){
