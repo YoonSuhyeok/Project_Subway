@@ -34,14 +34,17 @@
           <div>
             <h5 class="slide-title"><b>메뉴 선택하기</b></h5>
 
-            <ion-button strong="true" :class="{menu_btn: !state.ActiveMb1, mb_active: state.isActiveMb1}" v-on:click="clickedClassic"><h5><b>클래식</b></h5></ion-button>
-            <ion-button strong="true" class="menu_btn" :class="{mb_active: state.isActiveMb2}" v-on:click="clickedFresh"><h5><b>프래쉬&라이트</b></h5></ion-button>
-            <ion-button strong="true" class="menu_btn" :class="{mb_active: state.isActiveMb3}" v-on:click="clickedPremium"><h5><b>프리미엄</b></h5></ion-button>
+            <ion-button strong="true" class="menu_btn" v-on:click="clickedClassic" v-if="state.selectMenu != 'classic_menu'"><h5><b>클래식</b></h5></ion-button>
+            <ion-button strong="true" class="mb_active" v-on:click="clickedClassic" v-if="state.selectMenu === 'classic_menu'"><h5><b>클래식</b></h5></ion-button>
+            <ion-button strong="true" class="menu_btn" v-on:click="clickedFresh" v-if="state.selectMenu != 'fresh_menu'"><h5><b>프래쉬&라이트</b></h5></ion-button>
+            <ion-button strong="true" class="mb_active" v-on:click="clickedFresh" v-if="state.selectMenu === 'fresh_menu'"><h5><b>프래쉬&라이트</b></h5></ion-button>
+            <ion-button strong="true" class="menu_btn" v-on:click="clickedPremium" v-if="state.selectMenu != 'premium_menu'"><h5><b>프리미엄</b></h5></ion-button>
+            <ion-button strong="true" class="mb_active" v-on:click="clickedPremium" v-if="state.selectMenu === 'premium_menu'"><h5><b>프리미엄</b></h5></ion-button>
             
             <div class="box-container" v-if="state.selectMenu === 'classic_menu'">
 
-              <div v-for="item in classic" :key="item.name">
-                <Items :info="{ name: item.name , kcal: item.kcal }" />
+              <div v-for="bread in breads" :key="bread.Bread_id + Bread_name">
+                <Items :info="{ name: bread.Bread_name , kcal: bread.Bread_calorie, src: bread.Bread_imageUrl }" />
               </div>
 
             </div>
@@ -386,19 +389,19 @@
   }
 
   @media screen and (max-width: 480px) {
-    .menu_btn {
+    .menu_btn, .mb_active {
       width: 130px;
     }
   }
 
   @media screen and (min-width: 480px) and (max-width:768px) {
-    .menu_btn {
+    .menu_btn, .mb_active {
       width: 150px;
     }
   }
 
   @media screen and (min-width: 768px) {
-    .menu_btn {
+    .menu_btn, .mb_active {
       width: 250px;
     }
   }
@@ -410,8 +413,9 @@
   IonSlides, IonSlide, IonSegment, IonSegmentButton, IonLabel } from '@ionic/vue';
   import Items from '@/components/Itmes.vue'
   import { useStore } from 'vuex';
+  import { computed } from '@vue/runtime-core';
   import axios from 'axios';
-import { reactive } from '@vue/reactivity';
+  import { reactive } from '@vue/reactivity';
 
   
 export default  {
@@ -461,12 +465,17 @@ export default  {
       const clickedPremium = () => {
         state.selectMenu = 'premium_menu'
       }
+
+      const store = useStore();
+      store.dispatch('initData');
+
       return { 
         slideOpts,
         state,
         clickedClassic,
         clickedFresh,
-        clickedPremium
+        clickedPremium,
+        breads: computed(() => store.state.breadList)
       }
     }
   }

@@ -2,6 +2,7 @@
     <div id="container">
         <ion-card class="menu-box">
             <ion-card-header class="menu-box-header">
+                <img :src="info.src" :alt="info.name" />
                 <ion-card-title class="menu-name">{{ info.name }}</ion-card-title>
                 <ion-card-subtitle class="menu-kcal">{{ info.kcal }}Kcal</ion-card-subtitle>
             </ion-card-header>
@@ -12,8 +13,8 @@
 <style scoped>
     
     .menu-box {
-        width: 100px;
-        height: 100px;
+        width: 200px;
+        height: 200px;
     }
 
 </style>
