@@ -11,11 +11,52 @@
 </template>
 
 <style scoped>
-    
-    .menu-box {
-        width: 200px;
-        height: 200px;
+
+    @charset "utf-8";
+
+    @font-face {
+        font-family: 'NanumGothicExtraBold';
+        src: url(../../public/assets/font/NanumGothicExtraBold.ttf);
     }
+
+    .menu-name, .menu-kcal {
+        font-weight: bold;
+        color: black;
+        font-family: NanumGothicExtraBold;
+    }
+
+    @media screen and (max-width: 480px) {
+        .menu-box {
+            width: 130px;
+            height: 130px;
+        }
+
+        .menu-name, .menu-kcal {
+            font-size: 9px;
+        }
+  }
+
+    @media screen and (min-width: 480px) and (max-width:768px) {
+        .menu-box {
+            width: 130px;
+            height: 130px;
+        }
+
+        .menu-name, .menu-kcal {
+            font-size: 10px;
+        }
+  }
+
+    @media screen and (min-width: 768px) {
+        .menu-box {
+            width: 200px;
+            height: 200px;
+        }
+
+        .menu-name, .menu-kcal {
+            font-size: 15px;
+        }
+  }
 
 </style>
 

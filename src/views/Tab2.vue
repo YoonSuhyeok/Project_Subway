@@ -218,36 +218,26 @@
 
 <style scoped>
 
+  @charset "utf-8";
+
+  @font-face {
+    font-family: 'NanumGothicExtraBold';
+    src: url(../../public/assets/font/NanumGothicExtraBold.ttf);
+  }
+
   .box-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: baseline;
-  }
-
-  .bread-box {
-    border-radius: 100%;
-    width: 100px;
-    height: 100px;
+    margin: auto;
   }
 
   .slide-title {
     width: 100%;
   }
 
-  /* .menu-box, .toping-box, .salary-box, .set-box {
-    width: 100px;
-    height: 100px;
-  } */
-
-  /* ion-segment-button {
-    --color-checked: #111111;
-    --background-hover: none;
-    --color: #c4c4c4;
-    --color-checked: #111111;
-    --indicator-color	: none;
-  } */
   .upperCheckbox {
     --border-radius: 50%; 
     --checkmark-color: dark; 
@@ -275,7 +265,7 @@
     --background: #ffffff;
     --border-radius: 0;
     --box-shadow: none;
-    font-weight: bold;
+    font-family: NanumGothicExtraBold;
     height: 50px;
   }
 
@@ -284,7 +274,7 @@
     --background: #ffffff;
     --border-radius: 0;
     --box-shadow: none;
-    font-weight: bold;
+        font-family: NanumGothicExtraBold;
     height: 50px;
   }
 
@@ -292,17 +282,29 @@
     .menu_btn, .mb_active {
       width: 130px;
     }
+
+    .box-container {
+      width: 300px;
+    }
   }
 
   @media screen and (min-width: 480px) and (max-width:768px) {
     .menu_btn, .mb_active {
       width: 150px;
     }
+    
+    .box-container {
+      width: 500px;
+    }
   }
 
   @media screen and (min-width: 768px) {
     .menu_btn, .mb_active {
       width: 250px;
+    }
+    
+    .box-container {
+      width: 800px;
     }
   }
 
@@ -326,7 +328,7 @@ export default  {
     setup() {
       // Optional parameters to pass to the swiper instance. See http://idangero.us/swiper/api/ for valid options.
       const slideOpts = {
-        initialSlide: 3,
+        initialSlide: 0,
         speed: 400
       };
       const state = reactive({
