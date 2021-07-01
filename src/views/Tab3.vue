@@ -11,8 +11,9 @@
           <ion-title size="large">Tab 3</ion-title>
         </ion-toolbar>
       </ion-header>
-      <!-- {{ bread }} -->
-      {{ classicMenu }}
+      <!-- {{ bread }}
+      {{ classicMenu }} -->
+      {{ vegetables }}
       <ExploreContainer name="Tab 3 page" />
     </ion-content>
   </ion-page>
@@ -37,6 +38,7 @@ export default  {
       classicMenu: computed(() => store.getters.getPremiumMenuList),
       freshMenu: computed(() => store.getters.getFreshMenuList),
       premiumMenu: computed(() => store.getters.getPremiumMenuList),
+      vegetables: computed(() => store.getters.getVegetableList),
     }
   }
 }
