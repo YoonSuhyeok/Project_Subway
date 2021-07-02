@@ -21,11 +21,11 @@ import './theme/variables.css';
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router';
-import { sotres } from './store/index';
+import { store } from './store/index';
 
 const app = createApp(App)  
   .use(IonicVue)
-  .use(sotres)
+  .use(store)
   .use(router);
 
 router.isReady().then(() => {

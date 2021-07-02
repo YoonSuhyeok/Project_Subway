@@ -32,123 +32,50 @@
       <ion-slides pager="false" :options="slideOpts" style="--bullet-background-active:#111111; --bullet-background:#C4C4C4;">
         <ion-slide>
           <div>
-            <h1 class="slide-title">메뉴 선택하기</h1>
-            {{ breadlist }}
-            <ion-segment value="menu" v-model="selectMenu" >
-                <ion-segment-button value="classic">
-                    <ion-label>클래식</ion-label>
-                </ion-segment-button>
-                <ion-segment-button value="freshLight">
-                    <ion-label>프레쉬&라이트</ion-label>
-                </ion-segment-button>
-                <ion-segment-button value="premium">
-                    <ion-label>프리미엄</ion-label>
-                </ion-segment-button>
-            </ion-segment>
+            <h5 class="slide-title"><b>메뉴 선택하기</b></h5>
 
-            <div class="box-container" v-if="selectMenu === 'classic'">
+            <ion-button strong="true" class="menu_btn" v-on:click="clickedClassic" v-if="state.selectMenu != 'classic_menu'"><h5><b>클래식</b></h5></ion-button>
+            <ion-button strong="true" class="mb_active" v-on:click="clickedClassic" v-else><h5><b>클래식</b></h5></ion-button>
+            <ion-button strong="true" class="menu_btn" v-on:click="clickedFresh" v-if="state.selectMenu != 'fresh_menu'"><h5><b>프래쉬&라이트</b></h5></ion-button>
+            <ion-button strong="true" class="mb_active" v-on:click="clickedFresh" v-else><h5><b>프래쉬&라이트</b></h5></ion-button>
+            <ion-button strong="true" class="menu_btn" v-on:click="clickedPremium" v-if="state.selectMenu != 'premium_menu'"><h5><b>프리미엄</b></h5></ion-button>
+            <ion-button strong="true" class="mb_active" v-on:click="clickedPremium" v-else><h5><b>프리미엄</b></h5></ion-button>
+            
+            <div class="box-container" v-if="state.selectMenu === 'classic_menu'">
 
-              <div v-for="item in classic" :key="item[0]">
-                <Items :info="{ name: item.name , kcal: item.kcal }" />
+              <div v-for="classic in classicMenus" :key="classic.Menu_id + classic.Menu_name">
+                <Items :info="{ name: classic.Menu_name , kcal: classic.Menu_calorie, src: classic.Menu_imageUrl }" />
               </div>
-              
 
             </div>
 
-            <div class="box-container" v-else-if="selectMenu === 'freshLight'">
+            <div class="box-container" v-if="state.selectMenu === 'fresh_menu'">
 
-              <ion-card class="menu-box">
-                <ion-card-header>
-                  <ion-card-title class="menu-name">프레쉬</ion-card-title>
-                  <ion-card-subtitle class="menu-kcal">480Kcal</ion-card-subtitle>
-                </ion-card-header>
-              </ion-card>
-
-              <ion-card class="menu-box">
-                <ion-card-header>
-                  <ion-card-title class="menu-name">프레쉬</ion-card-title>
-                  <ion-card-subtitle class="menu-kcal">380Kcal</ion-card-subtitle>
-                </ion-card-header>
-              </ion-card>
-
-              <ion-card class="menu-box">
-                <ion-card-header>
-                  <ion-card-title class="menu-name">프레쉬</ion-card-title>
-                  <ion-card-subtitle class="menu-kcal">480Kcal</ion-card-subtitle>
-                </ion-card-header>
-              </ion-card>
+              <div v-for="fresh in freshMenus" :key="fresh.Menu_id + fresh.Menu_name">
+                <Items :info="{ name: fresh.Menu_name , kcal: fresh.Menu_calorie, src: fresh.Menu_imageUrl }" />
+              </div>
 
             </div>
 
-            <div class="box-container" v-else-if="selectMenu === 'premium'">
+            <div class="box-container" v-if="state.selectMenu === 'premium_menu'">
 
-              <ion-card class="menu-box">
-                <ion-card-header>
-                  <ion-card-title class="menu-name">프리미엄</ion-card-title>
-                  <ion-card-subtitle class="menu-kcal">480Kcal</ion-card-subtitle>
-                </ion-card-header>
-              </ion-card>
-
-              <ion-card class="menu-box">
-                <ion-card-header>
-                  <ion-card-title class="menu-name">프리미엄</ion-card-title>
-                  <ion-card-subtitle class="menu-kcal">380Kcal</ion-card-subtitle>
-                </ion-card-header>
-              </ion-card>
-
-              <ion-card class="menu-box">
-                <ion-card-header>
-                  <ion-card-title class="menu-name">프리미엄</ion-card-title>
-                  <ion-card-subtitle class="menu-kcal">480Kcal</ion-card-subtitle>
-                </ion-card-header>
-              </ion-card>
+              <div v-for="premium in premiumMenus" :key="premium.Menu_id + premium.Menu_name">
+                <Items :info="{ name: premium.Menu_name , kcal: premium.Menu_calorie, src: premium.Menu_imageUrl }" />
+              </div>
 
             </div>
-
           </div>
         </ion-slide>
     
         <ion-slide>
           <div>
-            <h1 class="slide-title">빵 선택하기</h1>
+            <h5 class="slide-title"><b>빵 선택하기</b></h5>
 
             <div class="box-container">
 
-              <ion-card class="bread-box">
-                <ion-card-header>
-                  <ion-card-title>위트</ion-card-title>
-                  <ion-card-subtitle>378Kcal</ion-card-subtitle>
-                </ion-card-header>
-
-                <!-- <ion-card-content>
-                  Keep close to Nature's heart... and break clear away, once in awhile,
-                  and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content> -->
-              </ion-card>
-
-              <ion-card class="bread-box">
-                <ion-card-header>
-                  <ion-card-title>파마산 오레가노</ion-card-title>
-                  <ion-card-subtitle>378Kcal</ion-card-subtitle>
-                </ion-card-header>
-
-                <!-- <ion-card-content>
-                  Keep close to Nature's heart... and break clear away, once in awhile,
-                  and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content> -->
-              </ion-card>
-
-              <ion-card class="bread-box">
-                <ion-card-header>
-                  <ion-card-title>플랫 브레드</ion-card-title>
-                  <ion-card-subtitle>378Kcal</ion-card-subtitle>
-                </ion-card-header>
-
-                <!-- <ion-card-content>
-                  Keep close to Nature's heart... and break clear away, once in awhile,
-                  and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content> -->
-              </ion-card>
+              <div v-for="bread in breads" :key="bread.Bread_id + Bread_name">
+                <Items :info="{ name: bread.Bread_name , kcal: bread.Bread_calorie, src: bread.Bread_imageUrl }" />
+              </div>
 
             </div>
 
@@ -157,7 +84,7 @@
     
         <ion-slide>
           <div>
-            <h1 class="slide-title">추가토핑 선택하기</h1>
+            <h5 class="slide-title"><b>추가토핑 선택하기</b></h5>
 
             <div class="box-container">
 
@@ -204,101 +131,33 @@
 
         <ion-slide>
           <div>
-            <h1 class="slide-title">야채&소스 선택하기</h1>
+            <h5 class="slide-title"><b>야채&소스 선택하기</b></h5>
 
-            <ion-segment value="vegitableSorce" v-model="selectVegitableSource" >
-              <ion-segment-button value="vegitable">
-                  <ion-label>야채</ion-label>
-              </ion-segment-button>
-              <ion-segment-button value="source">
-                  <ion-label>소스</ion-label>
-              </ion-segment-button>
-            </ion-segment>
+            <ion-button strong="true" class="menu_btn" v-on:click="clickedVegetable" v-if="state.selectVegeSource != 'vegetable'"><h5><b>야채</b></h5></ion-button>
+            <ion-button strong="true" class="mb_active" v-on:click="clickedVegetable" v-else><h5><b>야채</b></h5></ion-button>
+            <ion-button strong="true" class="menu_btn" v-on:click="clickedSource" v-if="state.selectVegeSource != 'source'"><h5><b>소스</b></h5></ion-button>
+            <ion-button strong="true" class="mb_active" v-on:click="clickedSource" v-else><h5><b>소스</b></h5></ion-button>
 
-            <div class="box-container" v-if="selectVegitableSource === 'vegitable'" style="height:300px;">
+            <div class="box-container" v-if="state.selectVegeSource === 'vegetable'">
 
-              <ion-card class="salary-box">
-                <ion-card-header>
-                  <ion-card-title>야아채</ion-card-title>
-                  <ion-card-subtitle>51Kcal</ion-card-subtitle>
-                </ion-card-header>
-
-                <!-- <ion-card-content>
-                  Keep close to Nature's heart... and break clear away, once in awhile,
-                  and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content> -->
-              </ion-card>
-
-              <ion-card class="salary-box">
-                <ion-card-header>
-                  <ion-card-title>야아채</ion-card-title>
-                  <ion-card-subtitle>51Kcal</ion-card-subtitle>
-                </ion-card-header>
-
-                <!-- <ion-card-content>
-                  Keep close to Nature's heart... and break clear away, once in awhile,
-                  and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content> -->
-              </ion-card>
-
-              <ion-card class="salary-box">
-                <ion-card-header>
-                  <ion-card-title>야아채</ion-card-title>
-                  <ion-card-subtitle>51Kcal</ion-card-subtitle>
-                </ion-card-header>
-
-                <!-- <ion-card-content>
-                  Keep close to Nature's heart... and break clear away, once in awhile,
-                  and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content> -->
-              </ion-card>
+              <div v-for="vegetable in vegetables" :key="vegetable.Ingredient_id + vegetable.Ingredient_name">
+                <Items :info="{ name: vegetable.Ingredient_name , kcal: vegetable.Ingredient_calorie, src: vegetable.Ingredient_imageUrl }" />
+              </div>
               
-              <div class="bottomsForVegi" style="position:absolute; bottom:0px;">
+              <!-- <div class="bottomsForVegi" style="position:absolute; bottom:0px;">
                 <h1>all/del 오이벤</h1>
                 <h3>
                   <ion-checkbox class="checkAllOrNothing" checked="true" color="danger"></ion-checkbox>전체선택
                 </h3>
-              </div>
+              </div> -->
 
             </div>
 
-            <div class="box-container" v-else-if="selectVegitableSource === 'source'">
+            <div class="box-container" v-else>
 
-              <ion-card class="salary-box">
-                <ion-card-header>
-                  <ion-card-title>소오스</ion-card-title>
-                  <ion-card-subtitle>51Kcal</ion-card-subtitle>
-                </ion-card-header>
-
-                <!-- <ion-card-content>
-                  Keep close to Nature's heart... and break clear away, once in awhile,
-                  and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content> -->
-              </ion-card>
-
-              <ion-card class="salary-box">
-                <ion-card-header>
-                  <ion-card-title>소오스</ion-card-title>
-                  <ion-card-subtitle>51Kcal</ion-card-subtitle>
-                </ion-card-header>
-
-                <!-- <ion-card-content>
-                  Keep close to Nature's heart... and break clear away, once in awhile,
-                  and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content> -->
-              </ion-card>
-
-              <ion-card class="salary-box">
-                <ion-card-header>
-                  <ion-card-title>소오스</ion-card-title>
-                  <ion-card-subtitle>51Kcal</ion-card-subtitle>
-                </ion-card-header>
-
-                <!-- <ion-card-content>
-                  Keep close to Nature's heart... and break clear away, once in awhile,
-                  and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content> -->
-              </ion-card>
+              <div v-for="source in sources" :key="source.Ingredient_id + source.Ingredient_name">
+                <Items :info="{ name: source.Ingredient_name , kcal: source.Ingredient_calorie, src: source.Ingredient_imageUrl }" />
+              </div>
 
             </div>
 
@@ -307,7 +166,7 @@
 
         <ion-slide>
           <div>
-            <h1 class="slide-title">세트 선택하기</h1>
+            <h5 class="slide-title"><b>세트 선택하기</b></h5>
 
             <div class="box-container">
 
@@ -358,36 +217,27 @@
 
 
 <style scoped>
+
+  @charset "utf-8";
+
+  @font-face {
+    font-family: 'NanumGothicExtraBold';
+    src: url(../../public/assets/font/NanumGothicExtraBold.ttf);
+  }
+
   .box-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: baseline;
-  }
-
-  .bread-box {
-    border-radius: 100%;
-    width: 100px;
-    height: 100px;
+    margin: auto;
   }
 
   .slide-title {
     width: 100%;
   }
 
-  .menu-box, .toping-box, .salary-box, .set-box {
-    width: 100px;
-    height: 100px;
-  }
-
-  ion-segment-button {
-    --color-checked: #111111;
-    --background-hover: none;
-    --color: #c4c4c4;
-    --color-checked: #111111;
-    --indicator-color	: none;
-  }
   .upperCheckbox {
     --border-radius: 50%; 
     --checkmark-color: dark; 
@@ -398,7 +248,7 @@
     margin: 5px;
     --color-checked: #111111;
     --background-hover: none;
-    --color: #c4c4c4;
+    --color: #8a7d7d;
     --indicator-color	: none;
   }
 
@@ -410,31 +260,70 @@
     --background: none;
   }
 
+  .menu_btn {
+    --color: #949494;
+    --background: #ffffff;
+    --border-radius: 0;
+    --box-shadow: none;
+    font-family: NanumGothicExtraBold;
+    height: 50px;
+  }
+
+  .mb_active {
+    --color: #111111;
+    --background: #ffffff;
+    --border-radius: 0;
+    --box-shadow: none;
+        font-family: NanumGothicExtraBold;
+    height: 50px;
+  }
+
+  @media screen and (max-width: 480px) {
+    .menu_btn, .mb_active {
+      width: 130px;
+    }
+
+    .box-container {
+      width: 300px;
+    }
+  }
+
+  @media screen and (min-width: 480px) and (max-width:768px) {
+    .menu_btn, .mb_active {
+      width: 150px;
+    }
+    
+    .box-container {
+      width: 500px;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .menu_btn, .mb_active {
+      width: 250px;
+    }
+    
+    .box-container {
+      width: 800px;
+    }
+  }
+
 </style>
 
 <script lang="ts">
   import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, 
-  IonSlides, IonSlide, IonSegment, IonSegmentButton, IonLabel } from '@ionic/vue';
+  IonSlides, IonSlide } from '@ionic/vue';
   import Items from '@/components/Itmes.vue'
   import { useStore } from 'vuex';
+  import { computed } from '@vue/runtime-core';
   import axios from 'axios';
+  import { reactive } from '@vue/reactivity';
 
   
 export default  {
     name: 'Tab2',
     components: { Items, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, 
-    IonSlides, IonSlide, IonSegment, IonSegmentButton, IonLabel
-    },
-    data() {
-      return {
-        classic: [
-          {name: '클래식1', kcal: 480},
-          {name: '클래식2', kcal: 380},
-          {name: '클래식3', kcal: 480}
-        ],
-        selectMenu: 'classic',
-        selectVegitableSource: 'vegitable'
-      }
+    IonSlides, IonSlide
     },
     setup() {
       // Optional parameters to pass to the swiper instance. See http://idangero.us/swiper/api/ for valid options.
@@ -442,8 +331,43 @@ export default  {
         initialSlide: 0,
         speed: 400
       };
+      const state = reactive({
+        selectMenu: 'classic_menu',
+        selectVegeSource: 'vegetable'
+      })
+      const clickedClassic = () => {
+        state.selectMenu = 'classic_menu'
+      }
+      const clickedFresh = () => {
+        state.selectMenu = 'fresh_menu'
+      }
+      const clickedPremium = () => {
+        state.selectMenu = 'premium_menu'
+      }
+      const clickedVegetable = () => {
+        state.selectVegeSource = 'vegetable'
+      }
+      const clickedSource = () => {
+        state.selectVegeSource = 'source'
+      }
+
+      const store = useStore();
+      store.dispatch('initData');
+
       return { 
-        slideOpts
+        slideOpts,
+        state,
+        clickedClassic,
+        clickedFresh,
+        clickedPremium,
+        clickedVegetable,
+        clickedSource,
+        breads: computed(() => store.getters.getBreadList),
+        classicMenus: computed(() => store.getters.getPremiumMenuList),
+        freshMenus: computed(() => store.getters.getFreshMenuList),
+        premiumMenus: computed(() => store.getters.getPremiumMenuList),
+        vegetables: computed(() => store.getters.getVegetableList),
+        sources: computed(() => store.getters.getSourceList)
       }
     }
   }
