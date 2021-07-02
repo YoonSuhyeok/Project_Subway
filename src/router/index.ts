@@ -8,7 +8,8 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     redirect: '/idfind'
-  },{
+  },
+  {
     path: '/logo',
     component: () => import('@/views/logo.vue'),
   },
@@ -19,7 +20,8 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/provision',
     component: () => import('@/views/Provision.vue')
-  },{
+  },
+  {
     path: '/signup',
     component: () => import('@/views/SignUp.vue')
   },
@@ -48,7 +50,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/Tab3.vue')
       }
     ]
-  },
+  }
 ]
 
 const router = createRouter({
