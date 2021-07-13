@@ -34,12 +34,12 @@
           <div>
             <h5 class="slide-title"><b>메뉴 선택하기</b></h5>
 
-            <ion-button strong="true" class="menu_btn" v-on:click="clickedClassic" v-if="state.selectMenu != 'classic_menu'"><h5><b>클래식</b></h5></ion-button>
-            <ion-button strong="true" class="mb_active" v-on:click="clickedClassic" v-else><h5><b>클래식</b></h5></ion-button>
-            <ion-button strong="true" class="menu_btn" v-on:click="clickedFresh" v-if="state.selectMenu != 'fresh_menu'"><h5><b>프래쉬&라이트</b></h5></ion-button>
-            <ion-button strong="true" class="mb_active" v-on:click="clickedFresh" v-else><h5><b>프래쉬&라이트</b></h5></ion-button>
-            <ion-button strong="true" class="menu_btn" v-on:click="clickedPremium" v-if="state.selectMenu != 'premium_menu'"><h5><b>프리미엄</b></h5></ion-button>
-            <ion-button strong="true" class="mb_active" v-on:click="clickedPremium" v-else><h5><b>프리미엄</b></h5></ion-button>
+            <ion-button strong="true" class="menu_btn" v-on:click="clickedClassic" v-if="state.selectMenu != 'classic_menu'"><b>클래식</b></ion-button>
+            <ion-button strong="true" class="mb_active" v-on:click="clickedClassic" v-else><b>클래식</b></ion-button>
+            <ion-button strong="true" class="menu_btn" v-on:click="clickedFresh" v-if="state.selectMenu != 'fresh_menu'"><b>프래쉬&라이트</b></ion-button>
+            <ion-button strong="true" class="mb_active" v-on:click="clickedFresh" v-else><b>프래쉬&라이트</b></ion-button>
+            <ion-button strong="true" class="menu_btn" v-on:click="clickedPremium" v-if="state.selectMenu != 'premium_menu'"><b>프리미엄</b></ion-button>
+            <ion-button strong="true" class="mb_active" v-on:click="clickedPremium" v-else><b>프리미엄</b></ion-button>
             
             <div class="box-container" v-if="state.selectMenu === 'classic_menu'">
 
@@ -229,7 +229,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: start;
     align-items: baseline;
     margin: auto;
   }
@@ -274,17 +274,29 @@
     --background: #ffffff;
     --border-radius: 0;
     --box-shadow: none;
-        font-family: NanumGothicExtraBold;
+    font-family: NanumGothicExtraBold;
     height: 50px;
   }
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 360px) {
     .menu_btn, .mb_active {
-      width: 130px;
+      width: 100px;
+      font-size: 14px;
     }
 
     .box-container {
-      width: 300px;
+      width: 340px;
+    }
+  }
+
+  @media screen and (min-width: 360px) and (max-width: 480px) {
+    .menu_btn, .mb_active {
+      width: 115px;
+      font-size: 15px;
+    }
+
+    .box-container {
+      width: 400px;
     }
   }
 
@@ -304,7 +316,7 @@
     }
     
     .box-container {
-      width: 800px;
+      width: 660px;
     }
   }
 

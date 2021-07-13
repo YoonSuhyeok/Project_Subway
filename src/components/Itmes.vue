@@ -25,21 +25,44 @@
         font-family: NanumGothicExtraBold;
     }
 
-    @media screen and (max-width: 480px) {
+    .menu-box {
+        border-radius: 30px;
+    }
+
+    @media screen and (max-width: 360px) {
         .menu-box {
-            width: 130px;
-            height: 130px;
+            width: 80px;
+            height: 90px;
         }
 
         .menu-name, .menu-kcal {
-            font-size: 9px;
+            font-size: xx-small;
+        }
+
+        .menu-kcal {
+            display: none;
+        }
+    }
+
+    @media screen and (min-width: 360px) and (max-width: 480px) {
+        .menu-box {
+            width: 100px;
+            height: 112px;
+        }
+
+        .menu-name, .menu-kcal {
+            font-size: xx-small;
+        }
+
+        .menu-kcal {
+            display: none;
         }
   }
 
     @media screen and (min-width: 480px) and (max-width:768px) {
         .menu-box {
             width: 130px;
-            height: 130px;
+            height: 135px;
         }
 
         .menu-name, .menu-kcal {
