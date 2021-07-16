@@ -134,6 +134,7 @@
 import { IonToolbar, IonTitle, IonLabel, IonInput, IonItem, IonList, IonButton, IonText, IonCheckbox, IonIcon } from '@ionic/vue'
 import SimpleLogins from '../components/SimpleLogins.vue'
 //import { getKakaoToken } from '@/service/login.service'
+import AxiosService from "@/service/axios.service"
 
 export default {
     name: 'logins',
@@ -142,24 +143,30 @@ export default {
         window.Kakao.init('4a297ff368ab0580ea37b40f07e5990d');
         console.log(window.Kakao.isInitialized());
 
-        const kakaobtn = () => {
+        const kakaobtn = function () {
             const params = {
                 redirectUri: "http://localhost:8100/logins",
             };
             window.Kakao.Auth.authorize(params);
         };
 
-        /*async function setKakaoToken () {
-            console.log('카카오 인증 코드', this.$route.query.code);
-            const { data } = await getKakaoToken(this.$route.query.code);
-            if (data.error) {
-                alert('카카오 로그인 오류');
-                this.$route.replace('/logins');
-                return;
-            }
-            window.Kakao.Auth.setAccessToken(data.access_token);
-            console.log('카카오 액세스 토큰', data.access_token);
-        }*/
+        const setKakaoToken = async function () {
+            let codes;
+            window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, 
+                function (code) {
+                    codes = code.substring(6);
+                }
+            )
+            const result = await AxiosService.instance.post('/auth/kakao', ({"str": "TokenPost"}),{
+                headers: {
+                    'Authorization': `Bearer ${codes}`
+                }
+            })
+            console.log('카카오 인증 코드', codes);
+            console.log(result);
+        }
+        
+        setKakaoToken();
 
         return{
             kakao: {
@@ -178,7 +185,8 @@ export default {
                 idkind: 'FaceBook',
                 clr: '#3C599F'
             }, 
-            kakaobtn
+            kakaobtn,
+            setKakaoToken
         }
     }
 }
