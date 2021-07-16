@@ -7,7 +7,7 @@ import logo from '../views/logo.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/idfind'
+    redirect: '/logins'
   },
   {
     path: '/logo',
