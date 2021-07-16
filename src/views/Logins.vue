@@ -45,7 +45,7 @@
                 <ion-label>간편 로그인</ion-label>
             </ion-item>
             <ion-list style="background: rgba(250, 255, 235, 0);">
-                <SimpleLogins v-bind="kakao" v-on:click="kakaoBtn"></SimpleLogins>
+                <SimpleLogins v-bind="kakao" v-on:click="kakaobtn"></SimpleLogins>
                 <SimpleLogins v-bind="naver"></SimpleLogins>
                 <SimpleLogins v-bind="google"></SimpleLogins>
                 <SimpleLogins v-bind="facebook"></SimpleLogins>
@@ -133,25 +133,35 @@
 <script>
 import { IonToolbar, IonTitle, IonLabel, IonInput, IonItem, IonList, IonButton, IonText, IonCheckbox, IonIcon } from '@ionic/vue'
 import SimpleLogins from '../components/SimpleLogins.vue'
+//import { getKakaoToken } from '@/service/login.service'
 
 export default {
     name: 'logins',
     components: { IonToolbar, IonTitle, IonLabel, IonInput, IonItem, IonList, IonButton, IonText, IonCheckbox, SimpleLogins, IonIcon },
     setup () {
-        /*const kakaoBtn = () => {
-            // 카카오 로그인 페이지로 즉시 이동
-            window.location.href = 'https://www.makesand.shop/auth/kakao'
-        }*/
+        window.Kakao.init('4a297ff368ab0580ea37b40f07e5990d');
+        console.log(window.Kakao.isInitialized());
 
-        const kakaoBtn = () => {
+        const kakaobtn = () => {
             const params = {
-                redirecUri: "http://localhost:8100/tabs/tab1/auth",
+                redirectUri: "http://localhost:8100/logins",
             };
             window.Kakao.Auth.authorize(params);
-        }
+        };
 
-        return {
-            kakaoBtn,
+        /*async function setKakaoToken () {
+            console.log('카카오 인증 코드', this.$route.query.code);
+            const { data } = await getKakaoToken(this.$route.query.code);
+            if (data.error) {
+                alert('카카오 로그인 오류');
+                this.$route.replace('/logins');
+                return;
+            }
+            window.Kakao.Auth.setAccessToken(data.access_token);
+            console.log('카카오 액세스 토큰', data.access_token);
+        }*/
+
+        return{
             kakao: {
                 idkind:'Kakao Talk',
                 clr: '#F9E83B'
@@ -167,7 +177,8 @@ export default {
             facebook: {
                 idkind: 'FaceBook',
                 clr: '#3C599F'
-            },
+            }, 
+            kakaobtn
         }
     }
 }
