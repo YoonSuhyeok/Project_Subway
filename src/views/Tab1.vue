@@ -168,20 +168,31 @@
 
 <script lang="ts">
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-IonSlides, IonSlide} from '@ionic/vue';
+IonSlides, IonSlide, IonCard, IonCardTitle, IonCardHeader, IonCardSubtitle, IonCardContent} from '@ionic/vue';
 import ExploreContainer from '@/components/ExploreContainer.vue';
+import { useStore } from 'vuex';
 
 export default  {
   name: 'Tab1',
   components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage,
-  IonSlides, IonSlide},
+  IonSlides, IonSlide, IonCard, IonCardTitle, IonCardHeader, IonCardSubtitle, IonCardContent},
   setup() {
     // Optional parameters to pass to the swiper instance. See http://idangero.us/swiper/api/ for valid options.
+    
+    const store = useStore();
+    const setId = window.location.search.substring(4);
+    store.commit('setUserId', setId)
+    console.log(setId);
+
     const slideOpts = {
       initialSlide: 1,
       speed: 400
     };
-    return { slideOpts }
+
+    return { 
+      slideOpts,
+      
+    }
   }
 }
 </script>

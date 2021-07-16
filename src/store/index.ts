@@ -10,6 +10,7 @@ export const store = createStore({
     menuClassicList: [],
     vegetableList: [],
     sourceList: [],
+    userId: 'unknown_user'
   },
   mutations: {
     setBreadList(state, breadList){
@@ -35,6 +36,10 @@ export const store = createStore({
     setSourceList(state, sourceList){
       state.sourceList = sourceList;
       console.log(state.sourceList);
+    },
+    setUserId(state, userId) {
+      state.userId = userId;
+      console.log(state.userId);
     }
   },
   actions: {
@@ -74,6 +79,9 @@ export const store = createStore({
     },
     getSourceList: function(state) {
       return state.sourceList;
+    },
+    getUserId: function(state) {
+      return state.userId;
     }
   }
 });

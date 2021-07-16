@@ -215,7 +215,6 @@
   </ion-page>
 </template>
 
-
 <style scoped>
 
   @charset "utf-8";
@@ -311,8 +310,8 @@
 </style>
 
 <script lang="ts">
-  import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, 
-  IonSlides, IonSlide } from '@ionic/vue';
+  import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonButton, IonIcon, IonCheckbox,
+  IonMenuButton, IonSlides, IonSlide, IonCard, IonCardTitle, IonCardHeader, IonCardSubtitle } from '@ionic/vue';
   import Items from '@/components/Itmes.vue'
   import { useStore } from 'vuex';
   import { computed } from '@vue/runtime-core';
@@ -322,8 +321,8 @@
   
 export default  {
     name: 'Tab2',
-    components: { Items, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, 
-    IonSlides, IonSlide
+    components: { Items, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButtons, IonButton, IonIcon, IonCheckbox,
+    IonMenuButton, IonSlides, IonSlide, IonCard, IonCardTitle, IonCardHeader, IonCardSubtitle,
     },
     setup() {
       // Optional parameters to pass to the swiper instance. See http://idangero.us/swiper/api/ for valid options.
@@ -367,7 +366,7 @@ export default  {
         freshMenus: computed(() => store.getters.getFreshMenuList),
         premiumMenus: computed(() => store.getters.getPremiumMenuList),
         vegetables: computed(() => store.getters.getVegetableList),
-        sources: computed(() => store.getters.getSourceList)
+        sources: computed(() => store.getters.getSourceList),
       }
     }
   }

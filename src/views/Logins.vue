@@ -45,7 +45,7 @@
                 <ion-label>간편 로그인</ion-label>
             </ion-item>
             <ion-list style="background: rgba(250, 255, 235, 0);">
-                <SimpleLogins v-bind="kakao"></SimpleLogins>
+                <SimpleLogins v-bind="kakao" v-on:click="kakaoBtn"></SimpleLogins>
                 <SimpleLogins v-bind="naver"></SimpleLogins>
                 <SimpleLogins v-bind="google"></SimpleLogins>
                 <SimpleLogins v-bind="facebook"></SimpleLogins>
@@ -137,8 +137,21 @@ import SimpleLogins from '../components/SimpleLogins.vue'
 export default {
     name: 'logins',
     components: { IonToolbar, IonTitle, IonLabel, IonInput, IonItem, IonList, IonButton, IonText, IonCheckbox, SimpleLogins, IonIcon },
-    data () {
-        return{
+    setup () {
+        /*const kakaoBtn = () => {
+            // 카카오 로그인 페이지로 즉시 이동
+            window.location.href = 'https://www.makesand.shop/auth/kakao'
+        }*/
+
+        const kakaoBtn = () => {
+            const params = {
+                redirecUri: "http://localhost:8100/tabs/tab1/auth",
+            };
+            window.Kakao.Auth.authorize(params);
+        }
+
+        return {
+            kakaoBtn,
             kakao: {
                 idkind:'Kakao Talk',
                 clr: '#F9E83B'
@@ -154,7 +167,7 @@ export default {
             facebook: {
                 idkind: 'FaceBook',
                 clr: '#3C599F'
-            }
+            },
         }
     }
 }
