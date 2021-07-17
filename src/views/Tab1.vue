@@ -219,28 +219,21 @@
 
 </style>
 
-<script lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-IonSlides, IonSlide} from '@ionic/vue';
+<script>
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonSlides, IonSlide} from '@ionic/vue';
 
 export default  {
   name: 'Tab1',
-  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage,
-  IonSlides, IonSlide},
+  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonSlides, IonSlide},
   setup() {
     // Optional parameters to pass to the swiper instance. See http://idangero.us/swiper/api/ for valid options.
     
-    /*const store = useStore();
-    const setId = window.location.search.substring(4);
-    store.commit('setUserId', setId)
-    console.log(setId);*/
-
     const slideOpts = {
       initialSlide: 1,
       speed: 400
     };
 
-    return { 
+    return {
       slideOpts,
       
     }

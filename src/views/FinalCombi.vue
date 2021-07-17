@@ -5,7 +5,11 @@
                 <h5>최종 조합</h5>
             </ion-title>
         </ion-header>
-
+        {{ menu }}
+        {{ bread }}
+        {{ vegetable }}
+        {{ source }}
+        
         <Combi />
 
     </ion-page>
@@ -20,10 +24,22 @@
 </style>
 
 <script lang="ts">
-  import Combi from '@/components/Combi.vue'
+import Combi from '@/components/Combi.vue'
+import { computed } from '@vue/runtime-core';
+import { useStore } from 'vuex';
 
 export default  {
-  name: 'Final',
+    name: 'Final',
     components: { Combi },
+    setup(){
+        const store = useStore();
+        return {
+            menu: computed(() => store.getters.getSelectMenu),
+            bread: computed(() => store.getters.getSelectBread),
+            vegetable: computed(() => store.getters.getSelectVegetable),
+            source: computed(() => store.getters.getSelectSource),
+        }
+    }
 }
+
 </script>

@@ -1,5 +1,6 @@
-import { createStore } from 'vuex';
+import { createStore, StoreOptions } from 'vuex';
 import AxiosService from "@/service/axios.service"
+import createPersistedState from "vuex-persistedstate";
 import { AxiosResponse } from "axios";
 
 export const store = createStore({
@@ -11,73 +12,95 @@ export const store = createStore({
     vegetableList: [],
     sourceList: [],
     userId: 'unknown_user',
-    access_token: '이거맞음?',
-    refresh_toekn: ''
+    accessToken: '',
+    refreshToken: '',
+    selectMenu: '',
+    selectBread: '',
+    selectVegetable: '',
+    selectSource: ''    
   },
   mutations: {
     setBreadList(state, breadList){
+      console.log(breadList)
       state.breadList = breadList;
-      console.log(state.breadList);
     },
     setMenuPremiumList(state, menuPremiumList){
       state.menuPremiumList = menuPremiumList;
-      console.log(state.menuPremiumList);
     },
     setMenuFreshList(state, menuFreshList){
       state.menuFreshList = menuFreshList;
-      console.log(state.menuFreshList);
     },
     setMenuClassicList(state, menuClassicList){
       state.menuClassicList = menuClassicList;
-      console.log(state.menuClassicList);
     },
     setVegetableList(state, vegetableList){
       state.vegetableList = vegetableList;
-      console.log(state.vegetableList);
     },
     setSourceList(state, sourceList){
       state.sourceList = sourceList;
-      console.log(state.sourceList);
     },
     setUserId(state, userId) {
       state.userId = userId;
-      console.log(state.userId);
     },
     setAccessToken(state, token){
-      state.access_token = token;
+      state.accessToken = token;
     },
     setRefreshToken(state, token){
-      console.log(token);
-      state.refresh_toekn = token;
+      state.refreshToken = token;
+    },
+    selectMenu(state, data:string){
+      state.selectMenu = data;
+    },
+    selectBread(state, data:string){
+      state.selectBread = data;
+    },
+    selectVegetable(state, data:string){
+      state.selectVegetable = data;
+      console.log(data + "?")
+      console.log(state.selectVegetable)
+    },
+    selectSource(state, data:string){
+      state.selectSource = data;
     }
   },
   actions: {
     async initData({commit}){
       //TODO http 통신
-      const responseBread: AxiosResponse = await AxiosService.instance.get('/bread');
-      const responseMenuPremium: AxiosResponse = await AxiosService.instance.get('/menu/0'); 
-      const responseMenuFresh: AxiosResponse = await AxiosService.instance.get('/menu/1'); 
-      const responseMenuClassic: AxiosResponse = await AxiosService.instance.get('/menu/2'); 
-      const responseVegetable: AxiosResponse = await AxiosService.instance.get('/ingredient/0');
-      const responseSource: AxiosResponse = await AxiosService.instance.get('/ingredient/2'); 
+      const bread: AxiosResponse = await AxiosService.instance.get('/bread');
+      const menuPremium: AxiosResponse = await AxiosService.instance.get('/menu/0'); 
+      const menuFresh: AxiosResponse = await AxiosService.instance.get('/menu/1'); 
+      const menuClassic: AxiosResponse = await AxiosService.instance.get('/menu/2'); 
+      const vegetable: AxiosResponse = await AxiosService.instance.get('/ingredient/0');
+      const source: AxiosResponse = await AxiosService.instance.get('/ingredient/2'); 
+      console.log("빵"+ bread)
 
-      
-      commit('setBreadList', responseBread.data);
-      commit('setMenuPremiumList', responseMenuPremium.data);
-      commit('setMenuFreshList', responseMenuFresh.data);
-      commit('setMenuClassicList', responseMenuClassic.data);
-      commit('setVegetableList', responseVegetable.data);
-      commit('setSourceList', responseSource.data);
+      commit('setBreadList', bread.data);
+      commit('setMenuPremiumList', menuPremium.data);
+      commit('setMenuFreshList', menuFresh.data);
+      commit('setMenuClassicList', menuClassic.data);
+      commit('setVegetableList', vegetable.data);
+      commit('setSourceList', source.data);
     },
     async setToken({commit}, tokens){
-      console.log(tokens)
       commit('setAccessToken', tokens.access_token);
       commit('setRefreshToken', tokens.refresh_token);
+    },
+    selectMenu({commit}, data){
+      commit('selectMenu', data);
+    },
+    selectBread({commit}, data){
+      commit('selectBread', data);
+    },
+    selectVegetable({commit}, data){
+      commit('selectVegetable', data);
+    },
+    selectSource({commit}, data){
+      commit('selectSource', data);
     }
   },
   getters: {
     getToken: function(state){
-      return state.access_token;
+      return state.accessToken;
     },
     getBreadList: function(state) {
       console.log(state.breadList);
@@ -99,6 +122,19 @@ export const store = createStore({
     },
     getUserId: function(state) {
       return state.userId;
+    },
+    getSelectMenu: function(state) {
+      return state.selectMenu;
+    },
+    getSelectBread: function(state) {
+      return state.selectBread;
+    },
+    getSelectVegetable: function(state){
+      return state.selectVegetable;
+    },
+    getSelectSource: function(state){
+      return state.selectSource;
     }
-  }
+  },
+  plugins: [createPersistedState()]
 });

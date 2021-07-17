@@ -130,7 +130,7 @@
     }
 </style>
 
-<script lang="ts">
+<script>
 import { IonToolbar, IonTitle, IonLabel, IonInput, IonItem, IonList, IonButton, IonText, IonCheckbox, IonIcon } from '@ionic/vue'
 import SimpleLogins from '../components/SimpleLogins.vue'
 import { useStore } from 'vuex';
@@ -150,11 +150,7 @@ export default {
             const params = {
                 redirectUri: "http://localhost:8101/logins",
             };
-
-            window.Kakao.Auth.authorize(params)
-            
-            // const str = window.location.href.toString()
-            // console.log(str.substr(5))            
+            window.Kakao.Auth.authorize(params)         
         };
         
         if(window.location.search.substr(6)){
@@ -166,8 +162,17 @@ export default {
             }).then(t => {
                 store.dispatch('setToken', t.data);
                 window.Kakao.Auth.setAccessToken(t.data.access_token);
+                window.Kakao.API.request({
+                url: '/v2/user/me',
+                success: function(response) {
+                    window.location.href = '/tabs/tab1'
+                },
+                fail: function(error) {
+                    window.location.href = '/'
+                }
+                });
             })
-            window.location.href = '/tabs/tab1'
+            
         }
 
         return{

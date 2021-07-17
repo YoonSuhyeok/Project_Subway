@@ -44,7 +44,7 @@
             <div class="box-container" v-if="state.selectMenu === 'classic_menu'">
 
               <div v-for="classic in classicMenus" :key="classic.Menu_id + classic.Menu_name">
-                <Items :info="{ name: classic.Menu_name , kcal: classic.Menu_calorie, src: classic.Menu_imageUrl }" />
+                <Items :info="{ type: 0, name: classic.Menu_name , kcal: classic.Menu_calorie, src: classic.Menu_imageUrl }" />
               </div>
 
             </div>
@@ -52,7 +52,7 @@
             <div class="box-container" v-if="state.selectMenu === 'fresh_menu'">
 
               <div v-for="fresh in freshMenus" :key="fresh.Menu_id + fresh.Menu_name">
-                <Items :info="{ name: fresh.Menu_name , kcal: fresh.Menu_calorie, src: fresh.Menu_imageUrl }" />
+                <Items :info="{ type: 0, name: fresh.Menu_name , kcal: fresh.Menu_calorie, src: fresh.Menu_imageUrl }" />
               </div>
 
             </div>
@@ -60,11 +60,13 @@
             <div class="box-container" v-if="state.selectMenu === 'premium_menu'">
 
               <div v-for="premium in premiumMenus" :key="premium.Menu_id + premium.Menu_name">
-                <Items :info="{ name: premium.Menu_name , kcal: premium.Menu_calorie, src: premium.Menu_imageUrl }" />
+                <Items :info="{ type: 0, name: premium.Menu_name , kcal: premium.Menu_calorie, src: premium.Menu_imageUrl }" />
               </div>
 
             </div>
           </div>
+          <button @click=move>hello</button>
+          {{ select }}
         </ion-slide>
     
         <ion-slide>
@@ -74,12 +76,13 @@
             <div class="box-container">
 
               <div v-for="bread in breads" :key="bread.Bread_id + Bread_name">
-                <Items :info="{ name: bread.Bread_name , kcal: bread.Bread_calorie, src: bread.Bread_imageUrl }" />
+                <Items :info="{ type: 1, name: bread.Bread_name , kcal: bread.Bread_calorie, src: bread.Bread_imageUrl }" />
               </div>
 
             </div>
 
           </div>
+          {{ bread }}
         </ion-slide>
     
         <ion-slide>
@@ -139,10 +142,11 @@
             <ion-button strong="true" class="mb_active" v-on:click="clickedSource" v-else><h5><b>소스</b></h5></ion-button>
 
             <div class="box-container" v-if="state.selectVegeSource === 'vegetable'">
-
+            {{ ve }}
               <div v-for="vegetable in vegetables" :key="vegetable.Ingredient_id + vegetable.Ingredient_name">
-                <Items :info="{ name: vegetable.Ingredient_name , kcal: vegetable.Ingredient_calorie, src: vegetable.Ingredient_imageUrl }" />
+                <Items :info="{ type: 3,name: vegetable.Ingredient_name , kcal: vegetable.Ingredient_calorie, src: vegetable.Ingredient_imageUrl }" />
               </div>
+              
               
               <!-- <div class="bottomsForVegi" style="position:absolute; bottom:0px;">
                 <h1>all/del 오이벤</h1>
@@ -156,56 +160,9 @@
             <div class="box-container" v-else>
 
               <div v-for="source in sources" :key="source.Ingredient_id + source.Ingredient_name">
-                <Items :info="{ name: source.Ingredient_name , kcal: source.Ingredient_calorie, src: source.Ingredient_imageUrl }" />
+                <Items :info="{ type: 4, name: source.Ingredient_name , kcal: source.Ingredient_calorie, src: source.Ingredient_imageUrl }" />
               </div>
-
-            </div>
-
-          </div>
-        </ion-slide>
-
-        <ion-slide>
-          <div>
-            <h5 class="slide-title"><b>세트 선택하기</b></h5>
-
-            <div class="box-container">
-
-              <ion-card class="set-box">
-                <ion-card-header>
-                  <ion-card-title>베이컨 비츠</ion-card-title>
-                  <ion-card-subtitle>51Kcal</ion-card-subtitle>
-                </ion-card-header>
-
-                <!-- <ion-card-content>
-                  Keep close to Nature's heart... and break clear away, once in awhile,
-                  and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content> -->
-              </ion-card>
-
-              <ion-card class="set-box">
-                <ion-card-header>
-                  <ion-card-title>베이컨 비츠</ion-card-title>
-                  <ion-card-subtitle>51Kcal</ion-card-subtitle>
-                </ion-card-header>
-
-                <!-- <ion-card-content>
-                  Keep close to Nature's heart... and break clear away, once in awhile,
-                  and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content> -->
-              </ion-card>
-
-              <ion-card class="set-box">
-                <ion-card-header>
-                  <ion-card-title>베이컨 비츠</ion-card-title>
-                  <ion-card-subtitle>51Kcal</ion-card-subtitle>
-                </ion-card-header>
-
-                <!-- <ion-card-content>
-                  Keep close to Nature's heart... and break clear away, once in awhile,
-                  and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content> -->
-              </ion-card>
-
+              {{ sr }}
             </div>
 
           </div>
@@ -325,10 +282,9 @@
   import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonButton, IonIcon, IonCheckbox,
   IonMenuButton, IonSlides, IonSlide, IonCard, IonCardTitle, IonCardHeader, IonCardSubtitle } from '@ionic/vue';
   import Items from '@/components/Itmes.vue'
-  import { useStore } from 'vuex';
   import { computed } from '@vue/runtime-core';
-  import axios from 'axios';
   import { reactive } from '@vue/reactivity';
+  import { useStore } from 'vuex';
 
   
 export default  {
@@ -338,6 +294,8 @@ export default  {
     },
     setup() {
       // Optional parameters to pass to the swiper instance. See http://idangero.us/swiper/api/ for valid options.
+      const store = useStore();
+
       const slideOpts = {
         initialSlide: 0,
         speed: 400
@@ -361,11 +319,13 @@ export default  {
       const clickedSource = () => {
         state.selectVegeSource = 'source'
       }
-
-      const store = useStore();
+      
       store.dispatch('initData');
-
+      const move = () => {
+        window.location.href = '/final'
+      }
       return { 
+        move,
         slideOpts,
         state,
         clickedClassic,
@@ -379,10 +339,11 @@ export default  {
         premiumMenus: computed(() => store.getters.getPremiumMenuList),
         vegetables: computed(() => store.getters.getVegetableList),
         sources: computed(() => store.getters.getSourceList),
+        select: computed(() => store.getters.getSelectMenu),
+        bread: computed(() => store.getters.getSelectBread),
+        ve: computed(() => store.getters.getSelectVegetable),
+        sr: computed(() => store.getters.getSelectSource),
       }
     }
   }
-
-
-
 </script>

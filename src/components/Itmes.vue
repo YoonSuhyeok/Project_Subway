@@ -1,7 +1,7 @@
 <template>
     <div id="container">
         <ion-card class="menu-box">
-            <ion-card-header class="menu-box-header">
+            <ion-card-header class="menu-box-header" @click='select(info.type, info.name)'>
                 <img :src="info.src" :alt="info.name" />
                 <ion-card-title class="menu-name">{{ info.name }}</ion-card-title>
                 <ion-card-subtitle class="menu-kcal">{{ info.kcal }}Kcal</ion-card-subtitle>
@@ -83,11 +83,54 @@
 
 </style>
 
-<script lang="ts">
+<script >
     import { IonCard } from '@ionic/vue';
+    import { useStore } from 'vuex';
 
     export default  {
         props: ["info"],
         components: { IonCard },
+        setup(){
+            const store = useStore();
+            const select = (type, name) => {
+                console.log(type)
+                console.log(name);
+                switch(type){
+                    case 0: {
+                        const list = store.getters.getSelectMenu;
+                        if(list == name) { store.dispatch('selectMenu', '' ); }
+                        else { store.dispatch('selectMenu', name ); }
+                        break;
+                    }
+                    case 1: {
+                        const list = store.getters.getSelectBread;
+                        if(list == name) { store.dispatch('selectBread', '' ); }
+                        else { store.dispatch('selectBread', name ); }
+                        console.log(store.getters.getSelectBread);
+                        break;
+                    }
+                    case 3: {
+                        const list = store.getters.getSelectVegetable;
+                        if(list == name) { store.dispatch('selectVegetable', '' ); }
+                        else { store.dispatch('selectVegetable', name ); }
+                        console.log(store.getters.getSelectVegetable)
+                        break;
+                    }
+                    case 4: {
+                        const list = store.getters.getSelectSource;
+                        if(list == name) { store.dispatch('selectSource', '' ); }
+                        else { store.dispatch('selectSource', name ); }
+                        console.log(store.getters.getSelectSource)
+                        break;
+                    }
+                }
+                
+
+            }
+
+            return {
+                select,
+            }
+        }
     }
 </script>
