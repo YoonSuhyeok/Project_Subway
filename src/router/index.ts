@@ -3,6 +3,7 @@ import { RouteRecordRaw } from 'vue-router';
 import component from '../views/Tabs.vue';
 import Tabs from '../views/Tabs.vue';
 import logo from '../views/logo.vue';
+import Final from '../views/FinalCombi.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -28,6 +29,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/logins',
     component: () => import('@/views/Logins.vue')
+  },
+  {
+    path: '/final',
+    component: () => import('@/views/FinalCombi.vue')
   },
   {
     path: '/tabs/',
