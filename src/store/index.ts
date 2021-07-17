@@ -10,7 +10,9 @@ export const store = createStore({
     menuClassicList: [],
     vegetableList: [],
     sourceList: [],
-    userId: 'unknown_user'
+    userId: 'unknown_user',
+    access_token: '이거맞음?',
+    refresh_toekn: ''
   },
   mutations: {
     setBreadList(state, breadList){
@@ -40,6 +42,13 @@ export const store = createStore({
     setUserId(state, userId) {
       state.userId = userId;
       console.log(state.userId);
+    },
+    setAccessToken(state, token){
+      state.access_token = token;
+    },
+    setRefreshToken(state, token){
+      console.log(token);
+      state.refresh_toekn = token;
     }
   },
   actions: {
@@ -59,9 +68,17 @@ export const store = createStore({
       commit('setMenuClassicList', responseMenuClassic.data);
       commit('setVegetableList', responseVegetable.data);
       commit('setSourceList', responseSource.data);
+    },
+    async setToken({commit}, tokens){
+      console.log(tokens)
+      commit('setAccessToken', tokens.access_token);
+      commit('setRefreshToken', tokens.refresh_token);
     }
   },
   getters: {
+    getToken: function(state){
+      return state.access_token;
+    },
     getBreadList: function(state) {
       console.log(state.breadList);
       return state.breadList;

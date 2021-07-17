@@ -4,7 +4,7 @@
     <div class="cls_totaldisplay">
         <div class="cls_header">
             <ion-toolbar style="text-align:center;">
-                <ion-title><b>로그인</b></ion-title>
+                <ion-title><b>{{ value }}</b></ion-title>
             </ion-toolbar>
         </div>
 
@@ -130,43 +130,45 @@
     }
 </style>
 
-<script>
+<script lang="ts">
 import { IonToolbar, IonTitle, IonLabel, IonInput, IonItem, IonList, IonButton, IonText, IonCheckbox, IonIcon } from '@ionic/vue'
 import SimpleLogins from '../components/SimpleLogins.vue'
-//import { getKakaoToken } from '@/service/login.service'
+import { useStore } from 'vuex';
 import AxiosService from "@/service/axios.service"
+import { computed } from '@vue/runtime-core';
 
 export default {
     name: 'logins',
     components: { IonToolbar, IonTitle, IonLabel, IonInput, IonItem, IonList, IonButton, IonText, IonCheckbox, SimpleLogins, IonIcon },
     setup () {
+        const store = useStore();
+    
         window.Kakao.init('4a297ff368ab0580ea37b40f07e5990d');
         console.log(window.Kakao.isInitialized());
 
-        const kakaobtn = function () {
+        const kakaobtn = async function () {
             const params = {
-                redirectUri: "http://localhost:8100/logins",
+                redirectUri: "http://localhost:8101/logins",
             };
-            window.Kakao.Auth.authorize(params);
-        };
 
-        const setKakaoToken = async function () {
-            let codes;
-            window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, 
-                function (code) {
-                    codes = code.substring(6);
-                }
-            )
-            const result = await AxiosService.instance.post('/auth/kakao', ({"str": "TokenPost"}),{
-                headers: {
-                    'Authorization': `Bearer ${codes}`
-                }
-            })
-            console.log('카카오 인증 코드', codes);
-            console.log(result);
-        }
+            window.Kakao.Auth.authorize(params)
+            
+            // const str = window.location.href.toString()
+            // console.log(str.substr(5))            
+        };
         
-        setKakaoToken();
+        if(window.location.search.substr(6)){
+            const code = window.location.search.substr(6);
+            const result = AxiosService.instance.post('/auth/kakao', ({"str": "TokenPost"}),{
+                headers: {
+                'Authorization': `Bearer ${code}`
+                }
+            }).then(t => {
+                store.dispatch('setToken', t.data);
+                window.Kakao.Auth.setAccessToken(t.data.access_token);
+            })
+            window.location.href = '/tabs/tab1'
+        }
 
         return{
             kakao: {
@@ -186,7 +188,7 @@ export default {
                 clr: '#3C599F'
             }, 
             kakaobtn,
-            setKakaoToken
+            value: computed( () => store.getters.getToken )
         }
     }
 }
