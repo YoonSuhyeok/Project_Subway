@@ -4,8 +4,17 @@ import component from '../views/Tabs.vue';
 import Tabs from '../views/Tabs.vue';
 import logo from '../views/logo.vue';
 import Final from '../views/FinalCombi.vue';
+import C from '../views/combination.vue';
+import L from '../views/list.vue';
 
 const routes: Array<RouteRecordRaw> = [
+  {
+    path: '/c',
+    component: () => import('@/views/combination.vue'),
+  },{
+    path: '/l',
+    component: () => import('@/views/list.vue'),
+  },
   {
     path: '/',
     redirect: '/idfind'

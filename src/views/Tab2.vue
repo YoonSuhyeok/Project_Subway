@@ -2,14 +2,6 @@
   <ion-page>
     <ion-header class="ion-no-border">
       <ion-toolbar>
-        <ion-buttons slot="start">
-          <ion-menu-button auto-hide="false"></ion-menu-button>
-        </ion-buttons>
-        <ion-buttons slot="secondary">
-          <ion-button>
-            <ion-icon slot="icon-only" :icon="star"></ion-icon>
-          </ion-button>
-        </ion-buttons>
         <ion-title style="text-align: center;">
           <ion-checkbox class="upperCheckbox" checked="true" color="dark"></ion-checkbox>
           <ion-checkbox class="upperCheckbox" checked="false" color="dark"></ion-checkbox>
@@ -163,53 +155,6 @@
 
           </div>
         </ion-slide>
-
-        <ion-slide>
-          <div>
-            <h5 class="slide-title"><b>세트 선택하기</b></h5>
-
-            <div class="box-container">
-
-              <ion-card class="set-box">
-                <ion-card-header>
-                  <ion-card-title>베이컨 비츠</ion-card-title>
-                  <ion-card-subtitle>51Kcal</ion-card-subtitle>
-                </ion-card-header>
-
-                <!-- <ion-card-content>
-                  Keep close to Nature's heart... and break clear away, once in awhile,
-                  and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content> -->
-              </ion-card>
-
-              <ion-card class="set-box">
-                <ion-card-header>
-                  <ion-card-title>베이컨 비츠</ion-card-title>
-                  <ion-card-subtitle>51Kcal</ion-card-subtitle>
-                </ion-card-header>
-
-                <!-- <ion-card-content>
-                  Keep close to Nature's heart... and break clear away, once in awhile,
-                  and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content> -->
-              </ion-card>
-
-              <ion-card class="set-box">
-                <ion-card-header>
-                  <ion-card-title>베이컨 비츠</ion-card-title>
-                  <ion-card-subtitle>51Kcal</ion-card-subtitle>
-                </ion-card-header>
-
-                <!-- <ion-card-content>
-                  Keep close to Nature's heart... and break clear away, once in awhile,
-                  and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content> -->
-              </ion-card>
-
-            </div>
-
-          </div>
-        </ion-slide>
       </ion-slides>
       </ion-content>
   </ion-page>
@@ -223,15 +168,6 @@
   @font-face {
     font-family: 'NanumGothicExtraBold';
     src: url(../../public/assets/font/NanumGothicExtraBold.ttf);
-  }
-
-  .box-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: start;
-    align-items: baseline;
-    margin: auto;
   }
 
   .slide-title {
@@ -276,6 +212,15 @@
     --box-shadow: none;
     font-family: NanumGothicExtraBold;
     height: 50px;
+  }
+
+  .box-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+    margin: auto;
   }
 
   @media screen and (max-width: 360px) {

@@ -16,6 +16,7 @@
 
     ion-card {
         display: flex;
+        font-weight: bold;
     }
 
     .content {
