@@ -46,7 +46,7 @@
             </ion-item>
             <ion-list style="background: rgba(250, 255, 235, 0);">
                 <SimpleLogins v-bind="kakao" v-on:click="kakaobtn"></SimpleLogins>
-                <SimpleLogins v-bind="naver"></SimpleLogins>
+                <SimpleLogins v-bind="naver" v-on:click="facebookbtn"></SimpleLogins>
                 <SimpleLogins v-bind="google"></SimpleLogins>
                 <SimpleLogins v-bind="facebook"></SimpleLogins>
             </ion-list>
@@ -142,15 +142,35 @@ export default {
     components: { IonToolbar, IonTitle, IonLabel, IonInput, IonItem, IonList, IonButton, IonText, IonCheckbox, SimpleLogins, IonIcon },
     setup () {
         const store = useStore();
-    
+
+        window.fbAsyncInit = function() {
+            FB.init({
+            appId      : '314504450410597',
+            cookie     : true,
+            xfbml      : true,
+            version    : 'v11.0'
+            });
+            
+            FB.AppEvents.logPageView();   
+            
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
         window.Kakao.init('4a297ff368ab0580ea37b40f07e5990d');
         console.log(window.Kakao.isInitialized());
 
         const kakaobtn = async function () {
             const params = {
-                redirectUri: "http://localhost:8101/logins",
+                redirectUri: "http://localhost:8100/logins",
             };
-            window.Kakao.Auth.authorize(params)         
+            window.Kakao.Auth.authorize(params)
         };
         
         if(window.location.search.substr(6)){
@@ -174,6 +194,12 @@ export default {
             })
             
         }
+        
+        const facebookbtn = async function () { 
+            FB.getLoginStatus(function(response) {
+                statusChangeCallback(response);
+            });
+        }
 
         return{
             kakao: {
@@ -193,6 +219,7 @@ export default {
                 clr: '#3C599F'
             }, 
             kakaobtn,
+            facebookbtn,
             value: computed( () => store.getters.getToken )
         }
     }
