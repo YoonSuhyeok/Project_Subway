@@ -1,11 +1,41 @@
 <template>
     <ion-card>
-        <img src="/assets/img/temporary-img.png" alt="">
+        <img :src=menuSrc alt="">
         <div class="content">
-            <div class="title">이탈리안 비엠티</div>
-            <div class="kcal">410KCAL</div>
+            <div class="title">{{ menuName }}</div>
+            <div class="kcal">{{ menuKcal }}KCAL</div>
         </div>
     </ion-card>
+
+    <ion-card>
+        <img :src=breadSrc alt="">
+        <div class="content">
+            <div class="title">{{ breadName }}</div>
+            <div class="kcal">{{ breadKcal }}KCAL</div>
+        </div>
+    </ion-card>
+
+    <ion-card>
+        <img :src=vegeSrc alt="">
+        <div class="content">
+            <div class="title">{{ vegeName }}</div>
+            <div class="kcal">{{ vegeKcal }}KCAL</div>
+        </div>
+    </ion-card>
+
+    <ion-card>
+        <img :src=sourceSrc alt="">
+        <div class="content">
+            <div class="title">{{ sourceName }}</div>
+            <div class="kcal">{{ sourceKcal }}KCAL</div>
+        </div>
+    </ion-card>
+
+    
+    <h3 style="text-align:center;"><b>
+        총 합계 칼로리   {{ menuKcal + breadKcal + vegeKcal + sourceKcal }}
+    </b></h3>
+
 </template>
 
 <style scoped>
@@ -29,13 +59,28 @@
 
 <script>
 import { IonCard } from '@ionic/vue';
-import { pin, walk, warning, wifi, wine } from 'ionicons/icons';
 import { defineComponent } from 'vue';
+import { computed } from '@vue/runtime-core';
+import { useStore } from 'vuex';
 
 export default defineComponent({
-  components: { IonCard },
-  setup() {
-    return { warning };
-  }
+    components: { IonCard },
+    setup() {
+        const store = useStore();
+        return { 
+            menuName: computed(() => store.getters.getSelectMenuName),
+            menuKcal: computed(() => store.getters.getSelectMenuKcal),
+            menuSrc: computed(() => store.getters.getSelectMenuSrc),
+            breadName: computed(() => store.getters.getSelectBreadName),
+            breadKcal: computed(() => store.getters.getSelectBreadKcal),
+            breadSrc: computed(() => store.getters.getSelectBreadSrc),
+            vegeName: computed(() => store.getters.getSelectVegeName),
+            vegeKcal: computed(() => store.getters.getSelectVegeKcal),
+            vegeSrc: computed(() => store.getters.getSelectVegeSrc),
+            sourceName: computed(() => store.getters.getSelectSourceName),
+            sourceKcal: computed(() => store.getters.getSelectSourceKcal),
+            sourceSrc: computed(() => store.getters.getSelectSourceSrc),
+        };
+    }
 });
 </script>

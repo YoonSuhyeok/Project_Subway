@@ -18,7 +18,7 @@
                 <ion-checkbox />
                 <div style="width:80%; display:flex; justify-content:space-between; align-items:center;">
                     <ion-label><b>이용약관 동의 (필수)</b></ion-label>
-                    <ionic-button style="font-size:13px;"><b><U>상세보기</U></b></ionic-button>
+                    <ion-button style="font-size:13px;"><b><u>상세보기</u></b></ion-button>
                 </div>
                 
             </div>
@@ -26,7 +26,7 @@
                 <ion-checkbox /> 
                 <div style="width:80%; display:flex; justify-content:space-between; align-items:cetner;">
                     <ion-label><b>개인정보처리방침 (필수)</b></ion-label>
-                    <ionic-button style="font-size:13px;"><b><U>상세보기</U></b></ionic-button>
+                    <ion-button style="font-size:13px;"><b><u>상세보기</u></b></ion-button>
                 </div>
                 
             </div>
@@ -105,9 +105,9 @@
 </style>
 
 <script>
-import { IonToolbar, IonTitle, IonButtons, IonButton, IonIcon, IonLabel, IonCheckbox } from '@ionic/vue'
+import { IonText, IonToolbar, IonTitle, IonButtons, IonButton, IonIcon, IonLabel, IonCheckbox } from '@ionic/vue'
 
 export default ({
-    components: { IonToolbar, IonTitle, IonButtons, IonButton, IonIcon, IonLabel, IonCheckbox }
+    components: { IonText, IonToolbar, IonTitle, IonButtons, IonButton, IonIcon, IonLabel, IonCheckbox }
 })
 </script>

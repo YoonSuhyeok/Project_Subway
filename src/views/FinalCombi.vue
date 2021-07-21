@@ -2,10 +2,10 @@
     <ion-page>
         <ion-header>
             <ion-title class="title">
-                <h5>최종 조합</h5>
+                <h5><b>최종 조합</b></h5>
             </ion-title>
         </ion-header>
-
+        
         <Combi />
 
     </ion-page>
@@ -20,10 +20,15 @@
 </style>
 
 <script lang="ts">
-  import Combi from '@/components/Combi.vue'
+import Combi from '@/components/Combi.vue'
 
 export default  {
-  name: 'Final',
+    name: 'Final',
     components: { Combi },
+    setup(){
+        return {
+        }
+    }
 }
+
 </script>
