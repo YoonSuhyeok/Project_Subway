@@ -65,14 +65,13 @@
 
             <div class="box-container">
 
-              <div v-for="bread in breads" :key="bread.Bread_id + Bread_name">
+              <div v-for="bread in breads" :key="bread.Bread_id + bread.Bread_name">
                 <Items :info="{ type: 1, name: bread.Bread_name , kcal: bread.Bread_calorie, src: bread.Bread_imageUrl }" />
               </div>
 
             </div>
 
           </div>
-          <!-- {{ bread }} -->
         </ion-slide>
     
         <ion-slide>
