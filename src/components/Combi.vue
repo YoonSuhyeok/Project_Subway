@@ -1,5 +1,5 @@
 <template>
-    <ion-card>
+    <ion-card v-if="menuName != ''">
         <img :src=menuSrc alt="">
         <div class="content">
             <div class="title">{{ menuName }}</div>
@@ -7,7 +7,7 @@
         </div>
     </ion-card>
 
-    <ion-card>
+    <ion-card v-if="breadName != ''">
         <img :src=breadSrc alt="">
         <div class="content">
             <div class="title">{{ breadName }}</div>
@@ -15,7 +15,7 @@
         </div>
     </ion-card>
 
-    <ion-card>
+    <ion-card v-if="vegeName != ''">
         <img :src=vegeSrc alt="">
         <div class="content">
             <div class="title">{{ vegeName }}</div>
@@ -23,7 +23,7 @@
         </div>
     </ion-card>
 
-    <ion-card>
+    <ion-card v-if="sourceName != ''">
         <img :src=sourceSrc alt="">
         <div class="content">
             <div class="title">{{ sourceName }}</div>
@@ -32,7 +32,7 @@
     </ion-card>
 
     
-    <h3 style="text-align:center;"><b>
+    <h3 style="text-align:center; margin: 30px;"><b>
         총 합계 칼로리   {{ menuKcal + breadKcal + vegeKcal + sourceKcal }}
     </b></h3>
 
