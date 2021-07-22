@@ -4,6 +4,7 @@ import component from '../views/Tabs.vue';
 import Tabs from '../views/Tabs.vue';
 import logo from '../views/logo.vue';
 import Final from '../views/FinalCombi.vue';
+import My from '../views/MyCombe.vue';
 import C from '../views/combination.vue';
 import L from '../views/list.vue';
 
@@ -42,6 +43,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/final',
     component: () => import('@/views/FinalCombi.vue')
+  },
+  {
+    path: '/my',
+    component: () => import('@/views/MyCombi.vue')
   },
   {
     path: '/tabs/',
