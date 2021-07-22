@@ -1,39 +1,39 @@
 <template>
-    <ion-card v-if="menuName != ''">
-        <img :src=menuSrc alt="">
+    <ion-card v-if="menu.name != ''">
+        <img :src=menu.src alt="">
         <div class="content">
-            <div class="title">{{ menuName }}</div>
-            <div class="kcal">{{ menuKcal }}KCAL</div>
+            <div class="title">{{ menu.name }}</div>
+            <div class="kcal">{{ menu.kcal }}KCAL</div>
         </div>
     </ion-card>
 
-    <ion-card v-if="breadName != ''">
-        <img :src=breadSrc alt="">
+    <ion-card v-if="bread.name != ''">
+        <img :src=bread.src alt="">
         <div class="content">
-            <div class="title">{{ breadName }}</div>
-            <div class="kcal">{{ breadKcal }}KCAL</div>
+            <div class="title">{{ bread.name }}</div>
+            <div class="kcal">{{ bread.kcal }}KCAL</div>
         </div>
     </ion-card>
 
-    <ion-card v-if="vegeName != ''">
-        <img :src=vegeSrc alt="">
+    <ion-card v-if="vegetable.name != ''">
+        <img :src=vegetable.src alt="">
         <div class="content">
-            <div class="title">{{ vegeName }}</div>
-            <div class="kcal">{{ vegeKcal }}KCAL</div>
+            <div class="title">{{ vegetable.name }}</div>
+            <div class="kcal">{{ vegetable.kcal }}KCAL</div>
         </div>
     </ion-card>
 
-    <ion-card v-if="sourceName != ''">
-        <img :src=sourceSrc alt="">
+    <ion-card v-if="source.name != ''">
+        <img :src=source.src alt="">
         <div class="content">
-            <div class="title">{{ sourceName }}</div>
-            <div class="kcal">{{ sourceKcal }}KCAL</div>
+            <div class="title">{{ source.name }}</div>
+            <div class="kcal">{{ source.kcal }}KCAL</div>
         </div>
     </ion-card>
 
     
     <h3 style="text-align:center; margin: 30px;"><b>
-        총 합계 칼로리   {{ menuKcal + breadKcal + vegeKcal + sourceKcal }}
+        총 합계 칼로리   {{ menu.kcal + bread.kcal + vegetable.kcal + source.kcal }}
     </b></h3>
 
 </template>
@@ -68,18 +68,10 @@ export default defineComponent({
     setup() {
         const store = useStore();
         return { 
-            menuName: computed(() => store.getters.getSelectMenuName),
-            menuKcal: computed(() => store.getters.getSelectMenuKcal),
-            menuSrc: computed(() => store.getters.getSelectMenuSrc),
-            breadName: computed(() => store.getters.getSelectBreadName),
-            breadKcal: computed(() => store.getters.getSelectBreadKcal),
-            breadSrc: computed(() => store.getters.getSelectBreadSrc),
-            vegeName: computed(() => store.getters.getSelectVegeName),
-            vegeKcal: computed(() => store.getters.getSelectVegeKcal),
-            vegeSrc: computed(() => store.getters.getSelectVegeSrc),
-            sourceName: computed(() => store.getters.getSelectSourceName),
-            sourceKcal: computed(() => store.getters.getSelectSourceKcal),
-            sourceSrc: computed(() => store.getters.getSelectSourceSrc),
+            menu: computed(() => store.getters.getSelectMenu),
+            bread: computed(() => store.getters.getSelectBread),
+            vegetable: computed(() => store.getters.getSelectVege),
+            source: computed(() => store.getters.getSelectSource),
         };
     }
 });

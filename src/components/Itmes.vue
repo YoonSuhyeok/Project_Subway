@@ -1,7 +1,7 @@
 <template>
     <div id="container">
         <ion-card class="menu-box">
-            <ion-card-header class="menu-box-header" @click='select(info.type, info.name, info.kcal, info.src)'>
+            <ion-card-header class="menu-box-header" @click='select(info)'>
                 <img :src="info.src" :alt="info.name" />
                 <ion-card-title class="menu-name">{{ info.name }}</ion-card-title>
                 <ion-card-subtitle class="menu-kcal">{{ info.kcal }}Kcal</ion-card-subtitle>
@@ -92,66 +92,49 @@
         components: { IonCard },
         setup(){
             const store = useStore();
-            const select = (type, name, kcal, src) => {
-                console.log(type)
-                console.log(name)
-                console.log(kcal)
-                console.log(src);
-                switch(type){
+            const select = (info) => {
+                console.log(info.type)
+                console.log(info.name)
+                console.log(info.kcal)
+                console.log(info.src);
+                switch(info.type){
                     case 0: {
-                        const list = store.getters.getSelectMenuName;
-                        if(list == name) { 
-                            store.dispatch('selectMenuName', '' ); 
-                            store.dispatch('selectMenuKcal', '' ); 
-                            store.dispatch('selectMenuSrc', '' ); 
+                        const currentMenu = store.getters.getSelectMenu;
+                        if(currentMenu.name == info.name) { 
+                            store.dispatch('selectMenu', '' );
                         }
                         else { 
-                            store.dispatch('selectMenuName', name );
-                            store.dispatch('selectMenuKcal', kcal );
-                            store.dispatch('selectMenuSrc', src );
+                            store.dispatch('selectMenu', info );
                         }
                         break;
                     }
                     case 1: {
-                        const list = store.getters.getSelectBreadName;
-                        if(list == name) { 
-                            store.dispatch('selectBreadName', '' ); 
-                            store.dispatch('selectBreadKcal', '' ); 
-                            store.dispatch('selectBreadSrc', '' ); 
+                        const currentBread = store.getters.getSelectBread;
+                        if(currentBread.name == info.name) { 
+                            store.dispatch('selectBread', '' ); 
                         }
                         else { 
-                            store.dispatch('selectBreadName', name );
-                            store.dispatch('selectBreadKcal', kcal );
-                            store.dispatch('selectBreadSrc', src ); 
+                            store.dispatch('selectBread', info );
                         }
                         break;
                     }
                     case 3: {
-                        const list = store.getters.getSelectVegeName;
-                        if(list == name) { 
-                            store.dispatch('selectVegeName', '' );
-                            store.dispatch('selectVegeKcal', '' );
-                            store.dispatch('selectVegeSrc', '' ); 
+                        const currentVege = store.getters.getSelectVege;
+                        if(currentVege.name == info.name) { 
+                            store.dispatch('selectVege', '' );
                         }
                         else { 
-                            store.dispatch('selectVegeName', name );
-                            store.dispatch('selectVegeKcal', kcal );
-                            store.dispatch('selectVegeSrc', src ); 
+                            store.dispatch('selectVege', info );
                         }
                         break;
                     }
                     case 4: {
-                        const list = store.getters.getSelectSourceName;
-                        console.log(list);
-                        if(list == name) { 
-                            store.dispatch('selectSourceName', '' ); 
-                            store.dispatch('selectSourceKcal', '' ); 
-                            store.dispatch('selectSourceSrc', '' ); 
+                        const currentSource = store.getters.getSelectSource;
+                        if(currentSource.name == info.name) { 
+                            store.dispatch('selectSource', '' ); 
                         }
                         else { 
-                            store.dispatch('selectSourceName', name ); 
-                            store.dispatch('selectSourceKcal', kcal ); 
-                            store.dispatch('selectSourceSrc', src ); 
+                            store.dispatch('selectSource', info );
                         }
                         break;
                     }

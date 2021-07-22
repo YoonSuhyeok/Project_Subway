@@ -14,18 +14,10 @@ export const store = createStore({
     userId: 'unknown_user',
     accessToken: '',
     refreshToken: '',
-    selectMenuName: '',
-    selectMenuKcal: '',
-    selectMenuSrc: '',
-    selectBreadName: '',
-    selectBreadKcal: '',
-    selectBreadSrc: '',
-    selectVegeName: '',
-    selectVegeKcal: '',
-    selectVegeSrc: '',
-    selectSourceName: '',
-    selectSourceKcal: '',
-    selectSourceSrc: '',    
+    selectMenu: '',
+    selectBread: '',
+    selectVege: '',
+    selectSource: '',    
   },
   mutations: {
     setBreadList(state, breadList){
@@ -56,42 +48,18 @@ export const store = createStore({
     setRefreshToken(state, token){
       state.refreshToken = token;
     },
-    selectMenuName(state, data: string){
-      state.selectMenuName = data;
+    selectMenu(state, data: string){
+      state.selectMenu = data;
     },
-    selectMenuKcal(state, data: string){
-      state.selectMenuKcal = data;
+    selectBread(state, data: string){
+      state.selectBread = data;
     },
-    selectMenuSrc(state, data: string){
-      state.selectMenuSrc = data;
+    selectVege(state, data: string){
+      state.selectVege = data;
     },
-    selectBreadName(state, data: string){
-      state.selectBreadName = data;
+    selectSource(state, data: string){
+      state.selectSource = data;
     },
-    selectBreadKcal(state, data: string){
-      state.selectBreadKcal = data;
-    },
-    selectBreadSrc(state, data: string){
-      state.selectBreadSrc = data;
-    },
-    selectVegeName(state, data: string){
-      state.selectVegeName = data;
-    },
-    selectVegeKcal(state, data: string){
-      state.selectVegeKcal = data;
-    },
-    selectVegeSrc(state, data: string){
-      state.selectVegeSrc = data;
-    },
-    selectSourceName(state, data: string){
-      state.selectSourceName = data;
-    },
-    selectSourceKcal(state, data: string){
-      state.selectSourceKcal = data;
-    },
-    selectSourceSrc(state, data: string){
-      state.selectSourceSrc = data;
-    }
   },
   actions: {
     async initData({commit}){
@@ -115,42 +83,18 @@ export const store = createStore({
       commit('setAccessToken', tokens.access_token);
       commit('setRefreshToken', tokens.refresh_token);
     },
-    selectMenuName({commit}, data){
-      commit('selectMenuName', data);
+    selectMenu({commit}, data){
+      commit('selectMenu', data);
     },
-    selectMenuKcal({commit}, data){
-      commit('selectMenuKcal', data);
+    selectBread({commit}, data){
+      commit('selectBread', data);
     },
-    selectMenuSrc({commit}, data){
-      commit('selectMenuSrc', data);
+    selectVege({commit}, data){
+      commit('selectVege', data);
     },
-    selectBreadName({commit}, data){
-      commit('selectBreadName', data);
+    selectSource({commit}, data){
+      commit('selectSource', data);
     },
-    selectBreadKcal({commit}, data){
-      commit('selectBreadKcal', data);
-    },
-    selectBreadSrc({commit}, data){
-      commit('selectBreadSrc', data);
-    },
-    selectVegeName({commit}, data){
-      commit('selectVegeName', data);
-    },
-    selectVegeKcal({commit}, data){
-      commit('selectVegeKcal', data);
-    },
-    selectVegeSrc({commit}, data){
-      commit('selectVegeSrc', data);
-    },
-    selectSourceName({commit}, data){
-      commit('selectSourceName', data);
-    },
-    selectSourceKcal({commit}, data){
-      commit('selectSourceKcal', data);
-    },
-    selectSourceSrc({commit}, data){
-      commit('selectSourceSrc', data);
-    }
   },
   getters: {
     getToken: function(state){
@@ -177,42 +121,18 @@ export const store = createStore({
     getUserId: function(state) {
       return state.userId;
     },
-    getSelectMenuName: function(state) {
-      return state.selectMenuName;
+    getSelectMenu: function(state) {
+      return state.selectMenu;
     },
-    getSelectMenuKcal: function(state) {
-      return state.selectMenuKcal;
+    getSelectBread: function(state) {
+      return state.selectBread;
     },
-    getSelectMenuSrc: function(state) {
-      return state.selectMenuSrc;
+    getSelectVege: function(state){
+      return state.selectVege;
     },
-    getSelectBreadName: function(state) {
-      return state.selectBreadName;
+    getSelectSource: function(state){
+      return state.selectSource;
     },
-    getSelectBreadKcal: function(state) {
-      return state.selectBreadKcal;
-    },
-    getSelectBreadSrc: function(state) {
-      return state.selectBreadSrc;
-    },
-    getSelectVegeName: function(state){
-      return state.selectVegeName;
-    },
-    getSelectVegeKcal: function(state){
-      return state.selectVegeKcal;
-    },
-    getSelectVegeSrc: function(state){
-      return state.selectVegeSrc;
-    },
-    getSelectSourceName: function(state){
-      return state.selectSourceName;
-    },
-    getSelectSourceKcal: function(state){
-      return state.selectSourceKcal;
-    },
-    getSelectSourceSrc: function(state){
-      return state.selectSourceSrc;
-    }
   },
   plugins: [createPersistedState()]
 });
