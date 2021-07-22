@@ -6,13 +6,21 @@
             </ion-title>
         </ion-header>
         
-        <Combi />
 
+    <ion-content class="ion-padding">
+
+      <ion-infinite-scroll
+        threshold="100px" 
+        id="infinite-scroll"
+        :disabled="isDisabled"
+      >
+        
+        <Combi />
         <p style="margin-bottom:5px;" class="align-center" >반응 표시</p>
-        <!-- Default Progressbar with 50 percent -->
+        
         <ion-progress-bar value="0.5" color="success" style="padding:7px; margin-bottom:20px;" class="align-center"></ion-progress-bar>
 
-        <!-- Input with placeholder -->
+
         <ion-input placeholder="메뉴 닉네임 설정" class="align-center" ></ion-input>
 
         <ion-button class="align-center" style="margin-top:50px;">
@@ -22,6 +30,16 @@
         <ion-button class="align-center" style="margin-top:10px;">
             <ion-label><b>공유하기</b></ion-label>
         </ion-button>
+
+        <!-- <ion-infinite-scroll-content
+          loading-spinner="bubbles"
+          loading-text="Loading more data..."> -->
+        <ion-infinite-scroll-content
+            loading-spinner="none">
+        </ion-infinite-scroll-content>
+
+      </ion-infinite-scroll>
+    </ion-content>
 
     </ion-page>
 </template>
@@ -54,11 +72,11 @@
 
 <script lang="ts">
 import Combi from '@/components/Combi.vue'
-import { IonProgressBar, IonInput, IonButton, IonLabel } from '@ionic/vue';
+import { IonProgressBar, IonInput, IonButton, IonLabel, IonInfiniteScroll } from '@ionic/vue';
 
 export default  {
     name: 'Final',
-    components: { Combi, IonProgressBar, IonInput, IonButton, IonLabel },
+    components: { Combi, IonProgressBar, IonInput, IonButton, IonLabel, IonInfiniteScroll },
     setup(){
         return {
         }
