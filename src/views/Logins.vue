@@ -152,12 +152,13 @@ export default {
             };
             window.Kakao.Auth.authorize(params)
         };
-        
+
         if(window.location.search.substr(6)){
             const code = window.location.search.substr(6);
+            console.log(code);
             const result = AxiosService.instance.post('/auth/kakao', ({"str": "TokenPost"}),{
                 headers: {
-                'Authorization': `Bearer ${code}`
+                    'Authorization': `Bearer ${code}`
                 }
             }).then(t => {
                 store.dispatch('setToken', t.data);
@@ -172,7 +173,6 @@ export default {
                 }
                 });
             })
-            
         }
 
         const googlebtn = async function(){
@@ -208,7 +208,6 @@ export default {
             kakaobtn,
             googlebtn,
             naverbtn,
-            facebookbtn,
             value: computed( () => store.getters.getToken )
         }
     }

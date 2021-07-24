@@ -18,6 +18,7 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/type-annotation-spacing': 'off',
     '@typescript-eslint/camelcase': 'off',
+    '@typecsript-exlint/no-unused-vars': 'off',
   },
   overrides: [
     {
