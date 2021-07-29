@@ -8,7 +8,7 @@ import Final from '../views/FinalCombi.vue';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/logins'
+    redirect: '/logins.main'
   },
   {
     path: '/logo',
@@ -33,6 +33,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/final',
     component: () => import('@/views/FinalCombi.vue')
+  },
+  {
+    path: '/logins.main',
+    component: () => import('@/views/Logins.main.vue')
   },
   {
     path: '/tabs/',
