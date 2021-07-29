@@ -195,7 +195,7 @@ section {
     font-size: 20px;
     border: 0;
     border-bottom: 1px solid;
-    border-bottom-color: #128D15;
+    border-bottom-color: #128D15;  
 }
 
 </style>
