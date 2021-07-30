@@ -1,16 +1,5 @@
 <template>
   <ion-page>
-    <ion-header class="ion-no-border">
-      <!-- <ion-toolbar>
-        <ion-title style="text-align: center;">
-          <ion-checkbox class="upperCheckbox" checked="true" color="dark"></ion-checkbox>
-          <ion-checkbox class="upperCheckbox" checked="false" color="dark"></ion-checkbox>
-          <ion-checkbox class="upperCheckbox" checked="false" color="dark"></ion-checkbox>
-          <ion-checkbox class="upperCheckbox" checked="false" color="dark"></ion-checkbox>
-          <ion-checkbox class="upperCheckbox" checked="false" color="dark"></ion-checkbox>
-        </ion-title>
-      </ion-toolbar> -->
-    </ion-header>
 
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
@@ -61,7 +50,6 @@
     
         <ion-slide>
           <div>
-            <img class="back-icon" src="/assets/icon/back.png" alt="back" />
             <h5 class="slide-title"><b>빵 선택하기</b></h5>
 
             <div class="box-container">
@@ -77,7 +65,6 @@
     
         <ion-slide>
           <div>
-            <img class="back-icon" src="/assets/icon/back.png" alt="back" />
             <h5 class="slide-title"><b>추가토핑 선택하기</b></h5>
 
             <div class="box-container">
@@ -85,13 +72,7 @@
               <ion-card class="toping-box">
                 <ion-card-header>
                   <ion-card-title>더블업</ion-card-title>
-                  <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
                 </ion-card-header>
-
-                <!-- <ion-card-content>
-                  Keep close to Nature's heart... and break clear away, once in awhile,
-                  and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content> -->
               </ion-card>
 
               <ion-card class="toping-box">
@@ -99,11 +80,6 @@
                   <ion-card-title>더블치즈</ion-card-title>
                   <ion-card-subtitle>44Kcal</ion-card-subtitle>
                 </ion-card-header>
-
-                <!-- <ion-card-content>
-                  Keep close to Nature's heart... and break clear away, once in awhile,
-                  and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content> -->
               </ion-card>
 
               <ion-card class="toping-box">
@@ -111,11 +87,6 @@
                   <ion-card-title>베이컨 비츠</ion-card-title>
                   <ion-card-subtitle>51Kcal</ion-card-subtitle>
                 </ion-card-header>
-
-                <!-- <ion-card-content>
-                  Keep close to Nature's heart... and break clear away, once in awhile,
-                  and climb a mountain or spend a week in the woods. Wash your spirit clean.
-                </ion-card-content> -->
               </ion-card>
 
             </div>
@@ -125,7 +96,6 @@
 
         <ion-slide>
           <div>
-            <img class="back-icon" src="/assets/icon/back.png" alt="back" />
             <h5 class="slide-title"><b>야채&소스 선택하기</b></h5>
 
             <ion-button strong="true" class="menu_btn" v-on:click="clickedVegetable" v-if="state.selectVegeSource != 'vegetable'"><h5><b>야채</b></h5></ion-button>
@@ -134,18 +104,9 @@
             <ion-button strong="true" class="mb_active" v-on:click="clickedSource" v-else><h5><b>소스</b></h5></ion-button>
 
             <div class="box-container" v-if="state.selectVegeSource === 'vegetable'">
-            <!-- {{ ve }} -->
               <div v-for="vegetable in vegetables" :key="vegetable.Ingredient_id + vegetable.Ingredient_name">
                 <Items :info="{ type: 3,name: vegetable.Ingredient_name , kcal: vegetable.Ingredient_calorie, src: vegetable.Ingredient_imageUrl }" />
               </div>
-              
-              
-              <!-- <div class="bottomsForVegi" style="position:absolute; bottom:0px;">
-                <h1>all/del 오이벤</h1>
-                <h3>
-                  <ion-checkbox class="checkAllOrNothing" checked="true" color="danger"></ion-checkbox>전체선택
-                </h3>
-              </div> -->
 
             </div>
 
@@ -154,15 +115,11 @@
               <div v-for="source in sources" :key="source.Ingredient_id + source.Ingredient_name">
                 <Items :info="{ type: 4, name: source.Ingredient_name , kcal: source.Ingredient_calorie, src: source.Ingredient_imageUrl }" />
               </div>
-
-              <!-- {{ sr }} -->
             </div>
 
           </div>
         </ion-slide>
       </ion-slides>
-      <!-- <button @click=move>hello</button>
-      {{ select }} -->
       </ion-content>
   </ion-page>
 </template>
@@ -180,30 +137,6 @@
     width: 100%;
     margin-top: 50px;
   }
-
-
-
-  /* .upperCheckbox {
-    --border-radius: 50%; 
-    --checkmark-color: dark; 
-    --border-color: #c4c4c4; 
-    --background: #c4c4c4;
-    width: 10px;
-    height: 10px;
-    margin: 5px;
-    --color-checked: #111111;
-    --background-hover: none;
-    --color: #8a7d7d;
-    --indicator-color	: none;
-  } */
-
-  /* .checkAllOrNothing {
-    --border-color: #111111;
-    --border-color-checked: #111111;
-    --checkmark-color: red; 
-    --background-checked: none;
-    --background: none;
-  } */
 
   .menu_btn {
     --color: #949494;
@@ -282,16 +215,10 @@
 </style>
 
 <style>
-  
-  .back-icon {
-    width: 13px;
-    position: absolute;
-    top: 15px;
-    left: 20px;
-  }
 
   div.swiper-pagination {
     top: 10px;
+    height: 0;
   }
 
 </style>
@@ -299,7 +226,6 @@
 
 <script lang="ts">
   import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, 
-  //IonCheckbox,
   IonSlides, IonSlide, IonCard, IonCardTitle, IonCardHeader, IonCardSubtitle } from '@ionic/vue';
   import Items from '@/components/Itmes.vue'
   import { computed } from '@vue/runtime-core';
@@ -309,7 +235,6 @@
   export default  {
     name: 'Tab2',
     components: { Items, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButton, IonIcon, 
-    //IonCheckbox,
     IonSlides, IonSlide, IonCard, IonCardTitle, IonCardHeader, IonCardSubtitle },
     setup() {
       // Optional parameters to pass to the swiper instance. See http://idangero.us/swiper/api/ for valid options.
@@ -360,9 +285,6 @@
         vegetables: computed(() => store.getters.getVegetableList),
         sources: computed(() => store.getters.getSourceList),
         select: computed(() => store.getters.getSelectMenu),
-        bread: computed(() => store.getters.getSelectBread),
-        ve: computed(() => store.getters.getSelectVegetable),
-        sr: computed(() => store.getters.getSelectSource),
       }
     }
   }
