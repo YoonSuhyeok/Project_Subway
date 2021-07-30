@@ -15,13 +15,13 @@
             <ion-button strong="true" class="menu_btn" v-on:click="clickedPremium" v-if="state.selectMenu != 'premium_menu'"><b>프리미엄</b></ion-button>
             <ion-button strong="true" class="mb_active" v-on:click="clickedPremium" v-else><b>프리미엄</b></ion-button>
             
-            <span v-if="state.selectMenu === 'classic_menu'">
+            <div class="box-container" v-if="state.selectMenu === 'classic_menu'">
 
-              <div class="box-container" v-for="classic in classicMenus" :key="classic.Menu_id + classic.Menu_name">
+              <div v-for="classic in classicMenus" :key="classic.Menu_id + classic.Menu_name">
                 <Items :info="{ type: 0, name: classic.Menu_name , kcal: classic.Menu_calorie, src: classic.Menu_imageUrl }" />
               </div>
               
-            </span>
+            </div>
 
             <div class="box-container" v-if="state.selectMenu === 'fresh_menu'">
 
@@ -102,19 +102,15 @@
 </template>
 
 <style scoped>
-
   @charset "utf-8";
-
   @font-face {
     font-family: 'NanumGothicExtraBold';
     src: url(../../public/assets/font/NanumGothicExtraBold.ttf);
   }
-
   .slide-title {
     width: 100%;
     margin-top: 50px;
   }
-
   .menu_btn {
     --color: #949494;
     --background: #ffffff;
@@ -123,7 +119,6 @@
     font-family: NanumGothicExtraBold;
     height: 50px;
   }
-
   .mb_active {
     --color: #111111;
     --background: #ffffff;
@@ -135,40 +130,31 @@
 
   .box-container {
     display: flex;
-    justify-content: center;
-  }
-
-  /* .box-container {
-    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: baseline;
     margin: auto;
-  } */
+  }
 
   @media screen and (max-width: 360px) {
     .menu_btn, .mb_active {
       width: 100px;
       font-size: 14px;
     }
-
     .box-container {
       width: 340px;
     }
   }
-
   @media screen and (min-width: 360px) and (max-width: 480px) {
     .menu_btn, .mb_active {
       width: 115px;
       font-size: 15px;
     }
-
     .box-container {
       width: 380px;
     }
   }
-
   @media screen and (min-width: 480px) and (max-width:768px) {
     .menu_btn, .mb_active {
       width: 150px;
@@ -178,7 +164,6 @@
       width: 500px;
     }
   }
-
   @media screen and (min-width: 768px) {
     .menu_btn, .mb_active {
       width: 250px;
@@ -188,21 +173,17 @@
       width: 660px;
     }
   }
-
   ion-slides {
     --bullet-background-active:#111111; 
     --bullet-background:#C4C4C4;
   }
-
 </style>
 
 <style>
-
   div.swiper-pagination {
     top: 10px;
     height: 0;
   }
-
 </style>
 
 
@@ -212,19 +193,16 @@
   import { computed } from '@vue/runtime-core';
   import { reactive } from '@vue/reactivity';
   import { useStore } from 'vuex';
-
   export default  {
     name: 'Tab2',
     components: { Items, IonContent, IonPage, IonButton, IonSlides, IonSlide },
     setup() {
       // Optional parameters to pass to the swiper instance. See http://idangero.us/swiper/api/ for valid options.
       const store = useStore();
-
       const slideOpts = {
         initialSlide: 0,
         speed: 400,
       }
-
       const state = reactive({
         selectMenu: 'classic_menu',
         selectVegeSource: 'vegetable'

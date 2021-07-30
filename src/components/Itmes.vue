@@ -23,19 +23,17 @@
     }
 
     .menu-name, .menu-kcal {
+        padding: 0;
+        margin: 0;
         font-weight: bold;
         color: black;
         font-family: NanumGothicExtraBold;
     }
 
-    .menu-img {
-        padding: 5px;
-    }
-
     @media screen and (max-width: 360px) {
         .menu-box {
             width: 80px;
-            height: 90px;
+            height: 85px;
             border-radius: 15px;
             box-shadow: 1px 4px 5px 0px lightgrey;
         }
@@ -44,27 +42,37 @@
             font-size: 1px;
         }
 
+        .menu-img {
+            height: 40px;
+            padding: 0;
+        }
+
     }
 
     @media screen and (min-width: 360px) and (max-width:480px) {
         .menu-box {
             width: 100px;
-            height: 112px;
+            height: 100px;
+            border-radius: 25px;
+            box-shadow: 1px 4px 5px 0px lightgrey;
         }
 
         .menu-name, .menu-kcal {
-            font-size: xx-small;
+            font-size: 2px;
         }
 
         .menu-img {
             height: 60px;
+            padding: 0;
         }
   }
 
     @media screen and (min-width: 480px) and (max-width:768px) {
         .menu-box {
             width: 130px;
-            height: 135px;
+            height: 130px;
+            border-radius: 35px;
+            box-shadow: 3px 7px 5px 0px lightgrey;
         }
 
         .menu-name, .menu-kcal {
@@ -76,6 +84,8 @@
         .menu-box {
             width: 200px;
             height: 200px;
+            border-radius: 45px;
+            box-shadow: 3px 7px 5px 0px lightgrey;
         }
 
         .menu-name, .menu-kcal {

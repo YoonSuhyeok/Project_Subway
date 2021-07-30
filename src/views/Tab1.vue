@@ -98,15 +98,9 @@
   ion-slides {
     --bullet-background-active:#111111; 
     --bullet-background:darkgray; 
+    padding-bottom: 30px;
   }
 
-  @media screen and (max-width: 360px) {
-    ion-slides { padding-bottom: 15px; }  
-  }
-
-    @media screen and (min-width: 360px) {
-      ion-slides { padding-bottom: 30px; }
-    }
 
 </style>
 
