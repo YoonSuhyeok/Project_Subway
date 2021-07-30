@@ -1,15 +1,15 @@
 <template>
   <ion-page>
     <ion-header class="ion-no-border">
-      <ion-toolbar>
+      <!-- <ion-toolbar>
         <ion-title style="text-align: center;">
           <ion-checkbox class="upperCheckbox" checked="true" color="dark"></ion-checkbox>
           <ion-checkbox class="upperCheckbox" checked="false" color="dark"></ion-checkbox>
           <ion-checkbox class="upperCheckbox" checked="false" color="dark"></ion-checkbox>
           <ion-checkbox class="upperCheckbox" checked="false" color="dark"></ion-checkbox>
-          <ion-checkbox class="upperCheckbox" checked="false" color="dark"></ion-checkbox>          
+          <ion-checkbox class="upperCheckbox" checked="false" color="dark"></ion-checkbox>
         </ion-title>
-      </ion-toolbar>
+      </ion-toolbar> -->
     </ion-header>
 
     <ion-content :fullscreen="true">
@@ -21,7 +21,7 @@
         </ion-toolbar>
       </ion-header>
 
-      <ion-slides pager="false" :options="slideOpts" style="--bullet-background-active:#111111; --bullet-background:#C4C4C4;">
+      <ion-slides pager :options="slideOpts">
         <ion-slide>
           <div>
             <h5 class="slide-title"><b>메뉴 선택하기</b></h5>
@@ -61,6 +61,7 @@
     
         <ion-slide>
           <div>
+            <img class="back-icon" src="/assets/icon/back.png" alt="back" />
             <h5 class="slide-title"><b>빵 선택하기</b></h5>
 
             <div class="box-container">
@@ -76,6 +77,7 @@
     
         <ion-slide>
           <div>
+            <img class="back-icon" src="/assets/icon/back.png" alt="back" />
             <h5 class="slide-title"><b>추가토핑 선택하기</b></h5>
 
             <div class="box-container">
@@ -123,6 +125,7 @@
 
         <ion-slide>
           <div>
+            <img class="back-icon" src="/assets/icon/back.png" alt="back" />
             <h5 class="slide-title"><b>야채&소스 선택하기</b></h5>
 
             <ion-button strong="true" class="menu_btn" v-on:click="clickedVegetable" v-if="state.selectVegeSource != 'vegetable'"><h5><b>야채</b></h5></ion-button>
@@ -175,9 +178,12 @@
 
   .slide-title {
     width: 100%;
+    margin-top: 50px;
   }
 
-  .upperCheckbox {
+
+
+  /* .upperCheckbox {
     --border-radius: 50%; 
     --checkmark-color: dark; 
     --border-color: #c4c4c4; 
@@ -189,7 +195,7 @@
     --background-hover: none;
     --color: #8a7d7d;
     --indicator-color	: none;
-  }
+  } */
 
   /* .checkAllOrNothing {
     --border-color: #111111;
@@ -268,30 +274,52 @@
     }
   }
 
+  ion-slides {
+    --bullet-background-active:#111111; 
+    --bullet-background:#C4C4C4;
+  }
+
 </style>
 
+<style>
+  
+  .back-icon {
+    width: 13px;
+    position: absolute;
+    top: 15px;
+    left: 20px;
+  }
+
+  div.swiper-pagination {
+    top: 10px;
+  }
+
+</style>
+
+
 <script lang="ts">
-  import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonCheckbox,
+  import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, 
+  //IonCheckbox,
   IonSlides, IonSlide, IonCard, IonCardTitle, IonCardHeader, IonCardSubtitle } from '@ionic/vue';
   import Items from '@/components/Itmes.vue'
   import { computed } from '@vue/runtime-core';
   import { reactive } from '@vue/reactivity';
   import { useStore } from 'vuex';
 
-  
-export default  {
+  export default  {
     name: 'Tab2',
-    components: { Items, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButton, IonIcon, IonCheckbox,
-    IonSlides, IonSlide, IonCard, IonCardTitle, IonCardHeader, IonCardSubtitle,
-    },
+    components: { Items, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButton, IonIcon, 
+    //IonCheckbox,
+    IonSlides, IonSlide, IonCard, IonCardTitle, IonCardHeader, IonCardSubtitle },
     setup() {
       // Optional parameters to pass to the swiper instance. See http://idangero.us/swiper/api/ for valid options.
       const store = useStore();
 
       const slideOpts = {
         initialSlide: 0,
-        speed: 400
-      };
+        speed: 400,
+      }
+
       const state = reactive({
         selectMenu: 'classic_menu',
         selectVegeSource: 'vegetable'
