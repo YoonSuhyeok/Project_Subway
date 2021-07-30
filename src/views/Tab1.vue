@@ -90,6 +90,7 @@
     align-items: center;
   }
   .eventAds {
+    padding: 10px;
     margin-top: 20px;
     text-align: center;
   }
@@ -97,8 +98,15 @@
   ion-slides {
     --bullet-background-active:#111111; 
     --bullet-background:darkgray; 
-    padding-bottom: 15px;
   }
+
+  @media screen and (max-width: 360px) {
+    ion-slides { padding-bottom: 15px; }  
+  }
+
+    @media screen and (min-width: 360px) {
+      ion-slides { padding-bottom: 30px; }
+    }
 
 </style>
 
