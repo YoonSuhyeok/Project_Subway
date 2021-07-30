@@ -4,8 +4,8 @@
       <ion-toolbar>
         <ion-title>
           <div class="title">
-            <img src="/assets/img/logo.png" class="title_img">
-            <img src="/assets/img/SUBWAY MASTER.png" class="title_logo">
+            <img src="/assets/img/logo.png" class="title-img">
+            <p>SUBWAY MASTER</p>
           </div>
         </ion-title>
       </ion-toolbar>
@@ -152,9 +152,19 @@
 </template>
 
 <style>
+
+  .title-img {
+    width: 30px;
+    margin-right: 5px;
+  }
+
   .title {
-    text-align: center;
     font-weight: bold;
+    color: #26923A;
+    display: flex;
+    align-items: center;
+    width: 250px;
+    margin:auto;
   }
 
   .slide-title {
@@ -189,20 +199,6 @@
   .card-box_user {font-size: 5px;}
 
   .card-box_user-name {color: green;}
-
-  .title_img {
-    margin: 3%;
-    width: 35px;
-  }
-
-  .title_logo {
-    margin: 4%;
-    width: 200px; 
-    height: auto; 
-    display: inline;
-    margin-left: auto;
-    margin-right: auto;
-  }
 
   .temporary-img-card {
     width: 100%; 
