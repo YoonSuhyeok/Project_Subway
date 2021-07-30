@@ -69,25 +69,9 @@
 
             <div class="box-container">
 
-              <ion-card class="toping-box">
-                <ion-card-header>
-                  <ion-card-title>더블업</ion-card-title>
-                </ion-card-header>
-              </ion-card>
-
-              <ion-card class="toping-box">
-                <ion-card-header>
-                  <ion-card-title>더블치즈</ion-card-title>
-                  <ion-card-subtitle>44Kcal</ion-card-subtitle>
-                </ion-card-header>
-              </ion-card>
-
-              <ion-card class="toping-box">
-                <ion-card-header>
-                  <ion-card-title>베이컨 비츠</ion-card-title>
-                  <ion-card-subtitle>51Kcal</ion-card-subtitle>
-                </ion-card-header>
-              </ion-card>
+              <div v-for="extra in extras" :key="extra.Extra_id + extra.Extra_name">
+                <Items :info="{ type: 2, name: extra.Extra_name , kcal: extra.Extra_calorie, src: extra.Extra_imageUrl }" />
+              </div>
 
             </div>
 
@@ -225,8 +209,7 @@
 
 
 <script lang="ts">
-  import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, 
-  IonSlides, IonSlide, IonCard, IonCardTitle, IonCardHeader, IonCardSubtitle } from '@ionic/vue';
+  import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonIcon, IonSlides, IonSlide } from '@ionic/vue';
   import Items from '@/components/Itmes.vue'
   import { computed } from '@vue/runtime-core';
   import { reactive } from '@vue/reactivity';
@@ -234,8 +217,7 @@
 
   export default  {
     name: 'Tab2',
-    components: { Items, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButton, IonIcon, 
-    IonSlides, IonSlide, IonCard, IonCardTitle, IonCardHeader, IonCardSubtitle },
+    components: { Items, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonButton, IonIcon, IonSlides, IonSlide },
     setup() {
       // Optional parameters to pass to the swiper instance. See http://idangero.us/swiper/api/ for valid options.
       const store = useStore();
@@ -284,6 +266,7 @@
         premiumMenus: computed(() => store.getters.getPremiumMenuList),
         vegetables: computed(() => store.getters.getVegetableList),
         sources: computed(() => store.getters.getSourceList),
+        extras: computed(() => store.getters.getExtraList),
         select: computed(() => store.getters.getSelectMenu),
       }
     }
