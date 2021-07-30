@@ -19,43 +19,16 @@
     
       
 
-      <ion-slides pager="true" :options="slideOpts"  style="--bullet-background-active:#111111; --bullet-background:darkgray;">
+      <ion-slides pager="true" :options="slideOpts"  style="--bullet-background-active:#111111; --bullet-background:darkgray; padding-bottom: 30px;">
         <ion-slide>
         <div>
           <h5 class="slide-title">이번주 베스트 조합</h5>
           <div class="card-container">
-            <ion-card class="card-box second">
-              <img src="/assets/img/temporary-img.png" class="temporary-img-card">
-              <ion-card-header>
-                <ion-card-subtitle class="card-box_user">
-                  <span class="card-box_user-name">윤수혁</span> 님의
-                </ion-card-subtitle>
-                <ion-card-title class="bold-title">무야호 샌드</ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="bold-title">3.7K</ion-card-content>
-            </ion-card>
+            
+            <rankBox style="height:127px; width:97px; margin-top:27px;" :rank="{ user:'윤수혁', title:'무야호 샌드', kcal:'3.7', src:'/assets/img/tab1/temporary-2nd.png', rank:2 }" />
+            <rankBox style="height:150px; width:120px;" :rank="{ user:'윤수혁', title:'머리가자라는 미트볼', kcal:'3.7', src:'/assets/img/tab1/temporary-1st.png', rank:1 }" />
+            <rankBox style="height:127px; width:97px; margin-top:27px;" :rank="{ user:'윤수혁', title:'무야호 샌드', kcal:'3.7', src:'/assets/img/tab1/temporary-3rd.png', rank:3 }" />
 
-            <ion-card class="card-box first">
-              <img src="/assets/img/temporary-img.png" class="temporary-img-card">
-              <ion-card-header>
-                <ion-card-subtitle class="card-box_user">
-                  <span class="card-box_user-name">윤수혁</span> 님의
-                </ion-card-subtitle>
-                <ion-card-title class="bold-title">무야호 샌드</ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="bold-title">3.7K</ion-card-content>
-            </ion-card>
-
-            <ion-card class="card-box third">
-              <img src="/assets/img/temporary-img.png" class="temporary-img-card">
-              <ion-card-header>
-                <ion-card-subtitle class="card-box_user">
-                  <span class="card-box_user-name">윤수혁</span> 님의
-                </ion-card-subtitle>
-                <ion-card-title class="bold-title">무야호 샌드</ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="bold-title">3.7K</ion-card-content>
-            </ion-card>
           </div>
         </div>
         </ion-slide>
@@ -63,39 +36,11 @@
           <div>
           <h5 class="slide-title">이달의 베스트 조합</h5>
           <div class="card-container">
+            
+            <rankBox style="height:127px; width:97px; margin-top:27px;" :rank="{ user:'윤수혁', title:'무야호 샌드', kcal:'3.7', src:'/assets/img/tab1/temporary-2nd.png', rank:2 }" />
+            <rankBox style="height:150px; width:120px;" :rank="{ user:'윤수혁', title:'머리가자라는 미트볼', kcal:'3.7', src:'/assets/img/tab1/temporary-1st.png', rank:1 }" />
+            <rankBox style="height:127px; width:97px; margin-top:27px;" :rank="{ user:'윤수혁', title:'무야호 샌드', kcal:'3.7', src:'/assets/img/tab1/temporary-3rd.png', rank:3 }" />
 
-            <ion-card class="card-box second">
-              <img src="/assets/img/temporary-img.png" class="temporary-img-card">
-              <ion-card-header>
-                <ion-card-subtitle class="card-box_user">
-                  <span class="card-box_user-name">윤수혁</span> 님의
-                </ion-card-subtitle>
-                <ion-card-title class="bold-title">무야호 샌드</ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="bold-title">3.7K</ion-card-content>
-            </ion-card>
-
-            <ion-card class="card-box first">
-              <img src="/assets/img/temporary-img.png" class="temporary-img-card">
-              <ion-card-header>
-                <ion-card-subtitle class="card-box_user">
-                  <span class="card-box_user-name">윤수혁</span> 님의
-                </ion-card-subtitle>
-                <ion-card-title class="bold-title">무야호 샌드</ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="bold-title">3.7K</ion-card-content>
-            </ion-card>
-
-            <ion-card class="card-box third">
-              <img src="/assets/img/temporary-img.png" class="temporary-img-card">
-              <ion-card-header>
-                <ion-card-subtitle class="card-box_user">
-                  <span class="card-box_user-name">윤수혁</span> 님의
-                </ion-card-subtitle>
-                <ion-card-title class="bold-title">무야호 샌드</ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="bold-title">3.7K</ion-card-content>
-            </ion-card>
           </div>
         </div>
         </ion-slide>
@@ -103,38 +48,11 @@
           <div>
           <h5 class="slide-title">아침은 드셨나요?<br>아침 꿀조합</h5>
           <div class="card-container">
-            <ion-card class="card-box second">
-              <img src="/assets/img/temporary-img.png" class="temporary-img-card">
-              <ion-card-header>
-                <ion-card-subtitle class="card-box_user">
-                  <span class="card-box_user-name">윤수혁</span> 님의
-                </ion-card-subtitle>
-                <ion-card-title class="bold-title">무야호 샌드</ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="bold-title">3.7K</ion-card-content>
-            </ion-card>
+            
+            <rankBox style="height:127px; width:97px; margin-top:27px;" :rank="{ user:'윤수혁', title:'무야호 샌드', kcal:'3.7', src:'/assets/img/tab1/temporary-2nd.png', rank:2 }" />
+            <rankBox style="height:150px; width:120px;" :rank="{ user:'윤수혁', title:'머리가자라는 미트볼', kcal:'3.7', src:'/assets/img/tab1/temporary-1st.png', rank:1 }" />
+            <rankBox style="height:127px; width:97px; margin-top:27px;" :rank="{ user:'윤수혁', title:'무야호 샌드', kcal:'3.7', src:'/assets/img/tab1/temporary-3rd.png', rank:3 }" />
 
-            <ion-card class="card-box first">
-              <img src="/assets/img/temporary-img.png" class="temporary-img-card">
-              <ion-card-header>
-                <ion-card-subtitle class="card-box_user">
-                  <span class="card-box_user-name">윤수혁</span> 님의
-                </ion-card-subtitle>
-                <ion-card-title class="bold-title">무야호 샌드</ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="bold-title">3.7K</ion-card-content>
-            </ion-card>
-
-            <ion-card class="card-box third">
-              <img src="/assets/img/temporary-img.png" class="temporary-img-card">
-              <ion-card-header>
-                <ion-card-subtitle class="card-box_user">
-                  <span class="card-box_user-name">윤수혁</span> 님의
-                </ion-card-subtitle>
-                <ion-card-title class="bold-title">무야호 샌드</ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="bold-title">3.7K</ion-card-content>
-            </ion-card>
           </div>
         </div>
         </ion-slide>
@@ -179,38 +97,8 @@
     justify-content: center;
     align-items: center;
   }
-
-  .second, .third {padding: 2% 2% 2% 2%;}
-
-  .first {padding: 4% 2% 4% 2%;}
-
-  .card-box {
-    flex-basis: 25%;
-    text-align: center;
-    border-radius: 20px;
-    box-shadow: 0px 3px 10px gray;
-  }
-
-  .bold-title {
-    color: black;
-    font-weight: bold;
-    font-size: 1em;
-  }
-
-  .card-box_user {font-size: 5px;}
-
-  .card-box_user-name {color: green;}
-
-  .temporary-img-card {
-    width: 100%; 
-    height: auto; 
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   .eventAds {
-    margin-top: 10%;
+    margin-top: 20px;
     text-align: center;
   }
 
@@ -218,15 +106,16 @@
 
 <script>
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonSlides, IonSlide} from '@ionic/vue';
+import rankBox from '@/components/RankBox.vue';
 
 export default  {
   name: 'Tab1',
-  components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonSlides, IonSlide},
+  components: { rankBox, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonSlides, IonSlide},
   setup() {
     // Optional parameters to pass to the swiper instance. See http://idangero.us/swiper/api/ for valid options.
     
     const slideOpts = {
-      initialSlide: 1,
+      initialSlide: 0,
       speed: 400
     };
 
