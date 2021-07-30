@@ -1,13 +1,11 @@
 <template>
-    <div id="container">
         <ion-card class="menu-box">
             <ion-card-header class="menu-box-header" @click='select(info)'>
-                <img :src="info.src" :alt="info.name" />
+                <img class="menu-img" :src="info.src" :alt="info.name" />
                 <ion-card-title class="menu-name">{{ info.name }}</ion-card-title>
                 <ion-card-subtitle class="menu-kcal">{{ info.kcal }}Kcal</ion-card-subtitle>
             </ion-card-header>
         </ion-card>
-    </div>
 </template>
 
 <style scoped>
@@ -19,32 +17,36 @@
         src: url(../../public/assets/font/NanumGothicExtraBold.ttf);
     }
 
+    .menu-box-header {
+        padding: 0;
+        margin: 0;
+    }
+
     .menu-name, .menu-kcal {
         font-weight: bold;
         color: black;
         font-family: NanumGothicExtraBold;
     }
 
-    .menu-box {
-        border-radius: 30px;
+    .menu-img {
+        padding: 5px;
     }
 
     @media screen and (max-width: 360px) {
         .menu-box {
             width: 80px;
             height: 90px;
+            border-radius: 15px;
+            box-shadow: 1px 4px 5px 0px lightgrey;
         }
 
         .menu-name, .menu-kcal {
-            font-size: xx-small;
+            font-size: 1px;
         }
 
-        .menu-kcal {
-            display: none;
-        }
     }
 
-    @media screen and (min-width: 360px) and (max-width: 480px) {
+    @media screen and (min-width: 360px) and (max-width:480px) {
         .menu-box {
             width: 100px;
             height: 112px;
@@ -54,8 +56,8 @@
             font-size: xx-small;
         }
 
-        .menu-kcal {
-            display: none;
+        .menu-img {
+            height: 60px;
         }
   }
 

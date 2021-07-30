@@ -1,27 +1,37 @@
 <template>
-        <ion-card class="card-box">
-            <img :src="rank.src" class="menu-img first" v-if="rank.rank === 1">
-            <img :src="rank.src" class="menu-img notFirst" v-else>
+        <ion-card class="card-box card-1st" v-if="rank.rank == 1">
+            <img :src="rank.src" class="menu-img first">
             <ion-card-header>
                 <ion-card-subtitle class="user-name">
                     <span style="color:#08A965;">{{rank.user}}</span>님의
                 </ion-card-subtitle>
-                <ion-card-title class="menu-info">{{rank.title}}</ion-card-title>
+                <ion-card-title class="menu-info menu-title">{{rank.title}}</ion-card-title>
+                <ion-card-subtitle class="menu-info menu-kcal">{{rank.kcal}}K</ion-card-subtitle>
             </ion-card-header>
-            <ion-card-content class="menu-info">{{rank.kcal}}K</ion-card-content>
+        </ion-card>
+
+        <ion-card class="card-box card-not-1st" v-else>
+            <img :src="rank.src" class="menu-img notFirst">
+            <ion-card-header>
+                <ion-card-subtitle class="user-name">
+                    <span style="color:#08A965;">{{rank.user}}</span>님의
+                </ion-card-subtitle>
+                <ion-card-title class="menu-info menu-title">{{rank.title}}</ion-card-title>
+                <ion-card-subtitle class="menu-info menu-kcal">{{rank.kcal}}K</ion-card-subtitle>
+            </ion-card-header>
         </ion-card>
 </template>
 
 <style scoped>
 
-    ion-card-header, ion-card-content {
+    ion-card-header {
         padding: 0;
         margin: 0;
     }
 
-    ion-card-content {
-        margin-top: 20px;
-    }
+    .menu-img { padding:7px; }
+    .notFirst { height: 46px; }
+    .first { height: 59px; }
 
     .card-box {
         border-radius: 15px;
@@ -29,16 +39,34 @@
         margin: 5px;
     }
 
-    .menu-img {
-        padding:7px;
+    @media screen and (max-width: 360px) {
+        .menu-kcal { margin-top: 7px; }
+
+        .card-1st {
+            height:130px; 
+            width:100px;
+        }
+
+        .card-not-1st {
+            height:107px; 
+            width:77px; 
+            margin-top:27px;
+        }
     }
 
-    .notFirst {
-        height: 46px;
-    }
+    @media screen and (min-width: 360px) {
+        .menu-kcal { margin-top: 15px; }
 
-    .first {
-        height: 59px;
+        .card-1st {
+            height:150px; 
+            width:120px;
+        }
+
+        .card-not-1st {
+            height:127px; 
+            width:97px; 
+            margin-top:27px;
+        }
     }
 
     .user-name {
