@@ -28,9 +28,9 @@
           <h5 class="slide-title">이달의 베스트 조합</h5>
           <div class="card-container">
             
-            <rankBox style="height:127px; width:97px; margin-top:27px;" :rank="{ user:'윤수혁', title:'무야호 샌드', kcal:'3.7', src:'/assets/img/tab1/temporary-2nd.png', rank:2 }" />
-            <rankBox style="height:150px; width:120px;" :rank="{ user:'윤수혁', title:'머리가자라는 미트볼', kcal:'3.7', src:'/assets/img/tab1/temporary-1st.png', rank:1 }" />
-            <rankBox style="height:127px; width:97px; margin-top:27px;" :rank="{ user:'윤수혁', title:'무야호 샌드', kcal:'3.7', src:'/assets/img/tab1/temporary-3rd.png', rank:3 }" />
+            <rankBox :rank="{ user:'윤수혁', title:'무야호 샌드', kcal:'3.7', src:'/assets/img/tab1/temporary-2nd.png', rank:2 }" />
+            <rankBox :rank="{ user:'윤수혁', title:'머리가자라는 미트볼', kcal:'3.7', src:'/assets/img/tab1/temporary-1st.png', rank:1 }" />
+            <rankBox :rank="{ user:'윤수혁', title:'무야호 샌드', kcal:'3.7', src:'/assets/img/tab1/temporary-3rd.png', rank:3 }" />
 
           </div>
         </div>
@@ -40,9 +40,9 @@
           <h5 class="slide-title">아침은 드셨나요?<br>아침 꿀조합</h5>
           <div class="card-container">
             
-            <rankBox style="height:127px; width:97px; margin-top:27px;" :rank="{ user:'윤수혁', title:'무야호 샌드', kcal:'3.7', src:'/assets/img/tab1/temporary-2nd.png', rank:2 }" />
-            <rankBox style="height:150px; width:120px;" :rank="{ user:'윤수혁', title:'머리가자라는 미트볼', kcal:'3.7', src:'/assets/img/tab1/temporary-1st.png', rank:1 }" />
-            <rankBox style="height:127px; width:97px; margin-top:27px;" :rank="{ user:'윤수혁', title:'무야호 샌드', kcal:'3.7', src:'/assets/img/tab1/temporary-3rd.png', rank:3 }" />
+            <rankBox :rank="{ user:'윤수혁', title:'무야호 샌드', kcal:'3.7', src:'/assets/img/tab1/temporary-2nd.png', rank:2 }" />
+            <rankBox :rank="{ user:'윤수혁', title:'머리가자라는 미트볼', kcal:'3.7', src:'/assets/img/tab1/temporary-1st.png', rank:1 }" />
+            <rankBox :rank="{ user:'윤수혁', title:'무야호 샌드', kcal:'3.7', src:'/assets/img/tab1/temporary-3rd.png', rank:3 }" />
 
           </div>
         </div>
