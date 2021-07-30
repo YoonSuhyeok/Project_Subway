@@ -156,6 +156,7 @@
   .title-img {
     width: 30px;
     margin-right: 5px;
+    margin-left: 20px;
   }
 
   .title {
