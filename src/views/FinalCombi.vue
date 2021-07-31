@@ -1,9 +1,11 @@
 <template>
     <ion-page>
         <ion-header>
-            <ion-title class="title">
-                <h5><b>최종 조합</b></h5>
-            </ion-title>
+            <ion-toolbar>
+                <ion-title class="title">
+                    <h5><b>최종 조합</b></h5>
+                </ion-title>
+            </ion-toolbar>
         </ion-header>
         
 
@@ -15,7 +17,15 @@
         :disabled="isDisabled"
       >
         
-        <Combi />
+        <Combi :combi="{ type: 0, name: menu.name , kcal: menu.kcal, src: menu.src }" />
+        <Combi :combi="{ type: 1, name: bread.name , kcal: bread.kcal, src: bread.src }" />
+        <Combi :combi="{ type: 2, name: vegetable.name , kcal: vegetable.kcal, src: vegetable.src }" />
+        <Combi :combi="{ type: 3, name: source.name , kcal: source.kcal, src: source.src }" />
+
+        <h3 style="text-align:center; margin: 30px;"><b>
+            총 합계 {{ menu.kcal + bread.kcal + vegetable.kcal + source.kcal }}Kcal
+        </b></h3>
+        
         <p style="margin-bottom:5px;" class="align-center" >반응 표시</p>
         
         <ion-progress-bar value="0.5" color="success" style="padding:7px; margin-bottom:20px;" class="align-center"></ion-progress-bar>
@@ -73,13 +83,20 @@
 <script lang="ts">
 import Combi from '@/components/Combi.vue'
 import { IonProgressBar, IonInput, IonButton, IonLabel, IonInfiniteScroll } from '@ionic/vue';
+import { computed } from '@vue/runtime-core';
+import { useStore } from 'vuex';
 
 export default  {
     name: 'Final',
     components: { Combi, IonProgressBar, IonInput, IonButton, IonLabel, IonInfiniteScroll },
-    setup(){
-        return {
-        }
+    setup() {
+        const store = useStore();
+        return { 
+            menu: computed(() => store.getters.getSelectMenu),
+            bread: computed(() => store.getters.getSelectBread),
+            vegetable: computed(() => store.getters.getSelectVege),
+            source: computed(() => store.getters.getSelectSource),
+        };
     }
 }
 
