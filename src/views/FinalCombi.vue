@@ -22,7 +22,7 @@
         <Combi :combi="{ type: 2, name: vegetable.name , kcal: vegetable.kcal, src: vegetable.src }" />
         <Combi :combi="{ type: 3, name: source.name , kcal: source.kcal, src: source.src }" />
 
-        <h3 style="text-align:center; margin: 30px;"><b>
+        <h3 style="text-align:center; margin: 30px;" :combi-kcal="menu.kcal + bread.kcal + vegetable.kcal + source.kcal"><b>
             총 합계 {{ menu.kcal + bread.kcal + vegetable.kcal + source.kcal }}Kcal
         </b></h3>
         
@@ -31,9 +31,9 @@
         <ion-progress-bar value="0.5" color="success" style="padding:7px; margin-bottom:20px;" class="align-center"></ion-progress-bar>
 
 
-        <ion-input placeholder="메뉴 닉네임 설정" class="align-center" ></ion-input>
+        <ion-input placeholder="메뉴 닉네임 설정" class="align-center"></ion-input>
 
-        <ion-button class="align-center" style="margin-top:50px;">
+        <ion-button @click="presentAlert" class="align-center" style="margin-top:50px;">
             <ion-label><b>저장하기</b></ion-label>
         </ion-button>
 
@@ -78,17 +78,87 @@
         font-weight: bold;
         color: #009132;
     }
+
+</style>
+
+<!--
+<style lang="scss">
+    .alertWindow {
+        text-align: center;
+    }
+
+    .alertCancelBtn {
+        background-color: darkgrey;
+        color: gray;
+    }
+
+    .alertSaveBtn {
+        background-color: darkgrey;
+        color: gray;
+    }
+</style>
+-->
+
+<style>
+    .alertWindow {
+        height: 500px;
+    }
+
+    .alertCancelBtn {
+        --background: pink;
+        --background-activated: red;
+        --height: 10px;
+    }
+
+    .alertSaveBtn {
+        --background: pink;
+    }
 </style>
 
 <script lang="ts">
 import Combi from '@/components/Combi.vue'
-import { IonProgressBar, IonInput, IonButton, IonLabel, IonInfiniteScroll } from '@ionic/vue';
+import { IonProgressBar, IonInput, IonButton, IonLabel, IonInfiniteScroll, alertController } from '@ionic/vue';
 import { computed } from '@vue/runtime-core';
 import { useStore } from 'vuex';
 
 export default  {
     name: 'Final',
     components: { Combi, IonProgressBar, IonInput, IonButton, IonLabel, IonInfiniteScroll },
+    methods: {
+        async presentAlert() {
+            const alert = await alertController
+                .create({
+                    cssClass: 'alertWindow',
+                    header: 'SUBWAY MESSAGE',
+                    subHeader: '이대로 완성할까요?',
+                    // message: 'This is an alert message.',
+                    buttons: [
+                        {
+                            text: '수정할래요!',
+                            role: 'cancel',
+                            cssClass: 'alertCancelBtn',
+                            handler: () => {
+                                console.log('Confirm Cancel')
+                                window.location.href='/tabs/tab2';
+                            },
+                        },
+                        {
+                            text: '좋아요!',
+                            role: 'save',
+                            cssClass: 'alertSaveBtn',
+                            handler: () => {
+                                console.log('Confirm Save')
+                                window.location.href='/my';
+                            },
+                        },
+                    ],
+                });
+            await alert.present();
+
+            const { role } = await alert.onDidDismiss();
+            console.log('onDidDismiss resolved with role', role);
+        }
+    },
     setup() {
         const store = useStore();
         return { 
