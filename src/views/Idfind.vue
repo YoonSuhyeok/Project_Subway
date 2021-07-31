@@ -99,12 +99,11 @@ import { IonLabel, IonInput, IonApp, IonSegment, IonButton, IonSegmentButton, Io
 export default {
     name: 'Idfind',
     components: { IonLabel, IonInput, IonApp, IonSegment, IonButton, IonSegmentButton, IonTitle, IonToolbar ,IonText },
-    data () {
+    setup () {
+
         return {
-            segmentModel: 'findid'
+            segmentModel: 'findid',
         }
-    },
-    method: {
     }
 }
 </script>

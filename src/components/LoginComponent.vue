@@ -44,8 +44,8 @@
             </ion-item>
             <ion-list style="background: rgba(250, 255, 235, 0);">
                 <SimpleLogins v-bind="kakao" v-on:click="kakaobtn"></SimpleLogins>
-                <SimpleLogins v-bind="naver" @click="naverbtn"></SimpleLogins>
-                <SimpleLogins v-bind="google" @click="googlebtn"></SimpleLogins>
+                <SimpleLogins v-bind="naver" v-on:click="naverbtn"></SimpleLogins>
+                <SimpleLogins v-bind="google" v-on:click="googlebtn"></SimpleLogins>
             </ion-list>
         </div>
     </div>
