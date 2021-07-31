@@ -16,14 +16,31 @@
         id="infinite-scroll"
         :disabled="isDisabled"
       >
-        
+
         <Combi :combi="{ type: 0, name: menu.name , kcal: menu.kcal, src: menu.src }" />
         <Combi :combi="{ type: 1, name: bread.name , kcal: bread.kcal, src: bread.src }" />
-        <Combi :combi="{ type: 2, name: vegetable.name , kcal: vegetable.kcal, src: vegetable.src }" />
-        <Combi :combi="{ type: 3, name: source.name , kcal: source.kcal, src: source.src }" />
 
-        <h3 style="text-align:center; margin: 30px;" :combi-kcal="menu.kcal + bread.kcal + vegetable.kcal + source.kcal"><b>
-            총 합계 {{ menu.kcal + bread.kcal + vegetable.kcal + source.kcal }}Kcal
+        <span v-for="t1 in topings" :key="t1">
+            <span v-for="t2 in allTopings" :key="t2.Extra_id + t2.Extra_name">
+                <Combi v-if="t1 === t2.Extra_name" :combi="{ type: 2, name: t2.Extra_name , kcal: t2.Extra_calorie, src: t2.Extra_imageUrl }" />
+            </span>
+        </span>
+
+        <span v-for="v1 in vegetables" :key="v1">
+            <span v-for="v2 in allVeges" :key="v2.Ingredient_id + v2.Ingredient_name">
+                <Combi v-if="v1 === v2.Ingredient_name" :combi="{ type: 3, name: v2.Ingredient_name , kcal: v2.Ingredient_calorie, src: v2.Ingredient_imageUrl }" />
+            </span>
+        </span>
+
+        <span v-for="s1 in sources" :key="s1">
+            <span v-for="s2 in allSources" :key="s2.Ingredient_id + s2.Ingredient_name">
+                <Combi v-if="s1 === s2.Ingredient_name" :combi="{ type: 4, name: s2.Ingredient_name , kcal: s2.Ingredient_calorie, src: s2.Ingredient_imageUrl }" />
+            </span>
+        </span>
+
+        <h3 style="text-align:center; margin: 30px;"><b>
+            총 합계 칼로리
+            <!-- {{ menu.kcal + bread.kcal + vegetable.kcal + source.kcal }}Kcal -->
         </b></h3>
         
         <p style="margin-bottom:5px;" class="align-center" >반응 표시</p>
@@ -164,8 +181,12 @@ export default  {
         return { 
             menu: computed(() => store.getters.getSelectMenu),
             bread: computed(() => store.getters.getSelectBread),
-            vegetable: computed(() => store.getters.getSelectVege),
-            source: computed(() => store.getters.getSelectSource),
+            topings: computed(() => store.getters.getSelectTopingList),
+            allTopings: computed(() => store.getters.getExtraList),
+            vegetables: computed(() => store.getters.getSelectVegeList),
+            allVeges: computed(() => store.getters.getVegetableList),
+            sources: computed(() => store.getters.getSelectSourceList),
+            allSources: computed(() => store.getters.getSourceList)
         };
     }
 }

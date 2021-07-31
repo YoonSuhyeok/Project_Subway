@@ -25,7 +25,8 @@ export default{
     props: ["mycombi"],
     components: { MyCombination },
     setup() {
-        
+        return {
+        }
     },
 }
 </script>

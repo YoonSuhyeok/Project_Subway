@@ -81,6 +81,7 @@
             <ion-button strong="true" class="mb_active" v-on:click="clickedSource" v-else><h5><b>소스</b></h5></ion-button>
 
             <div class="box-container" v-if="state.selectVegeSource === 'vegetable'">
+
               <div v-for="vegetable in vegetables" :key="vegetable.Ingredient_id + vegetable.Ingredient_name">
                 <Items :info="{ type: 3,name: vegetable.Ingredient_name , kcal: vegetable.Ingredient_calorie, src: vegetable.Ingredient_imageUrl }" />
               </div>
@@ -200,7 +201,7 @@
       // Optional parameters to pass to the swiper instance. See http://idangero.us/swiper/api/ for valid options.
       const store = useStore();
       const slideOpts = {
-        initialSlide: 0,
+        initialSlide: 3,
         speed: 400,
       }
       const state = reactive({

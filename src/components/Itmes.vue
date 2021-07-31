@@ -130,8 +130,19 @@
                         }
                         break;
                     }
+                    case 2: {
+                        const currentToping = store.getters.getSelectTopingList;
+                        store.dispatch('selectTopingList', info.name)
+                        console.log("select vege info.name : " + info.name)
+                        console.log("vege list : "+ store.getters.getSelectTopingList);
+                        break;
+                    }
                     case 3: {
                         const currentVege = store.getters.getSelectVege;
+                        store.dispatch('selectVegeList', info.name)
+                        console.log("select vege info.name : " + info.name)
+                        console.log("vege list : "+ store.getters.getSelectVegeList);
+
                         if(currentVege.name == info.name) { 
                             store.dispatch('selectVege', '' );
                         }
@@ -142,6 +153,10 @@
                     }
                     case 4: {
                         const currentSource = store.getters.getSelectSource;
+                        store.dispatch('selectSourceList', info.name)
+                        console.log("select source info.name : " + info.name)
+                        console.log("source list : " + store.getters.getSelectSourceList);
+
                         if(currentSource.name == info.name) { 
                             store.dispatch('selectSource', '' ); 
                         }

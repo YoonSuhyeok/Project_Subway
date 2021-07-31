@@ -17,8 +17,9 @@ export const store = createStore({
     refreshToken: '',
     selectMenu: '',
     selectBread: '',
-    selectVege: '',
-    selectSource: '',    
+    selectTopingList: [''],
+    selectVegeList: [''],
+    selectSourceList: [''],    
   },
   mutations: {
     setBreadList(state, breadList){
@@ -58,11 +59,32 @@ export const store = createStore({
     selectBread(state, data: string){
       state.selectBread = data;
     },
-    selectVege(state, data: string){
-      state.selectVege = data;
+    selectTopingList(state, data:string){
+      if (!state.selectTopingList.includes(data)) {
+        state.selectTopingList.push(data);
+      } else {
+        const currentIndex = state.selectTopingList.indexOf(data);
+        state.selectTopingList.splice(currentIndex, 1);
+      }
+      state.selectTopingList.sort();
     },
-    selectSource(state, data: string){
-      state.selectSource = data;
+    selectVegeList(state, data:string){
+      if (!state.selectVegeList.includes(data)) {
+        state.selectVegeList.push(data);
+      } else {
+        const currentIndex = state.selectVegeList.indexOf(data);
+        state.selectVegeList.splice(currentIndex, 1);
+      }
+      state.selectVegeList.sort();
+    },
+    selectSourceList(state, data:string){
+      if (!state.selectSourceList.includes(data)) {
+        state.selectSourceList.push(data);
+      } else {
+        const currentIndex = state.selectSourceList.indexOf(data);
+        state.selectSourceList.splice(currentIndex, 1);
+      }
+      state.selectSourceList.sort();
     },
   },
   actions: {
@@ -95,11 +117,14 @@ export const store = createStore({
     selectBread({commit}, data){
       commit('selectBread', data);
     },
-    selectVege({commit}, data){
-      commit('selectVege', data);
+    selectTopingList({commit}, data){
+      commit('selectTopingList', data);
     },
-    selectSource({commit}, data){
-      commit('selectSource', data);
+    selectVegeList({commit}, data){
+      commit('selectVegeList', data);
+    },
+    selectSourceList({commit}, data){
+      commit('selectSourceList', data);
     },
   },
   getters: {
@@ -136,11 +161,17 @@ export const store = createStore({
     getSelectBread: function(state) {
       return state.selectBread;
     },
-    getSelectVege: function(state){
-      return state.selectVege;
+    getSelectTopingList: function(state){
+      console.log('getSelectTopingList : ' + state.selectTopingList);
+      return state.selectTopingList;
     },
-    getSelectSource: function(state){
-      return state.selectSource;
+    getSelectVegeList: function(state){
+      console.log('getSelectVegeList : ' + state.selectVegeList);
+      return state.selectVegeList;
+    },
+    getSelectSourceList: function(state){
+      console.log('getSelectSourceList : ' + state.selectSourceList);
+      return state.selectSourceList;
     },
   },
   plugins: [createPersistedState()]
