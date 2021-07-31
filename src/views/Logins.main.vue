@@ -1,5 +1,5 @@
 <template>
-  <ion-page id="app">
+  <ion-page id="Logins.main">
     <ion-header :translucent="true">
       <ion-toolbar style="text-align:center;">
         <ion-title><b>로그인</b></ion-title>
@@ -18,8 +18,8 @@
           <img src="/assets/img/logo.png" class="logo">
           <ion-text>서브웨이 마스터와<br><strong>더 맛있고 건강한 레시피</strong></ion-text>
         </div>
-      
-        <div class="login_button" v-if="loginType === 'mainlogin'">
+        
+        <div class="login_button" v-if="loginType == 1">
           <section>
               <ion-button color="success" fill="solid" expand="block" size="large">
                   <img src="/assets/icon/naver.png" class="navericon" width="50">
@@ -27,21 +27,20 @@
                   </ion-button>
           </section>
           <section>
-              <ion-button color="warning" fill="solid" expand="block" size="large" v-model="loginType" v-on:click="otherLoginbtn">다른 계정으로 로그인</ion-button>
+              <ion-button color="warning" fill="solid" expand="block" size="large" v-model="loginType" value=2 @click="changebtn(2)">다른 계정으로 로그인</ion-button>
           </section>
         </div>
-        
-        <div class="other_login" v-else-if="loginType === 'otherlogin'">
+
+        <div class="other_login" v-else-if="loginType == 2">
           <div class="imgbutton">
             <ion-button fill="clear" size="large"><img src="/assets/icon/kakao.png" class="kakao" width="40"></ion-button>
-            <ion-button fill="clear" size="large"><img src="/assets/icon/facebook.png" class="facebook" width="40"></ion-button>
             <ion-button fill="clear" size="large"><img src="/assets/icon/google.png" class="google" width="40"></ion-button>
           </div>
           <div class="emailbutton">
-            <ion-button size="large" fill="outline" expand="block" color="dark" v-model="loginType" v-on:click="emaiLoginbtn">이메일로 로그인</ion-button>
+            <ion-button size="large" fill="outline" expand="block" color="dark" v-model="loginType" value=3 @click="changebtn(3)">이메일로 로그인</ion-button>
           </div>
         </div>
-        <div class="email_login" v-else-if="loginType === 'emaillogin'">
+        <div class="email_login" v-else-if="loginType == 3">
           <div class="cls_section">
             <ion-input id="NAME" placeholder="이름" />
             <ion-input id="EMAIL" placeholder="이메일 주소" />  
@@ -68,7 +67,11 @@
               </div>
             </div>
           </div>
-        </div>  
+        </div>
+
+        <div v-else>
+          <p>오류 처리 페이지</p>
+        </div>
       </div>
     </ion-content>
 
@@ -92,21 +95,14 @@ export default {
     IonText
   },
   setup () {
-
-    const otherLoginbtn = function () {
-      console.log("otherlogin");
-      this.loginType = 'otherlogin'
-    }
-
-    const emaiLoginbtn = function() {
-      console.log("emaillogin");
-      this.loginType = 'emaillogin'
+    const changebtn = (type) => {
+      // 왜 this로 참조가 안될까
+      this.loginType = type;
     }
 
     return {
-      loginType: 'mainlogin',
-      otherLoginbtn,
-      emaiLoginbtn
+      loginType: 1,
+      changebtn
     }
   }
 }

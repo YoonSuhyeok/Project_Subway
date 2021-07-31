@@ -21,7 +21,7 @@
         </ion-toolbar>
 
         <!--아이디찾기-->
-        <div class="cls_segmentview" v-if="segmentModel === 'findid'">
+        <div class="cls_segmentview" v-if="segmentModel === 'findid'" >
             <div class="cls_input">
                 <ion-input id="NAME_id" key="id-input" placeholder="이름" />
                 <ion-input id="PHONE_id" key="id-input" placeholder="휴대폰 번호" />
@@ -37,7 +37,7 @@
         </div>
 
         <!--비밀번호 찾기-->
-        <div class="cls_segmentview" v-else-if="segmentModel === 'findpw'">
+        <div class="cls_segmentview" v-else-if="segmentModel === 'findpw'" >
             <div class="cls_input">
                 <ion-input id="NAME_pw" key="pw-input" placeholder="이름" />
                 <ion-input id="EMAIL_pw" key="pw-input" placeholder="이메일 주소"/>
@@ -100,7 +100,6 @@ export default {
     name: 'Idfind',
     components: { IonLabel, IonInput, IonApp, IonSegment, IonButton, IonSegmentButton, IonTitle, IonToolbar ,IonText },
     setup () {
-
         return {
             segmentModel: 'findid',
         }
