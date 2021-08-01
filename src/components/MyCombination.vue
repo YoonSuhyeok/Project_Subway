@@ -1,25 +1,25 @@
 <template>
-    <ion-card class="combi-card" v-if="combi.name">
-        <img class="combi-img" :src=combi.src alt="">
-        <div class="combi-content">
-            <div class="combi-title">{{ combi.name }}</div>
-            <div class="combi-kcal">{{ combi.kcal }}KCAL</div>
+    <ion-card class="mycombi-card" v-if="mycombi.name">
+        <!-- <img class="mycombi-img" :src=mycombi.src alt=""> -->
+        <div class="mycombi-content">
+            <div class="mycombi-title">{{ mycombi.name }}</div>
+            <div class="mycombi-kcal">{{ mycombi.kcal }}KCAL</div>
         </div>
     </ion-card>
 </template>
 
 <style scoped>
-    .combi-card {
+    .mycombi-card {
         display: flex;
         font-weight: bold;
     }
     
-    .combi-img {
+    .mycombi-img {
         height: 80px;
         padding: 10px;
     }
 
-    .combi-content {
+    .mycombi-content {
         width: 100%;
         padding-top: 7%;
         display: inline-block;
@@ -31,7 +31,7 @@
     import { IonCard } from '@ionic/vue';
 
     export default {
-        props: ["combi"],
+        props: ["mycombi"],
         components: { IonCard },
         setup(){
             return {

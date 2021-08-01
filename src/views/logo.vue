@@ -5,8 +5,8 @@
                 <img src="/assets/img/logo.png" class="logo">
                 <img src="/assets/img/SUBWAY MASTER.png" alt="">
                 <!-- <h1 class="logo_text"><b>나만의 서브웨이 레시피</b></h1> -->
-                <div class="box_left"><img src="/assets/img/splash_left.png" alt=""></div>
-                <div class="box_right"><img src="/assets/img/splash_right.png" alt=""></div>
+                <div class="box_left"><img src="/assets/img/no-use/splash_left.png" alt=""></div>
+                <div class="box_right"><img src="/assets/img/no-use/splash_right.png" alt=""></div>
                 <div class="persons">
                     <img src="/assets/img/logo/logo_person1.png" alt="" class="person person1">
                     <img src="/assets/img/logo/logo_person2.png" alt="" class="person person2">

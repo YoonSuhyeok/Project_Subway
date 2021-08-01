@@ -1,13 +1,11 @@
 <template>
-    <div id="container">
         <ion-card class="menu-box">
-            <ion-card-header class="menu-box-header" @click='select(info.type, info.name)'>
-                <img :src="info.src" :alt="info.name" />
+            <ion-card-header class="menu-box-header" @click='select(info)'>
+                <img class="menu-img" :src="info.src" :alt="info.name" />
                 <ion-card-title class="menu-name">{{ info.name }}</ion-card-title>
                 <ion-card-subtitle class="menu-kcal">{{ info.kcal }}Kcal</ion-card-subtitle>
             </ion-card-header>
         </ion-card>
-    </div>
 </template>
 
 <style scoped>
@@ -19,50 +17,62 @@
         src: url(../../public/assets/font/NanumGothicExtraBold.ttf);
     }
 
+    .menu-box-header {
+        padding: 0;
+        margin: 0;
+    }
+
     .menu-name, .menu-kcal {
+        padding: 0;
+        margin: 0;
         font-weight: bold;
         color: black;
         font-family: NanumGothicExtraBold;
     }
 
-    .menu-box {
-        border-radius: 30px;
-    }
-
     @media screen and (max-width: 360px) {
         .menu-box {
             width: 80px;
-            height: 90px;
+            height: 85px;
+            border-radius: 15px;
+            box-shadow: 1px 4px 5px 0px lightgrey;
         }
 
         .menu-name, .menu-kcal {
-            font-size: xx-small;
+            font-size: 1px;
         }
 
-        .menu-kcal {
-            display: none;
+        .menu-img {
+            height: 40px;
+            padding: 0;
         }
+
     }
 
-    @media screen and (min-width: 360px) and (max-width: 480px) {
+    @media screen and (min-width: 360px) and (max-width:480px) {
         .menu-box {
             width: 100px;
-            height: 112px;
+            height: 100px;
+            border-radius: 25px;
+            box-shadow: 1px 4px 5px 0px lightgrey;
         }
 
         .menu-name, .menu-kcal {
-            font-size: xx-small;
+            font-size: 2px;
         }
 
-        .menu-kcal {
-            display: none;
+        .menu-img {
+            height: 60px;
+            padding: 0;
         }
   }
 
     @media screen and (min-width: 480px) and (max-width:768px) {
         .menu-box {
             width: 130px;
-            height: 135px;
+            height: 130px;
+            border-radius: 35px;
+            box-shadow: 3px 7px 5px 0px lightgrey;
         }
 
         .menu-name, .menu-kcal {
@@ -74,12 +84,19 @@
         .menu-box {
             width: 200px;
             height: 200px;
+            border-radius: 45px;
+            box-shadow: 3px 7px 5px 0px lightgrey;
         }
 
         .menu-name, .menu-kcal {
             font-size: 15px;
         }
   }
+
+    .backGreen {
+        background-color: green;
+    }
+
 
 </style>
 
@@ -92,35 +109,76 @@
         components: { IonCard },
         setup(){
             const store = useStore();
-            const select = (type, name) => {
-                console.log(type)
-                console.log(name);
-                switch(type){
+            const select = (info) => {
+                console.log("info.isClick : " + info.isClick)
+                const backGreen = document.querySelector('.menu-box + ion-card');
+                console.log(backGreen);
+                if (info.isClick) {
+                    backGreen.classList.remove('backGreen');
+                    info.isClick = 0;
+                } else {
+                    backGreen.classList.add('backGreen');
+                    info.isClick = 1;
+                }
+
+                console.log(info.type)
+                console.log(info.name)
+                console.log(info.kcal)
+                console.log(info.src);
+                switch(info.type){
                     case 0: {
-                        const list = store.getters.getSelectMenu;
-                        if(list == name) { store.dispatch('selectMenu', '' ); }
-                        else { store.dispatch('selectMenu', name ); }
+                        const currentMenu = store.getters.getSelectMenu;
+                        if(currentMenu.name == info.name) { 
+                            store.dispatch('selectMenu', '' );
+                        }
+                        else { 
+                            store.dispatch('selectMenu', info );
+                        }
                         break;
                     }
                     case 1: {
-                        const list = store.getters.getSelectBread;
-                        if(list == name) { store.dispatch('selectBread', '' ); }
-                        else { store.dispatch('selectBread', name ); }
-                        console.log(store.getters.getSelectBread);
+                        const currentBread = store.getters.getSelectBread;
+                        if(currentBread.name == info.name) { 
+                            store.dispatch('selectBread', '' ); 
+                        }
+                        else { 
+                            store.dispatch('selectBread', info );
+                        }
+                        break;
+                    }
+                    case 2: {
+                        const currentToping = store.getters.getSelectTopingList;
+                        store.dispatch('selectTopingList', info.name)
+                        console.log("select vege info.name : " + info.name)
+                        console.log("vege list : "+ store.getters.getSelectTopingList);
                         break;
                     }
                     case 3: {
-                        const list = store.getters.getSelectVegetable;
-                        if(list == name) { store.dispatch('selectVegetable', '' ); }
-                        else { store.dispatch('selectVegetable', name ); }
-                        console.log(store.getters.getSelectVegetable)
+                        const currentVege = store.getters.getSelectVege;
+                        store.dispatch('selectVegeList', info.name)
+                        console.log("select vege info.name : " + info.name)
+                        console.log("vege list : "+ store.getters.getSelectVegeList);
+
+                        if(currentVege.name == info.name) { 
+                            store.dispatch('selectVege', '' );
+                        }
+                        else { 
+                            store.dispatch('selectVege', info );
+                        }
                         break;
                     }
                     case 4: {
-                        const list = store.getters.getSelectSource;
-                        if(list == name) { store.dispatch('selectSource', '' ); }
-                        else { store.dispatch('selectSource', name ); }
-                        console.log(store.getters.getSelectSource)
+                        const currentSource = store.getters.getSelectSource;
+                        store.dispatch('selectSourceList', info.name)
+                        console.log("select source info.name : " + info.name)
+                        console.log("source list : " + store.getters.getSelectSourceList);
+
+                        if(currentSource.name == info.name) { 
+                            store.dispatch('selectSource', '' ); 
+                        }
+                        else { 
+                            store.dispatch('selectSource', info );
+                        }
                         break;
                     }
                 }

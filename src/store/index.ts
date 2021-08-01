@@ -11,13 +11,15 @@ export const store = createStore({
     menuClassicList: [],
     vegetableList: [],
     sourceList: [],
+    extraList: [],
     userId: 'unknown_user',
     accessToken: '',
     refreshToken: '',
     selectMenu: '',
     selectBread: '',
-    selectVegetable: '',
-    selectSource: ''    
+    selectTopingList: [''],
+    selectVegeList: [''],
+    selectSourceList: [''],    
   },
   mutations: {
     setBreadList(state, breadList){
@@ -39,6 +41,9 @@ export const store = createStore({
     setSourceList(state, sourceList){
       state.sourceList = sourceList;
     },
+    setExtraList(state, extraList) {
+      state.extraList = extraList;
+    },
     setUserId(state, userId) {
       state.userId = userId;
     },
@@ -48,20 +53,39 @@ export const store = createStore({
     setRefreshToken(state, token){
       state.refreshToken = token;
     },
-    selectMenu(state, data:string){
+    selectMenu(state, data: string){
       state.selectMenu = data;
     },
-    selectBread(state, data:string){
+    selectBread(state, data: string){
       state.selectBread = data;
     },
-    selectVegetable(state, data:string){
-      state.selectVegetable = data;
-      console.log(data + "?")
-      console.log(state.selectVegetable)
+    selectTopingList(state, data:string){
+      if (!state.selectTopingList.includes(data)) {
+        state.selectTopingList.push(data);
+      } else {
+        const currentIndex = state.selectTopingList.indexOf(data);
+        state.selectTopingList.splice(currentIndex, 1);
+      }
+      state.selectTopingList.sort();
     },
-    selectSource(state, data:string){
-      state.selectSource = data;
-    }
+    selectVegeList(state, data:string){
+      if (!state.selectVegeList.includes(data)) {
+        state.selectVegeList.push(data);
+      } else {
+        const currentIndex = state.selectVegeList.indexOf(data);
+        state.selectVegeList.splice(currentIndex, 1);
+      }
+      state.selectVegeList.sort();
+    },
+    selectSourceList(state, data:string){
+      if (!state.selectSourceList.includes(data)) {
+        state.selectSourceList.push(data);
+      } else {
+        const currentIndex = state.selectSourceList.indexOf(data);
+        state.selectSourceList.splice(currentIndex, 1);
+      }
+      state.selectSourceList.sort();
+    },
   },
   actions: {
     async initData({commit}){
@@ -72,6 +96,7 @@ export const store = createStore({
       const menuClassic: AxiosResponse = await AxiosService.instance.get('/menu/2'); 
       const vegetable: AxiosResponse = await AxiosService.instance.get('/ingredient/0');
       const source: AxiosResponse = await AxiosService.instance.get('/ingredient/2'); 
+      const extra: AxiosResponse = await AxiosService.instance.get('/extra'); 
       console.log("빵"+ bread)
 
       commit('setBreadList', bread.data);
@@ -80,6 +105,7 @@ export const store = createStore({
       commit('setMenuClassicList', menuClassic.data);
       commit('setVegetableList', vegetable.data);
       commit('setSourceList', source.data);
+      commit('setExtraList', extra.data);
     },
     async setToken({commit}, tokens){
       commit('setAccessToken', tokens.access_token);
@@ -91,12 +117,15 @@ export const store = createStore({
     selectBread({commit}, data){
       commit('selectBread', data);
     },
-    selectVegetable({commit}, data){
-      commit('selectVegetable', data);
+    selectTopingList({commit}, data){
+      commit('selectTopingList', data);
     },
-    selectSource({commit}, data){
-      commit('selectSource', data);
-    }
+    selectVegeList({commit}, data){
+      commit('selectVegeList', data);
+    },
+    selectSourceList({commit}, data){
+      commit('selectSourceList', data);
+    },
   },
   getters: {
     getToken: function(state){
@@ -120,6 +149,9 @@ export const store = createStore({
     getSourceList: function(state) {
       return state.sourceList;
     },
+    getExtraList: function(state) {
+      return state.extraList;
+    },
     getUserId: function(state) {
       return state.userId;
     },
@@ -129,12 +161,18 @@ export const store = createStore({
     getSelectBread: function(state) {
       return state.selectBread;
     },
-    getSelectVegetable: function(state){
-      return state.selectVegetable;
+    getSelectTopingList: function(state){
+      console.log('getSelectTopingList : ' + state.selectTopingList);
+      return state.selectTopingList;
     },
-    getSelectSource: function(state){
-      return state.selectSource;
-    }
+    getSelectVegeList: function(state){
+      console.log('getSelectVegeList : ' + state.selectVegeList);
+      return state.selectVegeList;
+    },
+    getSelectSourceList: function(state){
+      console.log('getSelectSourceList : ' + state.selectSourceList);
+      return state.selectSourceList;
+    },
   },
   plugins: [createPersistedState()]
 });

@@ -4,8 +4,18 @@ import component from '../views/Tabs.vue';
 import Tabs from '../views/Tabs.vue';
 import logo from '../views/logo.vue';
 import Final from '../views/FinalCombi.vue';
+import My from '../views/MyCombe.vue';
+import C from '../views/combination.vue';
+import L from '../views/list.vue';
 
 const routes: Array<RouteRecordRaw> = [
+  {
+    path: '/c',
+    component: () => import('@/views/combination.vue'),
+  },{
+    path: '/l',
+    component: () => import('@/views/list.vue'),
+  },
   {
     path: '/',
     redirect: '/logins.main'
@@ -47,6 +57,10 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/Logins.kakao.vue')
   },
   {  
+    path: '/my',
+    component: () => import('@/views/MyCombi.vue')
+  },
+  {
     path: '/tabs/',
     component: Tabs,
     children: [
