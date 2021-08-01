@@ -2,7 +2,7 @@
   <ion-page id="Logins.kakao">
     <ion-header :translucent="true">
       <ion-toolbar style="text-align:center;">
-        <ion-title><b>{{loginType}}로그인</b></ion-title>
+        <ion-title><b>로그인</b></ion-title>
       </ion-toolbar>
     </ion-header>
   
@@ -57,6 +57,9 @@ export default {
     setup () {
         const store = useStore();
 
+        window.Kakao.init('4a297ff368ab0580ea37b40f07e5990d');
+        console.log(window.Kakao.isInitialized());
+
         if(window.location.search.substr(6)) {
             const code = window.location.search.substr(6);
             console.log(code);
@@ -70,11 +73,9 @@ export default {
                 window.Kakao.API.request({
                 url: '/v2/user/me',
                 success: function(response) {
-                    console.log("login Success")
                     window.location.href = '/tabs/tab1'
                 },
                 fail: function(error) {
-                    console.log("login fail")
                     window.location.href = '/'
                 }
                 });

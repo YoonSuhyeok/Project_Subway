@@ -2,7 +2,7 @@
   <ion-page id="Logins.main">
     <ion-header :translucent="true">
       <ion-toolbar style="text-align:center;">
-        <ion-title><b>{{loginType}}로그인</b></ion-title>
+        <ion-title><b>로그인</b></ion-title>
       </ion-toolbar>
     </ion-header>
   
@@ -101,7 +101,7 @@ export default {
     }
 
     window.Kakao.init('4a297ff368ab0580ea37b40f07e5990d');
-    //console.log(window.Kakao.isInitialized());
+    console.log(window.Kakao.isInitialized());
 
     const kakaobtn = async function (){
         const params = {

@@ -2,7 +2,7 @@
   <ion-page id="Logins.main">
     <ion-header :translucent="true">
       <ion-toolbar style="text-align:center;">
-        <ion-title><b>{{loginType}}로그인</b></ion-title>
+        <ion-title><b>로그인</b></ion-title>
       </ion-toolbar>
     </ion-header>
   
