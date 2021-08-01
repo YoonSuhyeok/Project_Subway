@@ -48,7 +48,8 @@
         <ion-progress-bar value="0.5" color="success" style="padding:7px; margin-bottom:20px;" class="align-center"></ion-progress-bar>
 
 
-        <ion-input placeholder="메뉴 닉네임 설정" class="align-center"></ion-input>
+        <ion-input type="text" placeholder="메뉴 닉네임 설정" v-model="nickname" class="align-center menu-nickname"></ion-input>
+        <!-- {{nickname}} -->
 
         <ion-button @click="presentAlert" class="align-center" style="margin-top:50px;">
             <ion-label><b>저장하기</b></ion-label>
@@ -98,24 +99,6 @@
 
 </style>
 
-<!--
-<style lang="scss">
-    .alertWindow {
-        text-align: center;
-    }
-
-    .alertCancelBtn {
-        background-color: darkgrey;
-        color: gray;
-    }
-
-    .alertSaveBtn {
-        background-color: darkgrey;
-        color: gray;
-    }
-</style>
--->
-
 <style>
     .alertWindow {
         height: 500px;
@@ -142,9 +125,13 @@ import { defineComponent } from 'vue';
 export default defineComponent({
     name: 'Final',
     components: { Combi, IonProgressBar, IonInput, IonButton, IonLabel, IonInfiniteScroll },
+    data() {
+      return {
+          nickname: '',
+      }  
+    },
     methods: {
         async presentAlert() {
-            const store = useStore();
             const alert = await alertController
                 .create({
                     cssClass: 'alertWindow',
@@ -170,7 +157,7 @@ export default defineComponent({
                             cssClass: 'alertSaveBtn',
                             handler: () => {
                                 console.log('Confirm Save')
-                                window.location.href='/my';
+                                // window.location.href='/my';
                             },
                         },
                     ],
@@ -195,7 +182,9 @@ export default defineComponent({
             // console.log("vegetableList : "+store.getters.getSelectVegeList)
             // console.log("sourceList : "+store.getters.getSelectSourceList)
         }
+        const kcalAmount = 0;
         return { 
+            kcalAmount,
             format,
             menu: computed(() => store.getters.getSelectMenu),
             bread: computed(() => store.getters.getSelectBread),
