@@ -73,14 +73,16 @@
 
         <ion-slide>
           <div>
-            <h5 class="slide-title"><b>야채&소스 선택하기</b></h5>
+            <h5 class="slide-title"><b>야채 선택하기</b></h5>
+            <!-- <h5 class="slide-title"><b>야채&소스 선택하기</b></h5>
 
             <ion-button strong="true" class="menu_btn" v-on:click="clickedVegetable" v-if="state.selectVegeSource != 'vegetable'"><h5><b>야채</b></h5></ion-button>
             <ion-button strong="true" class="mb_active" v-on:click="clickedVegetable" v-else><h5><b>야채</b></h5></ion-button>
             <ion-button strong="true" class="menu_btn" v-on:click="clickedSource" v-if="state.selectVegeSource != 'source'"><h5><b>소스</b></h5></ion-button>
             <ion-button strong="true" class="mb_active" v-on:click="clickedSource" v-else><h5><b>소스</b></h5></ion-button>
 
-            <div class="box-container" v-if="state.selectVegeSource === 'vegetable'">
+            <div class="box-container" v-if="state.selectVegeSource === 'vegetable'"> -->
+            <div class="box-container">
 
               <div v-for="vegetable in vegetables" :key="vegetable.Ingredient_id + vegetable.Ingredient_name">
                 <Items :info="{ type: 'vege', startId: 1, finishId: 9, id: vegetable.Ingredient_id, name: vegetable.Ingredient_name , kcal: vegetable.Ingredient_calorie, src: vegetable.Ingredient_imageUrl }" />
@@ -88,15 +90,30 @@
 
             </div>
 
-            <div class="box-container" v-else>
+            <!-- <div class="box-container" v-else>
+              <div v-for="source in sources" :key="source.Ingredient_id + source.Ingredient_name">
+                <Items :info="{ type: 'source', startId: 13, finishId: 26, id: source.Ingredient_id, name: source.Ingredient_name , kcal: source.Ingredient_calorie, src: source.Ingredient_imageUrl }" />
+              </div>
+            </div> -->
+
+          </div>
+        </ion-slide>
+
+        <ion-slide>
+          <div>
+            <h5 class="slide-title"><b>소스 선택하기</b></h5>
+
+            <div class="box-container">
 
               <div v-for="source in sources" :key="source.Ingredient_id + source.Ingredient_name">
                 <Items :info="{ type: 'source', startId: 13, finishId: 26, id: source.Ingredient_id, name: source.Ingredient_name , kcal: source.Ingredient_calorie, src: source.Ingredient_imageUrl }" />
               </div>
+
             </div>
 
           </div>
         </ion-slide>
+
       </ion-slides>
       </ion-content>
   </ion-page>
