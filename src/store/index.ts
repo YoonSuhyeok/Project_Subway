@@ -5,13 +5,13 @@ import { AxiosResponse } from "axios";
 
 export const store = createStore({
   state: {
-    breadList: [],
-    menuPremiumList: [],
-    menuFreshList: [],
     menuClassicList: [],
+    menuFreshList: [],
+    menuPremiumList: [],
+    breadList: [],
+    extraList: [],
     vegetableList: [],
     sourceList: [],
-    extraList: [],
     userId: 'unknown_user',
     accessToken: '',
     refreshToken: '',
@@ -22,27 +22,27 @@ export const store = createStore({
     selectSourceList: [''],    
   },
   mutations: {
-    setBreadList(state, breadList){
-      console.log(breadList)
-      state.breadList = breadList;
-    },
-    setMenuPremiumList(state, menuPremiumList){
-      state.menuPremiumList = menuPremiumList;
+    setMenuClassicList(state, menuClassicList){
+      state.menuClassicList = menuClassicList;
     },
     setMenuFreshList(state, menuFreshList){
       state.menuFreshList = menuFreshList;
     },
-    setMenuClassicList(state, menuClassicList){
-      state.menuClassicList = menuClassicList;
+    setMenuPremiumList(state, menuPremiumList){
+      state.menuPremiumList = menuPremiumList;
+    },
+    setBreadList(state, breadList){
+      console.log(breadList)
+      state.breadList = breadList;
+    },
+    setExtraList(state, extraList) {
+      state.extraList = extraList;
     },
     setVegetableList(state, vegetableList){
       state.vegetableList = vegetableList;
     },
     setSourceList(state, sourceList){
       state.sourceList = sourceList;
-    },
-    setExtraList(state, extraList) {
-      state.extraList = extraList;
     },
     setUserId(state, userId) {
       state.userId = userId;
@@ -90,22 +90,21 @@ export const store = createStore({
   actions: {
     async initData({commit}){
       //TODO http 통신
-      const bread: AxiosResponse = await AxiosService.instance.get('/bread');
-      const menuPremium: AxiosResponse = await AxiosService.instance.get('/menu/0'); 
-      const menuFresh: AxiosResponse = await AxiosService.instance.get('/menu/1'); 
       const menuClassic: AxiosResponse = await AxiosService.instance.get('/menu/2'); 
+      const menuFresh: AxiosResponse = await AxiosService.instance.get('/menu/1'); 
+      const menuPremium: AxiosResponse = await AxiosService.instance.get('/menu/0'); 
+      const bread: AxiosResponse = await AxiosService.instance.get('/bread');
+      const extra: AxiosResponse = await AxiosService.instance.get('/extra'); 
       const vegetable: AxiosResponse = await AxiosService.instance.get('/ingredient/0');
       const source: AxiosResponse = await AxiosService.instance.get('/ingredient/2'); 
-      const extra: AxiosResponse = await AxiosService.instance.get('/extra'); 
-      console.log("빵"+ bread)
 
-      commit('setBreadList', bread.data);
-      commit('setMenuPremiumList', menuPremium.data);
-      commit('setMenuFreshList', menuFresh.data);
       commit('setMenuClassicList', menuClassic.data);
+      commit('setMenuFreshList', menuFresh.data);
+      commit('setMenuPremiumList', menuPremium.data);
+      commit('setBreadList', bread.data);
+      commit('setExtraList', extra.data);
       commit('setVegetableList', vegetable.data);
       commit('setSourceList', source.data);
-      commit('setExtraList', extra.data);
     },
     async setToken({commit}, tokens){
       commit('setAccessToken', tokens.access_token);
@@ -131,26 +130,26 @@ export const store = createStore({
     getToken: function(state){
       return state.accessToken;
     },
-    getBreadList: function(state) {
-      console.log(state.breadList);
-      return state.breadList;
-    },
-    getPremiumMenuList: function(state) {
-      console.log(state.menuPremiumList);
-      return state.menuPremiumList;
+    getClassicMenuList: function(state) {
+      return state.menuClassicList;
     },
     getFreshMenuList: function(state) {
-      console.log(state.menuFreshList);
       return state.menuFreshList;
+    },
+    getPremiumMenuList: function(state) {
+      return state.menuPremiumList;
+    },
+    getBreadList: function(state) {
+      return state.breadList;
+    },
+    getExtraList: function(state) {
+      return state.extraList;
     },
     getVegetableList: function(state) {
       return state.vegetableList;
     },
     getSourceList: function(state) {
       return state.sourceList;
-    },
-    getExtraList: function(state) {
-      return state.extraList;
     },
     getUserId: function(state) {
       return state.userId;
@@ -162,15 +161,12 @@ export const store = createStore({
       return state.selectBread;
     },
     getSelectTopingList: function(state){
-      console.log('getSelectTopingList : ' + state.selectTopingList);
       return state.selectTopingList;
     },
     getSelectVegeList: function(state){
-      console.log('getSelectVegeList : ' + state.selectVegeList);
       return state.selectVegeList;
     },
     getSelectSourceList: function(state){
-      console.log('getSelectSourceList : ' + state.selectSourceList);
       return state.selectSourceList;
     },
   },
