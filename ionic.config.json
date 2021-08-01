@@ -1,7 +1,8 @@
 {
-  "name": "Subway",
+  "name": "Project_Subway",
   "integrations": {
     "capacitor": {}
   },
   "type": "vue"
 }
+  

@@ -1,8 +1,10 @@
-{
+{  
   "name": "Subway",
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "ionic:build": "vue-cli-service build",
+    "ionic:serve": "vue-cli-service serve",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
@@ -13,12 +15,21 @@
     "@capacitor/core": "2.4.7",
     "@ionic/vue": "^5.4.0",
     "@ionic/vue-router": "^5.4.0",
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "express": "^4.17.1",
+    "node-sass": "^6.0.1",
+    "passport": "^0.4.1",
+    "passport-kakao": "^1.0.1",
+    "tslint-config-prettier": "^1.18.0",
     "vue": "^3.0.0-0",
-    "vue-router": "^4.0.0-0"
+    "vue-router": "^4.0.0-0",
+    "vuex": "^4.0.2",
+    "vuex-persistedstate": "^4.0.0"
   },
   "devDependencies": {
     "@capacitor/cli": "2.4.7",
+    "@ionic/app-scripts": "^3.2.4",
     "@types/jest": "^24.0.19",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",
