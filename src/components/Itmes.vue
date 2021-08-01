@@ -93,6 +93,11 @@
         }
   }
 
+    .backGreen {
+        background-color: green;
+    }
+
+
 </style>
 
 <script >
@@ -105,6 +110,17 @@
         setup(){
             const store = useStore();
             const select = (info) => {
+                console.log("info.isClick : " + info.isClick)
+                const backGreen = document.querySelector('.menu-box + ion-card');
+                console.log(backGreen);
+                if (info.isClick) {
+                    backGreen.classList.remove('backGreen');
+                    info.isClick = 0;
+                } else {
+                    backGreen.classList.add('backGreen');
+                    info.isClick = 1;
+                }
+
                 console.log(info.type)
                 console.log(info.name)
                 console.log(info.kcal)

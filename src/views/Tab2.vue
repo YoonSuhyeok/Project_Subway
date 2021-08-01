@@ -18,7 +18,7 @@
             <div class="box-container" v-if="state.selectMenu === 'classic_menu'">
 
               <div v-for="classic in classicMenus" :key="classic.Menu_id + classic.Menu_name">
-                <Items :info="{ type: 0, name: classic.Menu_name , kcal: classic.Menu_calorie, src: classic.Menu_imageUrl }" />
+                <Items :info="{ type: 0, name: classic.Menu_name , kcal: classic.Menu_calorie, src: classic.Menu_imageUrl, isClick: 0 }" />
               </div>
               
             </div>
@@ -201,7 +201,7 @@
       // Optional parameters to pass to the swiper instance. See http://idangero.us/swiper/api/ for valid options.
       const store = useStore();
       const slideOpts = {
-        initialSlide: 3,
+        initialSlide: 0,
         speed: 400,
       }
       const state = reactive({
