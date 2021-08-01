@@ -2,10 +2,10 @@
   <ion-page id="Logins.main">
     <ion-header :translucent="true">
       <ion-toolbar style="text-align:center;">
-        <ion-title><b>로그인</b></ion-title>
+        <ion-title><b>{{loginType}}로그인</b></ion-title>
       </ion-toolbar>
     </ion-header>
-
+  
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
         <ion-toolbar>
@@ -21,13 +21,13 @@
         
         <div class="login_button" v-if="loginType == 1">
           <section>
-              <ion-button color="success" fill="solid" expand="block" size="large">
-                  <img src="/assets/icon/naver.png" class="navericon" width="50">
-                  Naver ID로 계속하기
-                  </ion-button>
+              <ion-button color="warning" fill="solid" expand="block" size="large" @click="kakaobtn">
+                  <img src="/assets/icon/kakao.png" class="kakaoicon" width="50">
+                  KAKAO ID로 계속하기
+              </ion-button>
           </section>
           <section>
-              <ion-button color="warning" fill="solid" expand="block" size="large" v-model="loginType" value=2 @click="changebtn(2)">다른 계정으로 로그인</ion-button>
+              <ion-button color="success" fill="solid" expand="block" size="large" v-model="loginType" value=2 @click="changebtn(2)">다른 계정으로 로그인</ion-button>
           </section>
         </div>
 
@@ -52,8 +52,13 @@
                 <ion-button fill="clear" color="dark"><b>아이디 / PW찾기</b></ion-button>
               </div>
           </div>
+        </div>
 
-          <div class="container">
+        <div v-else>
+          <p>오류 처리 페이지</p>
+        </div>
+
+        <div class="container">
             <div class="explanation">
               <ion-text color="medium">아직 서브웨이 마스터의 회원이 아니시라면,</ion-text>
             </div>
@@ -67,21 +72,14 @@
               </div>
             </div>
           </div>
-        </div>
-
-        <div v-else>
-          <p>오류 처리 페이지</p>
-        </div>
       </div>
     </ion-content>
-
-    
   </ion-page>
 </template>
 
 <script>
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonInput, IonText } from '@ionic/vue';
-
+import { ref } from 'vue';
 export default {
   name: 'Logins.main',
   components: {
@@ -95,14 +93,27 @@ export default {
     IonText
   },
   setup () {
-    const changebtn = (type) => {
-      // 왜 this로 참조가 안될까
-      this.loginType = type;
+    const loginType = ref(1);
+    
+    const changebtn = (type) =>{
+      loginType.value = type;
+      return loginType;
     }
 
+    window.Kakao.init('4a297ff368ab0580ea37b40f07e5990d');
+    //console.log(window.Kakao.isInitialized());
+
+    const kakaobtn = async function (){
+        const params = {
+            redirectUri: "http://localhost:8100/logins.kakao",
+        };
+        window.Kakao.Auth.authorize(params)
+    };
+
     return {
-      loginType: 1,
-      changebtn
+      loginType,
+      changebtn,
+      kakaobtn
     }
   }
 }
@@ -149,7 +160,7 @@ section {
     text-align: center;
     font-size: 30px;
 }
-.navericon{
+.kakaoicon{
     padding-right: 10px;
 }
 .explanation{

@@ -26,10 +26,10 @@ const routes: Array<RouteRecordRaw> = [
     path: '/signup',
     component: () => import('@/views/SignUp.vue')
   },
-  {
+  /*{
     path: '/logins',
     component: () => import('@/views/Logins.vue')
-  },
+  },*/
   {
     path: '/final',
     component: () => import('@/views/FinalCombi.vue')
@@ -37,6 +37,14 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/logins.main',
     component: () => import('@/views/Logins.main.vue')
+  },
+  {
+    path: '/logins.naver',
+    component: () => import('@/views/Logins.naver.vue')
+  },
+  {
+    path: '/logins.kakao',
+    component: () => import('@/views/Logins.kakao.vue')
   },
   {  
     path: '/tabs/',
