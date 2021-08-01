@@ -137,12 +137,14 @@ import Combi from '@/components/Combi.vue'
 import { IonProgressBar, IonInput, IonButton, IonLabel, IonInfiniteScroll, alertController } from '@ionic/vue';
 import { computed } from '@vue/runtime-core';
 import { useStore } from 'vuex';
+import { defineComponent } from 'vue';
 
-export default  {
+export default defineComponent({
     name: 'Final',
     components: { Combi, IonProgressBar, IonInput, IonButton, IonLabel, IonInfiniteScroll },
     methods: {
         async presentAlert() {
+            const store = useStore();
             const alert = await alertController
                 .create({
                     cssClass: 'alertWindow',
@@ -151,12 +153,15 @@ export default  {
                     // message: 'This is an alert message.',
                     buttons: [
                         {
-                            text: '수정할래요!',
+                            text: '다시할래요!',
                             role: 'cancel',
                             cssClass: 'alertCancelBtn',
                             handler: () => {
                                 console.log('Confirm Cancel')
+                                this.format();
+                                this.format();
                                 window.location.href='/tabs/tab2';
+                                
                             },
                         },
                         {
@@ -178,7 +183,20 @@ export default  {
     },
     setup() {
         const store = useStore();
+        const format = () => {
+            store.dispatch('selectMenu', '' );
+            store.dispatch('selectBread', '' );
+            store.state.selectTopingList = [''];
+            store.state.selectVegeList = [''];
+            store.state.selectSourceList = [''];
+            // console.log("selectMenu : "+store.getters.getSelectMenu)
+            // console.log("selectBread : "+store.getters.getSelectBread)
+            // console.log("topingList : "+store.getters.getSelectTopingList)
+            // console.log("vegetableList : "+store.getters.getSelectVegeList)
+            // console.log("sourceList : "+store.getters.getSelectSourceList)
+        }
         return { 
+            format,
             menu: computed(() => store.getters.getSelectMenu),
             bread: computed(() => store.getters.getSelectBread),
             topings: computed(() => store.getters.getSelectTopingList),
@@ -189,6 +207,6 @@ export default  {
             allSources: computed(() => store.getters.getSourceList)
         };
     }
-}
+});
 
 </script>

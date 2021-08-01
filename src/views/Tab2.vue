@@ -110,6 +110,7 @@
               </div>
 
             </div>
+          <ion-button expand="block" class="save-btn" @click="save">저장하기</ion-button>
 
           </div>
         </ion-slide>
@@ -191,10 +192,21 @@
       width: 660px;
     }
   }
+
   ion-slides {
     --bullet-background-active:#111111; 
     --bullet-background:#C4C4C4;
   }
+
+  .save-btn {
+      width:80%; 
+      margin:auto; 
+      margin-top:50px; 
+      margin-bottom:50px;
+      border-radius: 6px;
+      --background: linear-gradient(to right, #00B573, 90%, #1CDE97);
+      color: #FFFFFF;
+    }
 </style>
 
 <style>
@@ -242,11 +254,13 @@
       }
       
       store.dispatch('initData');
-      const move = () => {
+
+      const save = () => {
         window.location.href = '/final'
       }
+
       return { 
-        move,
+        save,
         slideOpts,
         state,
         clickedClassic,
