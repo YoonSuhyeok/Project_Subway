@@ -17,8 +17,9 @@
 //     components: { LoginComponent },
 //     setup () {
 //         const store = useStore();
-    
-//         /*window.Kakao.init('4a297ff368ab0580ea37b40f07e5990d');
+//
+//         const javakey = process.env.VUE_APP_JAVASCRIPT_KEY;
+//         /*window.Kakao.init(javakey);
 //         console.log(window.Kakao.isInitialized());
 
 //         const kakaobtn = async function (){
@@ -51,7 +52,7 @@
 //         }
 
 //         const googlebtn = async function(){
-//             const client_id = "1003443334313-5ro27fto5batt35loffg7777r44r20hb.apps.googleusercontent.com"
+//             const client_id = "process.env.VUE_APP_GOOGLE_KEY"
 //             const redirect_url = 'http://localhost:8101/logins'
             
 //             const url = `https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A//www.googleapis.com/auth/drive.metadata.readonly&access_type=offline&include_granted_scopes=true&response_type=code&state=state_parameter_passthrough_value&redirect_uri=${redirect_url}&client_id=${client_id}`
@@ -60,7 +61,7 @@
 //         }
 
 //         const naverbtn = async function(){
-//             const client_id = '9oluv5olg8TKDOtsVi6P';
+//             const client_id = 'process.env.VUE_APP_NAVER_KEY';
 //             const redirect_url = 'http://localhost:8101/logins';
 //             const url = 'https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id='+client_id+'&redirect_uri='+redirect_url+'&state=1234';
 //             window.location.href = url;

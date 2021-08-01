@@ -18,20 +18,8 @@
           <img src="/assets/img/logo.png" class="logo">
           <ion-text>서브웨이 마스터와<br><strong>더 맛있고 건강한 레시피</strong></ion-text>
         </div>
-        
-        <div class="login_button" v-if="loginType == 1">
-          <section>
-              <ion-button color="warning" fill="solid" expand="block" size="large" @click="kakaobtn">
-                  <img src="/assets/icon/kakao.png" class="kakaoicon" width="50">
-                  KAKAO ID로 계속하기
-              </ion-button>
-          </section>
-          <section>
-              <ion-button color="success" fill="solid" expand="block" size="large" v-model="loginType" value=2 @click="changebtn(2)">다른 계정으로 로그인</ion-button>
-          </section>
-        </div>
 
-        <div class="other_login" v-else-if="loginType == 2">
+        <div class="other_login" v-if="loginType == 2">
           <div class="imgbutton">
             <ion-button fill="clear" size="large"><img src="/assets/icon/kakao.png" class="kakao" width="40"></ion-button>
             <ion-button fill="clear" size="large"><img src="/assets/icon/google.png" class="google" width="40"></ion-button>
@@ -54,24 +42,33 @@
           </div>
         </div>
 
-        <div v-else>
-          <p>오류 처리 페이지</p>
+        <div class="login_button" v-else>
+          <section>
+              <ion-button color="warning" fill="solid" expand="block" size="large" @click="kakaobtn">
+                  <img src="/assets/icon/kakao.png" class="kakaoicon" width="50">
+                  KAKAO ID로 계속하기
+              </ion-button>
+          </section>
+          <section>
+              <ion-button color="success" fill="solid" expand="block" size="large" v-model="loginType" value=2 @click="changebtn(2)">다른 계정으로 로그인</ion-button>
+          </section>
         </div>
 
         <div class="container">
-            <div class="explanation">
-              <ion-text color="medium">아직 서브웨이 마스터의 회원이 아니시라면,</ion-text>
+          <div class="explanation">
+            <ion-text color="medium">아직 서브웨이 마스터의 회원이 아니시라면,</ion-text>
+          </div>
+          <div class="SignupOrAsk">
+            <div class="signup">
+              <ion-button fill="clear" color="dark" expand="block"><b>회원가입</b></ion-button>
             </div>
-            <div class="SignupOrAsk">
-              <div class="signup">
-                <ion-button fill="clear" color="dark" expand="block"><b>회원가입</b></ion-button>
-              </div>
-              <div class="updown"></div>
-              <div class="ask">
-                <ion-button fill="clear" color="dark" expand="block"><b>문의하기</b></ion-button>
-              </div>
+            <div class="updown"></div>
+            <div class="ask">
+              <ion-button fill="clear" color="dark" expand="block"><b>문의하기</b></ion-button>
             </div>
           </div>
+        </div>
+
       </div>
     </ion-content>
   </ion-page>
@@ -80,6 +77,7 @@
 <script>
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonInput, IonText } from '@ionic/vue';
 import { ref } from 'vue';
+
 export default {
   name: 'Logins.main',
   components: {
@@ -100,7 +98,9 @@ export default {
       return loginType;
     }
 
-    window.Kakao.init('4a297ff368ab0580ea37b40f07e5990d');
+    const javakey = process.env.VUE_APP_JAVASCRIPT_KEY;
+    console.log("javakey: ", javakey);
+    window.Kakao.init(javakey);
     console.log(window.Kakao.isInitialized());
 
     const kakaobtn = async function (){
