@@ -220,7 +220,7 @@ export default defineComponent({
                             role: 'save',
                             handler: () => {
                                 console.log('Confirm Save')
-                                // window.location.href='/my';
+                                window.location.href='/my';
                             },
                         },
                     ],
