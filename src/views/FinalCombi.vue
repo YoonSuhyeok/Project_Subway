@@ -211,7 +211,7 @@ export default defineComponent({
                                 console.log('Confirm Cancel')
                                 this.format();
                                 this.format();
-                                // window.location.href='/tabs/tab2';
+                                window.location.href='/tabs/tab2';
                                 
                             },
                         },
