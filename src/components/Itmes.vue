@@ -1,5 +1,6 @@
 <template>
-        <ion-card class="menu-box">
+        <ion-card class="menu-box" :class=info.type+info.id>
+            <!-- {{info.type+info.id}} -->
             <ion-card-header class="menu-box-header" @click='select(info)'>
                 <img class="menu-img" :src="info.src" :alt="info.name" />
                 <ion-card-title class="menu-name">{{ info.name }}</ion-card-title>
@@ -93,7 +94,7 @@
         }
   }
 
-    .backGreen {
+    .background-green {
         background-color: green;
     }
 
@@ -110,74 +111,89 @@
         setup(){
             const store = useStore();
             const select = (info) => {
-                console.log("info.isClick : " + info.isClick)
-                const backGreen = document.querySelector('.menu-box + ion-card');
-                console.log(backGreen);
-                if (info.isClick) {
-                    backGreen.classList.remove('backGreen');
-                    info.isClick = 0;
-                } else {
-                    backGreen.classList.add('backGreen');
-                    info.isClick = 1;
-                }
-
-                console.log(info.type)
+                
+                console.log("======================================")
+                console.log("type : "+ info.type)
                 console.log(info.name)
-                console.log(info.kcal)
-                console.log(info.src);
+                // console.log(info.kcal)
+                // console.log(info.src);
                 switch(info.type){
-                    case 0: {
-                        const currentMenu = store.getters.getSelectMenu;
-                        if(currentMenu.name == info.name) { 
-                            store.dispatch('selectMenu', '' );
-                        }
-                        else { 
+                    case 'menu': {
+                        // const currentMenu = store.getters.getSelectMenu;
+                        // if(currentMenu.name == info.name) { 
+                        //     store.dispatch('selectMenu', '' );
+                        // }
+                        // else { 
                             store.dispatch('selectMenu', info );
+                        // }
+                        for (let i=info.startId; i<=info.finishId; i++) {
+                            document.querySelector('.'+info.type+i).classList.remove('background-green');
                         }
+                        document.querySelector('.'+info.type+info.id).classList.add('background-green');
                         break;
                     }
-                    case 1: {
-                        const currentBread = store.getters.getSelectBread;
-                        if(currentBread.name == info.name) { 
-                            store.dispatch('selectBread', '' ); 
-                        }
-                        else { 
+                    case 'bread': {
+                        // const currentBread = store.getters.getSelectBread;
+                        // if(currentBread.name == info.name) { 
+                        //     store.dispatch('selectBread', '' ); 
+                        // }
+                        // else { 
                             store.dispatch('selectBread', info );
+                        // }
+                        for (let i=info.startId; i<=info.finishId; i++) {
+                            document.querySelector('.'+info.type+i).classList.remove('background-green');
+                        }
+                        document.querySelector('.'+info.type+info.id).classList.add('background-green');
+                        break;
+                    }
+                    case 'toping': {
+                        // const currentToping = store.getters.getSelectTopingList;
+                        store.dispatch('selectTopingList', info.name)
+                        console.log("vege list : "+ store.getters.getSelectTopingList);
+
+                        const currentClicked = document.querySelector('.'+info.type+info.id);
+                        if (currentClicked.classList.contains('background-green')) {
+                            currentClicked.classList.remove('background-green')
+                        } else {
+                            currentClicked.classList.add('background-green')
                         }
                         break;
                     }
-                    case 2: {
-                        const currentToping = store.getters.getSelectTopingList;
-                        store.dispatch('selectTopingList', info.name)
-                        console.log("select vege info.name : " + info.name)
-                        console.log("vege list : "+ store.getters.getSelectTopingList);
-                        break;
-                    }
-                    case 3: {
-                        const currentVege = store.getters.getSelectVege;
+                    case 'vege': {
+                        // const currentVege = store.getters.getSelectVege;
                         store.dispatch('selectVegeList', info.name)
-                        console.log("select vege info.name : " + info.name)
                         console.log("vege list : "+ store.getters.getSelectVegeList);
 
-                        if(currentVege.name == info.name) { 
-                            store.dispatch('selectVege', '' );
-                        }
-                        else { 
-                            store.dispatch('selectVege', info );
+                        // if(currentVege.name == info.name) { 
+                        //     store.dispatch('selectVege', '' );
+                        // }
+                        // else { 
+                        //     store.dispatch('selectVege', info );
+                        // }
+                        const currentClicked = document.querySelector('.'+info.type+info.id);
+                        if (currentClicked.classList.contains('background-green')) {
+                            currentClicked.classList.remove('background-green')
+                        } else {
+                            currentClicked.classList.add('background-green')
                         }
                         break;
                     }
-                    case 4: {
-                        const currentSource = store.getters.getSelectSource;
+                    case 'source': {
+                        // const currentSource = store.getters.getSelectSource;
                         store.dispatch('selectSourceList', info.name)
-                        console.log("select source info.name : " + info.name)
                         console.log("source list : " + store.getters.getSelectSourceList);
 
-                        if(currentSource.name == info.name) { 
-                            store.dispatch('selectSource', '' ); 
-                        }
-                        else { 
-                            store.dispatch('selectSource', info );
+                        // if(currentSource.name == info.name) { 
+                        //     store.dispatch('selectSource', '' ); 
+                        // }
+                        // else { 
+                        //     store.dispatch('selectSource', info );
+                        // }
+                        const currentClicked = document.querySelector('.'+info.type+info.id);
+                        if (currentClicked.classList.contains('background-green')) {
+                            currentClicked.classList.remove('background-green')
+                        } else {
+                            currentClicked.classList.add('background-green')
                         }
                         break;
                     }

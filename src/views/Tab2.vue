@@ -18,7 +18,7 @@
             <div class="box-container" v-if="state.selectMenu === 'classic_menu'">
 
               <div v-for="classic in classicMenus" :key="classic.Menu_id + classic.Menu_name">
-                <Items :info="{ type: 0, name: classic.Menu_name , kcal: classic.Menu_calorie, src: classic.Menu_imageUrl, isClick: 0 }" />
+                <Items :info="{ type: 'menu', startId: 14, finishId: 19, id: classic.Menu_id, name: classic.Menu_name, kcal: classic.Menu_calorie, src: classic.Menu_imageUrl }" />
               </div>
               
             </div>
@@ -26,7 +26,7 @@
             <div class="box-container" v-if="state.selectMenu === 'fresh_menu'">
 
               <div v-for="fresh in freshMenus" :key="fresh.Menu_id + fresh.Menu_name">
-                <Items :info="{ type: 0, name: fresh.Menu_name , kcal: fresh.Menu_calorie, src: fresh.Menu_imageUrl }" />
+                <Items :info="{ type: 'menu', startId: 9, finishId: 13, id: fresh.Menu_id, name: fresh.Menu_name , kcal: fresh.Menu_calorie, src: fresh.Menu_imageUrl }" />
               </div>
 
             </div>
@@ -34,7 +34,7 @@
             <div class="box-container" v-if="state.selectMenu === 'premium_menu'">
 
               <div v-for="premium in premiumMenus" :key="premium.Menu_id + premium.Menu_name">
-                <Items :info="{ type: 0, name: premium.Menu_name , kcal: premium.Menu_calorie, src: premium.Menu_imageUrl }" />
+                <Items :info="{ type: 'menu', startId: 1, finishId: 8, id: premium.Menu_id, name: premium.Menu_name , kcal: premium.Menu_calorie, src: premium.Menu_imageUrl }" />
               </div>
 
             </div>
@@ -48,7 +48,7 @@
             <div class="box-container">
 
               <div v-for="bread in breads" :key="bread.Bread_id + bread.Bread_name">
-                <Items :info="{ type: 1, name: bread.Bread_name , kcal: bread.Bread_calorie, src: bread.Bread_imageUrl }" />
+                <Items :info="{ type: 'bread', startId: 1, finishId: 6, id: bread.Bread_id, name: bread.Bread_name , kcal: bread.Bread_calorie, src: bread.Bread_imageUrl }" />
               </div>
 
             </div>
@@ -63,7 +63,7 @@
             <div class="box-container">
 
               <div v-for="extra in extras" :key="extra.Extra_id + extra.Extra_name">
-                <Items :info="{ type: 2, name: extra.Extra_name , kcal: extra.Extra_calorie, src: extra.Extra_imageUrl }" />
+                <Items :info="{ type: 'toping', startId: 1, finishId: 8, id: extra.Extra_id, name: extra.Extra_name , kcal: extra.Extra_calorie, src: extra.Extra_imageUrl }" />
               </div>
 
             </div>
@@ -73,30 +73,48 @@
 
         <ion-slide>
           <div>
-            <h5 class="slide-title"><b>야채&소스 선택하기</b></h5>
+            <h5 class="slide-title"><b>야채 선택하기</b></h5>
+            <!-- <h5 class="slide-title"><b>야채&소스 선택하기</b></h5>
 
             <ion-button strong="true" class="menu_btn" v-on:click="clickedVegetable" v-if="state.selectVegeSource != 'vegetable'"><h5><b>야채</b></h5></ion-button>
             <ion-button strong="true" class="mb_active" v-on:click="clickedVegetable" v-else><h5><b>야채</b></h5></ion-button>
             <ion-button strong="true" class="menu_btn" v-on:click="clickedSource" v-if="state.selectVegeSource != 'source'"><h5><b>소스</b></h5></ion-button>
             <ion-button strong="true" class="mb_active" v-on:click="clickedSource" v-else><h5><b>소스</b></h5></ion-button>
 
-            <div class="box-container" v-if="state.selectVegeSource === 'vegetable'">
+            <div class="box-container" v-if="state.selectVegeSource === 'vegetable'"> -->
+            <div class="box-container">
 
               <div v-for="vegetable in vegetables" :key="vegetable.Ingredient_id + vegetable.Ingredient_name">
-                <Items :info="{ type: 3,name: vegetable.Ingredient_name , kcal: vegetable.Ingredient_calorie, src: vegetable.Ingredient_imageUrl }" />
+                <Items :info="{ type: 'vege', startId: 1, finishId: 9, id: vegetable.Ingredient_id, name: vegetable.Ingredient_name , kcal: vegetable.Ingredient_calorie, src: vegetable.Ingredient_imageUrl }" />
               </div>
 
             </div>
 
-            <div class="box-container" v-else>
-
+            <!-- <div class="box-container" v-else>
               <div v-for="source in sources" :key="source.Ingredient_id + source.Ingredient_name">
-                <Items :info="{ type: 4, name: source.Ingredient_name , kcal: source.Ingredient_calorie, src: source.Ingredient_imageUrl }" />
+                <Items :info="{ type: 'source', startId: 13, finishId: 26, id: source.Ingredient_id, name: source.Ingredient_name , kcal: source.Ingredient_calorie, src: source.Ingredient_imageUrl }" />
               </div>
-            </div>
+            </div> -->
 
           </div>
         </ion-slide>
+
+        <ion-slide>
+          <div>
+            <h5 class="slide-title"><b>소스 선택하기</b></h5>
+
+            <div class="box-container">
+
+              <div v-for="source in sources" :key="source.Ingredient_id + source.Ingredient_name">
+                <Items :info="{ type: 'source', startId: 13, finishId: 26, id: source.Ingredient_id, name: source.Ingredient_name , kcal: source.Ingredient_calorie, src: source.Ingredient_imageUrl }" />
+              </div>
+
+            </div>
+          <ion-button expand="block" class="save-btn" @click="save">저장하기</ion-button>
+
+          </div>
+        </ion-slide>
+
       </ion-slides>
       </ion-content>
   </ion-page>
@@ -174,10 +192,21 @@
       width: 660px;
     }
   }
+
   ion-slides {
     --bullet-background-active:#111111; 
     --bullet-background:#C4C4C4;
   }
+
+  .save-btn {
+      width:80%; 
+      margin:auto; 
+      margin-top:50px; 
+      margin-bottom:50px;
+      border-radius: 6px;
+      --background: linear-gradient(to right, #00B573, 90%, #1CDE97);
+      color: #FFFFFF;
+    }
 </style>
 
 <style>
@@ -225,11 +254,13 @@
       }
       
       store.dispatch('initData');
-      const move = () => {
+
+      const save = () => {
         window.location.href = '/final'
       }
+
       return { 
-        move,
+        save,
         slideOpts,
         state,
         clickedClassic,
@@ -237,14 +268,13 @@
         clickedPremium,
         clickedVegetable,
         clickedSource,
-        breads: computed(() => store.getters.getBreadList),
-        classicMenus: computed(() => store.getters.getPremiumMenuList),
+        classicMenus: computed(() => store.getters.getClassicMenuList),
         freshMenus: computed(() => store.getters.getFreshMenuList),
         premiumMenus: computed(() => store.getters.getPremiumMenuList),
+        breads: computed(() => store.getters.getBreadList),
+        extras: computed(() => store.getters.getExtraList),
         vegetables: computed(() => store.getters.getVegetableList),
         sources: computed(() => store.getters.getSourceList),
-        extras: computed(() => store.getters.getExtraList),
-        select: computed(() => store.getters.getSelectMenu),
       }
     }
   }

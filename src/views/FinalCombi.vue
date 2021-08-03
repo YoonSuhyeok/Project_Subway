@@ -48,7 +48,8 @@
         <ion-progress-bar value="0.5" color="success" style="padding:7px; margin-bottom:20px;" class="align-center"></ion-progress-bar>
 
 
-        <ion-input placeholder="메뉴 닉네임 설정" class="align-center"></ion-input>
+        <ion-input type="text" placeholder="메뉴 닉네임 설정" v-model="nickname" class="align-center menu-nickname"></ion-input>
+        <!-- {{nickname}} -->
 
         <ion-button @click="presentAlert" class="align-center" style="margin-top:50px;">
             <ion-label><b>저장하기</b></ion-label>
@@ -98,37 +99,84 @@
 
 </style>
 
-<!--
-<style lang="scss">
-    .alertWindow {
-        text-align: center;
-    }
-
-    .alertCancelBtn {
-        background-color: darkgrey;
-        color: gray;
-    }
-
-    .alertSaveBtn {
-        background-color: darkgrey;
-        color: gray;
-    }
-</style>
--->
-
 <style>
-    .alertWindow {
-        height: 500px;
+
+    .alert-wrapper.ion-overlay-wrapper.sc-ion-alert-md {
+        border-radius: 10%;
     }
 
-    .alertCancelBtn {
-        --background: pink;
-        --background-activated: red;
-        --height: 10px;
+    .alert-head.sc-ion-alert-md {
+        display: none;
     }
 
-    .alertSaveBtn {
-        --background: pink;
+    .alert-button-img {
+        background-color: white;
+        width: 80px;
+        transform: translate( 0, -50%);
+        border-radius: 50%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .alert-wrapper.ion-overlay-wrapper.sc-ion-alert-md {
+        background-color: #00000000;
+        box-shadow: 0 0 0 gray;
+    }
+
+    #alert-1-msg {
+        background-color: #00000000;
+        padding:0;
+    }
+
+    .alert-upper-div {
+        height: 50px;
+        opacity: 0;
+    }
+
+    .alert-middle-div {
+        height: 10px;
+        transform: scaleY( 5 );
+        background-color: white;
+    }
+
+    .alert-bottom-div {
+        background-color: white;
+        height: 110px;
+        border-radius: 20px;
+    }
+
+    .alert-bottom-div > h5 {
+        transform: translate( 0, -150%);
+    }
+
+    .alert-message.sc-ion-alert-md {
+        text-align: center;
+        color: #009132;
+        font-weight: bold;
+    }
+
+    .alert-button-group.sc-ion-alert-md {
+        padding: 0;
+    }
+
+    .alert-button.sc-ion-alert-md {
+        text-align: center;
+        height: 50px;
+        width: 50%;
+        margin: 0;
+        font-weight: bold;
+    }
+
+    .alert-button.sc-ion-alert-md.alert-button-role-cancel {
+        background-color: lightgray;
+        color: #505050;
+        padding-right:10%;
+    }
+
+    .alert-button.sc-ion-alert-md.alert-button-role-save {
+        background-color: #009132;
+        color: white;
+        padding-right:15%;
     }
 </style>
 
@@ -137,32 +185,39 @@ import Combi from '@/components/Combi.vue'
 import { IonProgressBar, IonInput, IonButton, IonLabel, IonInfiniteScroll, alertController } from '@ionic/vue';
 import { computed } from '@vue/runtime-core';
 import { useStore } from 'vuex';
+import { defineComponent } from 'vue';
 
-export default  {
+export default defineComponent({
     name: 'Final',
     components: { Combi, IonProgressBar, IonInput, IonButton, IonLabel, IonInfiniteScroll },
+    data() {
+      return {
+          nickname: '',
+      }  
+    },
     methods: {
         async presentAlert() {
             const alert = await alertController
                 .create({
                     cssClass: 'alertWindow',
-                    header: 'SUBWAY MESSAGE',
-                    subHeader: '이대로 완성할까요?',
-                    // message: 'This is an alert message.',
+                    // header: 'header',
+                    // subHeader: 'subHeader',
+                    message: '<div class="alert-upper-div"></div><div class="alert-bottom-div"><img src="/assets/img/logo/logo_person2.png" class="alert-button-img"><h5>이대로 완성할까요?</h5></div><div class="alert-middle-div"></div>',
                     buttons: [
                         {
-                            text: '수정할래요!',
+                            text: '다시할래요!',
                             role: 'cancel',
-                            cssClass: 'alertCancelBtn',
                             handler: () => {
                                 console.log('Confirm Cancel')
+                                this.format();
+                                this.format();
                                 window.location.href='/tabs/tab2';
+                                
                             },
                         },
                         {
                             text: '좋아요!',
                             role: 'save',
-                            cssClass: 'alertSaveBtn',
                             handler: () => {
                                 console.log('Confirm Save')
                                 window.location.href='/my';
@@ -178,7 +233,22 @@ export default  {
     },
     setup() {
         const store = useStore();
+        const format = () => {
+            store.dispatch('selectMenu', '' );
+            store.dispatch('selectBread', '' );
+            store.state.selectTopingList = [''];
+            store.state.selectVegeList = [''];
+            store.state.selectSourceList = [''];
+            // console.log("selectMenu : "+store.getters.getSelectMenu)
+            // console.log("selectBread : "+store.getters.getSelectBread)
+            // console.log("topingList : "+store.getters.getSelectTopingList)
+            // console.log("vegetableList : "+store.getters.getSelectVegeList)
+            // console.log("sourceList : "+store.getters.getSelectSourceList)
+        }
+        const kcalAmount = 0;
         return { 
+            kcalAmount,
+            format,
             menu: computed(() => store.getters.getSelectMenu),
             bread: computed(() => store.getters.getSelectBread),
             topings: computed(() => store.getters.getSelectTopingList),
@@ -189,6 +259,6 @@ export default  {
             allSources: computed(() => store.getters.getSourceList)
         };
     }
-}
+});
 
 </script>
