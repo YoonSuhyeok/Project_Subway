@@ -30,8 +30,9 @@
         </div>
         <div class="email_login" v-else-if="loginType == 3">
           <div class="cls_section">
-            <ion-input id="NAME" placeholder="이름" />
-            <ion-input id="EMAIL" placeholder="이메일 주소" />  
+            <ion-input id="NAME" v-model="email" placeholder="이메일 주소" />
+            <ion-input id="EMAIL" v-model="password" placeholder="비밀번호" />  
+            <ion-button @click="login(email, password)"> 로그인 </ion-button>
           </div>
 
           <div class="findIDsection">
@@ -60,7 +61,7 @@
           </div>
           <div class="SignupOrAsk">
             <div class="signup">
-              <ion-button fill="clear" color="dark" expand="block"><b>회원가입</b></ion-button>
+              <ion-button href="/signup" fill="clear" color="dark" expand="block"><b>회원가입</b></ion-button>
             </div>
             <div class="updown"></div>
             <div class="ask">
@@ -74,9 +75,10 @@
   </ion-page>
 </template>
 
-<script>
+<script lang="ts">
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonInput, IonText } from '@ionic/vue';
 import { ref } from 'vue';
+import AxiosService from "@/service/axios.service";
 
 export default {
   name: 'Logins.main',
@@ -93,27 +95,29 @@ export default {
   setup () {
     const loginType = ref(1);
     
-    const changebtn = (type) =>{
+    const changebtn = (type: number) =>{
       loginType.value = type;
       return loginType;
     }
 
-    /*const javakey = process.env.VUE_APP_JAVASCRIPT_KEY;
-    console.log("javakey: ", javakey);
-    window.Kakao.init(javakey);
-    console.log(window.Kakao.isInitialized());
+    const email = '';
+    const password = '';
 
-    const kakaobtn = async function (){
-        const params = {
-            redirectUri: "http://localhost:8100/logins.kakao",
-        };
-        window.Kakao.Auth.authorize(params)
-    };*/
-
+    const login = async (email: string, password: string) =>  {
+      const loginCheck = await AxiosService.instance.post('/user/login', {
+        email: email,
+        password: password
+      })
+      if(loginCheck){
+        window.location.href = '/tabs/tab1';
+      }
+    }
     return {
       loginType,
       changebtn,
-      //kakaobtn
+      email,
+      password,
+      login
     }
   }
 }

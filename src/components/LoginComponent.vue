@@ -26,7 +26,7 @@
                 <ion-button expand="block" fill="default">
                     <ion-label style="color: #FFFFFF;"><b>로그인</b></ion-label>
                 </ion-button>
-                <ion-button expand="block" fill="default">
+                <ion-button href="/signup" expand="block" fill="default">
                     <ion-label style="color: #FFFFFF;"><b>회원가입</b></ion-label>
                 </ion-button>
             </div>
