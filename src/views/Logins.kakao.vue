@@ -57,7 +57,7 @@ export default {
     setup () {
         const store = useStore();
 
-        const javakey = process.env.VUE_APP_JAVASCRIPT_KEY
+        /*const javakey = process.env.VUE_APP_JAVASCRIPT_KEY
         window.Kakao.init(javakey);
         console.log(window.Kakao.isInitialized());
 
@@ -82,7 +82,7 @@ export default {
                 });
             })
         }
-
+        */
         return{
             
         }

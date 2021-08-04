@@ -98,7 +98,7 @@ export default {
       return loginType;
     }
 
-    const javakey = process.env.VUE_APP_JAVASCRIPT_KEY;
+    /*const javakey = process.env.VUE_APP_JAVASCRIPT_KEY;
     console.log("javakey: ", javakey);
     window.Kakao.init(javakey);
     console.log(window.Kakao.isInitialized());
@@ -108,12 +108,12 @@ export default {
             redirectUri: "http://localhost:8100/logins.kakao",
         };
         window.Kakao.Auth.authorize(params)
-    };
+    };*/
 
     return {
       loginType,
       changebtn,
-      kakaobtn
+      //kakaobtn
     }
   }
 }

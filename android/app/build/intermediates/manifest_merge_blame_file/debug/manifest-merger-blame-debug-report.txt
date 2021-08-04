@@ -72,7 +72,7 @@
 40        android:allowBackup="true"
 40-->C:\Users\user\Documents\git\Project_Subway\android\app\src\main\AndroidManifest.xml:6:9-35
 41        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-41-->[androidx.core:core:1.2.0] C:\Users\user\.gradle\caches\transforms-2\files-2.1\cf23515831a30cf8e0e5ff774beb1451\core-1.2.0\AndroidManifest.xml:24:18-86
+41-->[androidx.core:core:1.7.0-alpha01] C:\Users\user\.gradle\caches\transforms-2\files-2.1\3fa453eadef735d3dc6d136332c425bf\core-1.7.0-alpha01\AndroidManifest.xml:24:18-86
 42        android:debuggable="true"
 43        android:icon="@mipmap/ic_launcher"
 43-->C:\Users\user\Documents\git\Project_Subway\android\app\src\main\AndroidManifest.xml:7:9-43
