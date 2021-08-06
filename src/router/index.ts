@@ -41,6 +41,10 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/Logins.vue')
   },*/
   {
+    path: '/user',
+    component: () => import('@/views/userInfo.vue')
+  },
+  {
     path: '/final',
     component: () => import('@/views/FinalCombi.vue')
   },

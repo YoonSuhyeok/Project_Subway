@@ -3,18 +3,17 @@
     <div class="cls_totaldisplay">
         <div class="cls_header">
             <ion-toolbar>
-                <ion-buttons >
-                    <ion-button>
-                        <ion-icon ios="chevron-back" md="chevron-back"></ion-icon>
+                <ion-buttons>
+                    <ion-button @click="back">
+                        <ion-icon ios="chevron-back" md="chevron-back" ></ion-icon>
                     </ion-button>
+                    <ion-title>회원 가입</ion-title>
                 </ion-buttons>
-                <ion-title>회원 가입</ion-title>
             </ion-toolbar>
         </div>
 
         <div class="cls_section">
             <ion-text>* 표시는 필수 입력 항목입니다.</ion-text>
-            {{ nickname}}
             <ion-input id="NAME" v-model="nickname" placeholder="닉네임 *" />
             <ion-input id="EMAIL" v-model="email" placeholder="아아디(이메일) *" />
             <ion-text style="font-size: 5px; color: #686868;">이메일 주소는 로그인, 비밀번호 찾기에 사용되므로 정확하게 입력해주세요.</ion-text>
@@ -46,15 +45,17 @@
         color: #128D15;
     }
     .cls_section {
-        display: flex;
+        display: block;
         flex-direction: column;
         margin: 5px 25px;
         height: 100%;
     }
-    .cls_section ion-input {
+    ion-input {
         font-size: 14px;
+        height: 10%;
+        margin: 25px 0px;
         border: 0;
-        border-bottom: 1px solid;
+        border-bottom: 3px solid;
         border-bottom-color: #128D15;
     }
     .cls_enter ion-button {
@@ -72,9 +73,9 @@ import AxiosService from '@/service/axios.service';
 export default {
     components: { IonToolbar,  IonIcon, IonInput },
     setup(){
-        const email = "1";
-        const password = '2';
-        const nickname = '3';
+        const email = "";
+        const password = '';
+        const nickname = '';
 
         const submit = (nickname: string, email: string, password: string)=> {
             AxiosService.instance.post('/user', {
@@ -84,12 +85,19 @@ export default {
                 nickname: nickname
             })
             console.log(email, password, nickname);
+            window.location.href = '/logins.main';
         }
+
+        const back = () => {
+            window.history.back();
+        }
+
         return {
             email,
             password,
             nickname,
-            submit
+            submit,
+            back
         }
     }
 }

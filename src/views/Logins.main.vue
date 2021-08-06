@@ -32,7 +32,7 @@
           <div class="cls_section">
             <ion-input id="NAME" v-model="email" placeholder="이메일 주소" />
             <ion-input id="EMAIL" v-model="password" placeholder="비밀번호" />  
-            <ion-button @click="login(email, password)"> 로그인 </ion-button>
+            <ion-button expand="block" color="success" @click="login(email, password)"> 로그인 </ion-button>
           </div>
 
           <div class="findIDsection">
@@ -93,7 +93,7 @@ export default {
     IonText
   },
   setup () {
-    const loginType = ref(1);
+    const loginType = ref(3);
     
     const changebtn = (type: number) =>{
       loginType.value = type;
