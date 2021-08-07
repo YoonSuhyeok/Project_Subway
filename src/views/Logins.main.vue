@@ -30,8 +30,8 @@
         </div>
         <div class="email_login" v-else-if="loginType == 3">
           <div class="cls_section">
-            <ion-input id="NAME" v-model="email" placeholder="이메일 주소" />
-            <ion-input id="EMAIL" v-model="password" placeholder="비밀번호" />  
+            <ion-input id="NAME" v-model="email" type="email" placeholder="이메일 주소" />
+            <ion-input id="EMAIL" v-model="password" type="password" placeholder="비밀번호" />  
             <ion-button expand="block" color="success" @click="login(email, password)"> 로그인 </ion-button>
           </div>
 
