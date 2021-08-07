@@ -2,7 +2,7 @@
   <ion-page>
     <ion-tabs>
       <ion-tab-bar>
-        <ion-tab-button tab='tab1' href="/tabs/tab1">
+        <ion-tab-button tab='user' href="/tabs/user">
           <ion-icon :icon="person" />
           <ion-label>회원정보</ion-label>
         </ion-tab-button>
@@ -17,12 +17,12 @@
           <ion-label>즐겨찾기</ion-label>
         </ion-tab-button>
 
-        <ion-tab-button tab='tab3' href="/tabs/tab3">
+        <ion-tab-button tab='tab1' href="/tabs/tab1">
           <ion-icon :icon="search" />
           <ion-label>조합보기</ion-label>
         </ion-tab-button>
 
-        <ion-tab-button tab='tab3' href="/tabs/tab3">
+        <ion-tab-button tab='tab1' href="/tabs/tab1">
           <ion-icon :icon="cellular" />
           <ion-label>순위표</ion-label>
         </ion-tab-button>

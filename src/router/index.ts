@@ -18,7 +18,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/',
-    redirect: '/logins.main'
+    redirect: '/tabs/user'
   },
   {
     path: '/logo',
@@ -40,10 +40,6 @@ const routes: Array<RouteRecordRaw> = [
     path: '/logins',
     component: () => import('@/views/Logins.vue')
   },*/
-  {
-    path: '/user',
-    component: () => import('@/views/userInfo.vue')
-  },
   {
     path: '/final',
     component: () => import('@/views/FinalCombi.vue')
@@ -75,6 +71,10 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'tab1',
         component: () => import('@/views/Tab1.vue')
+      },
+      {
+        path: 'user',
+        component: () => import('@/views/userInfo.vue')
       },
       {
         path: 'tab2',
