@@ -35,6 +35,10 @@ declare module '@vue/runtime-core' {
 // provide typings for `useStore` helper
 export const storeKey: InjectionKey<VuexStore<StateInterface>> = Symbol('vuex-key')
 
+export interface RootState {
+  data: string;
+}
+
 export default store(function (/* { ssrContext } */) {
   const Store = createStore<StateInterface>({
     modules: {

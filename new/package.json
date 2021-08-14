@@ -12,10 +12,11 @@
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "axios": "^0.21.1",
-    "core-js": "^3.6.5",
+    "core-js": "^3.16.1",
     "quasar": "^2.0.0",
     "vue-class-component": "^8.0.0-rc.1",
     "vue-i18n": "^9.0.0-beta.0",
+    "vue-property-decorator": "^9.1.2",
     "vuex": "^4.0.1"
   },
   "devDependencies": {
