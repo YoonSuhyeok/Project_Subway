@@ -11,7 +11,14 @@ const routes: RouteRecordRaw[] = [
     component: () => import('src/layouts/LoginLayout.vue'),
     children: [{path: '', component: ()=> import('pages/Login.vue')}]
   },
-
+  {// 추가한 가입 Layout
+    path: '/join',
+    component: () => import('src/layouts/JoinLayout.vue'),
+    children: [
+      {path: '', component: ()=> import('pages/AcceptTheTerms.vue')},
+      {path: 'privacy', component: ()=> import('pages/PrivacyInput.vue')}
+    ]
+  },
   // Always leave this as last one,
   // but you can also remove it
   {

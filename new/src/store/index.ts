@@ -36,15 +36,30 @@ declare module '@vue/runtime-core' {
 export const storeKey: InjectionKey<VuexStore<StateInterface>> = Symbol('vuex-key')
 
 export interface RootState {
-  data: string;
+  jocinToolbarName: string;
 }
 
 export default store(function (/* { ssrContext } */) {
-  const Store = createStore<StateInterface>({
+  const Store = createStore<RootState>({
     modules: {
       // example
     },
-
+    state:{
+      jocinToolbarName: '약관동의'
+    },
+    mutations:{
+      setToolbarName(state, name: string){
+        state.jocinToolbarName = name;
+      }
+    },
+    actions:{
+      setJoinToolbarName({commit}, toolbarName: string){
+        commit('setToolbarName', toolbarName);
+      }
+    },
+    getters: {
+      joinToolbarName: (state) => state.jocinToolbarName
+    },
     // enable strict mode (adds overhead!)
     // for dev mode and --debug builds only
     strict: !!process.env.DEBUGGING

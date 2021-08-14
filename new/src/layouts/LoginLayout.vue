@@ -2,28 +2,10 @@
   <q-layout view="hHh Lpr fFf"> <!-- Be sure to play with the Layout demo on docs -->
 
     <!-- (Optional) The Header -->
-    <q-header elevated>
+    <q-header style="height: 40px; background: white; color: #373636; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+     text-align: center; padding-top: 8px; padding-bottom: 5px; font-size: large; font-weight: bold;">
       로그인
     </q-header>
-
-    <!-- (Optional) The Footer
-    <q-footer>
-      <q-tabs switch-indicator>
-        <q-route-tab
-          icon="map"
-          to="/your/route"
-          replace
-          label="One Tab"
-        />
-        <q-route-tab
-          icon="assignment"
-          to="/some/other/route"
-          replace
-          label="Other Tab"
-        />
-      </q-tabs>
-
-    </q-footer> -->
 
     <q-page-container>
       <!-- This is where pages get injected -->

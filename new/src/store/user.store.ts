@@ -31,7 +31,7 @@ const moduleUser: Module<moduleUserState, RootState> = {
         }
     },
     getters: {
-        
+        email: (state) => state.email
     }
 }
 
