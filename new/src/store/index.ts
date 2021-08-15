@@ -39,10 +39,13 @@ export interface RootState {
   jocinToolbarName: string;
 }
 
+import moduleUser from './user.store'
+import createPersistedState from 'vuex-persistedstate';
+
 export default store(function (/* { ssrContext } */) {
   const Store = createStore<RootState>({
     modules: {
-      // example
+      moduleUser
     },
     state:{
       jocinToolbarName: '약관동의'
@@ -60,6 +63,7 @@ export default store(function (/* { ssrContext } */) {
     getters: {
       joinToolbarName: (state) => state.jocinToolbarName
     },
+    plugins: [createPersistedState()],
     // enable strict mode (adds overhead!)
     // for dev mode and --debug builds only
     strict: !!process.env.DEBUGGING

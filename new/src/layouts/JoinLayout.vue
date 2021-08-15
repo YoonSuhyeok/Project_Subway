@@ -23,8 +23,8 @@
 import { Vue } from 'vue-class-component';
 
 export default class JoinLayout extends Vue {
-  get joinToolbarName(){
-    return this.$store.getters['joinToolbarName'];
+  get joinToolbarName(): string{
+    return (this.$store.getters['joinToolbarName'] as string);
   }
 
 }

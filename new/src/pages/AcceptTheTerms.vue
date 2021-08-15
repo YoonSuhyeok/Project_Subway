@@ -22,8 +22,7 @@
 </template>
 
 <script lang="ts">
-import { Vue } from "vue-class-component";
-
+import { Vue } from 'vue-class-component';
 
 export default class AcceptPage extends Vue {
   one = true;
@@ -33,8 +32,7 @@ export default class AcceptPage extends Vue {
   url = '/join/privacy';
 
   async created() {
-    console.log(this.$store)
-    this.$store.dispatch('setJoinToolbarName', '약관동의');
+    await this.$store.dispatch('setJoinToolbarName', '약관동의');
   }
 }
 </script>

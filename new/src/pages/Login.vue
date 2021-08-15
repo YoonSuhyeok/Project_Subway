@@ -17,7 +17,7 @@
     <div class="loginBox" style="margin-top:50px; margin-left:30px; margin-right:30px; border">
       <q-input color="green" v-model="email" label="이메일 주소" stack-label :dense="dense" /> 
       <q-input color="green" v-model="password" type="password" label="비밀번호" stack-label :dense="dense" /> 
-      <q-btn @click="login" style="margin-top:10px; width:100%" color="white" text-color="black" label="Login" />
+      <q-btn @click="login()" style="margin-top:10px; width:100%" color="white" text-color="black" label="Login" />
     </div>
     
     <div style="margin-top:10px; text-align: center;">
@@ -34,9 +34,15 @@
 </template>
 
 <script lang="ts">
-import { Vue } from 'vue-class-component'
+import { Vue, Options } from 'vue-class-component'
 
-// @Options(components:{})
+@Options({
+  watch: {
+    login(state: boolean){
+      this.loginState(state);
+    }
+  }
+})
 export default class LoginPage extends Vue {
   loginType = 0;
   email = '';
@@ -48,9 +54,15 @@ export default class LoginPage extends Vue {
     return this.loginType;
   }
 
-  login(){
-    //this.$store.dispatch('moduleUser/login', {email: this.email, password: this.password});
-    //const loginCheck = await Axio
+  loginState(login: boolean){
+    //return (this.$store.getters['moduleUser/loginState'] as boolean);
+  }
+
+  async login(){
+    await this.$store.dispatch('moduleUser/login', {email: this.email, password: this.password});
+    if(this.$store.getters['moduleUser/loginState']){
+      window.location.href = '/';
+    }
   }
 
 }
