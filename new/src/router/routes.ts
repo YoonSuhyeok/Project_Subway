@@ -24,6 +24,11 @@ const routes: RouteRecordRaw[] = [
     component: () => import('src/layouts/IdfindLayout.vue'),
     children: [{ path: '', component: () => import('pages/Idfind.vue') }]
   },
+  {
+    path: '/user',
+    component: () => import('src/layouts/UserInfoLayout.vue'),
+    children: [{ path: '', component: () => import('pages/UserInfo.vue') }]
+  },
   // Always leave this as last one,
   // but you can also remove it
   {
