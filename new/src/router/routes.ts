@@ -4,7 +4,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: () => import('src/layouts/MainLayout.vue'),
-    children: [{ path: '', component: () => import('pages/Index.vue') }],
+    children: [{ path: '', component: () => import('pages/Logo.vue') }],
   },
   {// 추가한 Login Layout
     path: '/login',
@@ -28,6 +28,7 @@ const routes: RouteRecordRaw[] = [
     path: '/tabs/',
     component: () => import('src/layouts/TabsLayout.vue'),
     children: [
+      {path: 'tab1', component: () => import('src/pages/Tab1.vue')},
       {path: 'tab2', component: () => import('src/pages/Tab2.vue')}
     ]
   },
