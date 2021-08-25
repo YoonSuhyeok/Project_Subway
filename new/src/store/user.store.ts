@@ -69,9 +69,9 @@ const moduleUser: Module<moduleUserState, RootState> = {
         }
     },
     getters: {
-        email: (state) => state.email,
-        signState: (state) => state.signState,
-        loginState: (state) => state.loginState
+        email: (state):string => state.email,
+        signState: (state):boolean => state.signState,
+        loginState: (state):boolean => state.loginState
     }
 }
 

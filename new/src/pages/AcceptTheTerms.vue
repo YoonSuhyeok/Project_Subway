@@ -23,14 +23,12 @@
 
 <script lang="ts">
 import { Vue } from 'vue-class-component';
-
 export default class AcceptPage extends Vue {
   one = true;
   two = true;
   three = true;
   foru = true;
   url = '/join/privacy';
-
   async created() {
     await this.$store.dispatch('setJoinToolbarName', '약관동의');
   }

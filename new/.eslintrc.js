@@ -83,6 +83,13 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
 
     // allow debugger during development only
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+
+    '@typescript-eslint/no-unsafe-call':'off',
+    '@typescript-eslint/no-unsafe-assignment':'off',
+    '@typescript-eslint/no-unsafe-member-access:':'off',
+    '@typescript-eslint/no-unsafe-member-access':'off',
+    '@typescript-eslint/no-unsafe-return':'off'
+
   }
 }
