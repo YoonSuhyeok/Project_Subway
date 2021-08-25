@@ -15,9 +15,14 @@ const routes: RouteRecordRaw[] = [
     path: '/join',
     component: () => import('src/layouts/JoinLayout.vue'),
     children: [
-      {path: '', component: ()=> import('pages/AcceptTheTerms.vue')},
+      {path: '', component: ()=> import('pages/Provision.vue')},
       {path: 'privacy', component: ()=> import('pages/PrivacyInput.vue')}
     ]
+  },
+  {// 추가한 아이디찾기 Layout
+    path: '/idfind',
+    component: () => import('src/layouts/IdfindLayout.vue'),
+    children: [{ path: '', component: () => import('pages/Idfind.vue') }]
   },
   // Always leave this as last one,
   // but you can also remove it

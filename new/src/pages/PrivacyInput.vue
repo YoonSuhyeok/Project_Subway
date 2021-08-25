@@ -27,7 +27,7 @@ export default class PrivacyPage extends Vue {
     await this.$store.dispatch('setJoinToolbarName', '회원가입');
   }
 
-  get signState(){
+  get signState() {
     return this.$store.getters['moduleUser/signState'];
   }
 
@@ -35,22 +35,22 @@ export default class PrivacyPage extends Vue {
    await this.$store.dispatch('moduleUser/sign', {
       email: this.email, 
       password: this.password,
-      nickname: this.nickname
+      nickname: this.nickname,
     });
 
-    if(this.password != this.password2){
+    if (this.password != this.password2) {
       alert('비밀번호가 동일하지 않습니다.');
-      return ;
+      return;
     }
     const signState = this.$store.getters('moduleUser/signState');
 
-    if(signState){
+    if (signState) {
       this.init();
       window.location.href = '/';
     }
   }
 
-  init(){
+  init() {
     this.nickname = '';
     this.email = '';
     this.password = '';
