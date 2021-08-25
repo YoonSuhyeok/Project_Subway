@@ -66,19 +66,12 @@ export default class LoginPage extends Vue {
     //return (this.$store.getters['moduleUser/loginState'] as boolean);
   }
 
-<<<<<<< HEAD
-  async login(){
-    await this.$store.dispatch('moduleUser/login', {email: this.email, password: this.password});
-    const loginState = this.$store.getters('moduleUser/loginState')
-    if(loginState){
-=======
   async login() {
     await this.$store.dispatch('moduleUser/login', {
       email: this.email,
       password: this.password,
     });
     if (this.$store.getters['moduleUser/loginState']) {
->>>>>>> bd5ac1150cce4039f1406b1c1c5228af63d859a1
       window.location.href = '/';
     }
   }

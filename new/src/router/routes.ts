@@ -24,6 +24,17 @@ const routes: RouteRecordRaw[] = [
     component: () => import('src/layouts/IdfindLayout.vue'),
     children: [{ path: '', component: () => import('pages/Idfind.vue') }]
   },
+  {
+    path: '/tabs/',
+    component: () => import('src/layouts/TabsLayout.vue'),
+    children: [
+      {path: 'tab2', component: () => import('src/pages/Tab2.vue')}
+    ]
+  },
+  {
+    path: '/items',
+    component: () => import('src/components/Items.vue')
+  },
   // Always leave this as last one,
   // but you can also remove it
   {
