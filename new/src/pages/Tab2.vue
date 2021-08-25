@@ -17,7 +17,14 @@
             <p style="padding: 0; margin: 0; font-weight: bold">
               메뉴 선택하기
             </p>
-            <div class="wrap"><Item /><Item /><Item /><Item /><Item /></div>
+            <div class="wrap">
+
+                <MenuBtn :menu="{title: '클래식'}" />
+                <MenuBtn style="width:110%;" :menu="{title: '프레쉬&라이트'}"/>
+                <MenuBtn :menu="{title: '프리미엄'}"/>
+                
+                <Item /><Item /><Item /><Item /><Item />
+            </div>
           </div>
         </q-carousel-slide>
         <q-carousel-slide name="bread" class="column no-wrap flex-center">
@@ -68,10 +75,11 @@
 <script>
 import { ref } from 'vue';
 import Item from 'src/components/Items.vue';
+import MenuBtn from 'src/components/MenuBtn.vue';
 
 export default {
   name: 'Tab2',
-  components: { Item },
+  components: { Item, MenuBtn },
   setup() {
     return {
       navPos: ref('top'),
