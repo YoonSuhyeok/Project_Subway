@@ -3,8 +3,8 @@ import { RouteRecordRaw } from 'vue-router';
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
-    children: [{ path: '', component: () => import('pages/Index.vue') }],
+    component: () => import('src/layouts/MainLayout.vue'),
+    children: [{ path: '', component: () => import('pages/Logo.vue') }],
   },
   {// 추가한 Login Layout
     path: '/login',
@@ -28,6 +28,18 @@ const routes: RouteRecordRaw[] = [
     path: '/user',
     component: () => import('src/layouts/UserInfoLayout.vue'),
     children: [{ path: '', component: () => import('pages/UserInfo.vue') }]
+  },
+  {
+    path: '/tabs/',
+    component: () => import('src/layouts/TabsLayout.vue'),
+    children: [
+      {path: 'tab1', component: () => import('src/pages/Tab1.vue')},
+      {path: 'tab2', component: () => import('src/pages/Tab2.vue')}
+    ]
+  },
+  {
+    path: '/items',
+    component: () => import('src/components/Items.vue')
   },
   // Always leave this as last one,
   // but you can also remove it
