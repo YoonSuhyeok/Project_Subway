@@ -6,7 +6,7 @@
 
 <style scoped>
 .menu-btn {
-    color:grey;
+    color:black;
     font-weight:bold;
     padding: 0;
     margin: 0;
