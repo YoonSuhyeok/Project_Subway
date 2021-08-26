@@ -25,6 +25,11 @@ const routes: RouteRecordRaw[] = [
     children: [{ path: '', component: () => import('pages/Idfind.vue') }]
   },
   {
+    path: '/user',
+    component: () => import('src/layouts/UserInfoLayout.vue'),
+    children: [{ path: '', component: () => import('pages/UserInfo.vue') }]
+  },
+  {
     path: '/tabs/',
     component: () => import('src/layouts/TabsLayout.vue'),
     children: [
