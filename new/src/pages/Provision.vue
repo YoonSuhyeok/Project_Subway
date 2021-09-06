@@ -11,7 +11,9 @@
           </q-item-section>
         </template>
         <q-card>
-          <q-card-section> 이 곳에는 약관 내용 서술 </q-card-section>
+          <q-card-section>
+            <provision-1></provision-1>
+          </q-card-section>
         </q-card>
       </q-expansion-item>
       <q-expansion-item>
@@ -24,7 +26,9 @@
           </q-item-section>
         </template>
         <q-card>
-          <q-card-section> 이 곳에는 약관 내용 서술 </q-card-section>
+          <q-card-section>
+            <provision-2></provision-2>
+          </q-card-section>
         </q-card>
       </q-expansion-item>
       <q-item>
@@ -85,7 +89,15 @@ p {
 <script lang="ts">
 import { Vue, Options } from 'vue-class-component';
 import { ref } from 'vue';
+import provision1 from 'components/Provision1.vue';
+import provision2 from 'components/Provision2.vue';
 
+@Options({
+  components: {
+    provision1,
+    provision2,
+  },
+})
 export default class ProvisionPage extends Vue {
   accept1 = ref(false);
   accept2 = ref(false);
