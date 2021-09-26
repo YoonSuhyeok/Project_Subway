@@ -74,8 +74,24 @@
         color="#128D15;"
         text-color="white"
         label="확인"
-        :to="url"
+        @click="checkProvision()"
       />
+
+      <q-dialog v-model="alert">
+        <q-card>
+          <q-card-section>
+            <div class="text-h6">약관 동의 필요</div>
+          </q-card-section>
+
+          <q-card-section class="q-pt-none">
+            회원가입을 위해선 필수 약관에 동의하셔야 합니다.
+          </q-card-section>
+
+          <q-card-section align="right">
+            <q-btn flat label="확인" color="green" v-close-popup />
+          </q-card-section>
+        </q-card>
+      </q-dialog>
     </div>
   </q-page>
 </template>
@@ -88,7 +104,6 @@ p {
 
 <script lang="ts">
 import { Vue, Options } from 'vue-class-component';
-import { ref } from 'vue';
 import provision1 from 'components/Provision1.vue';
 import provision2 from 'components/Provision2.vue';
 
@@ -97,18 +112,40 @@ import provision2 from 'components/Provision2.vue';
     provision1,
     provision2,
   },
+  watch: {
+    acceptAll() {
+      if (this.accept1 == false) this.accept1 = !this.accept1;
+      if (this.accept2 == false) this.accept2 = !this.accept2;
+      if (this.accept3 == false) this.accept3 = !this.accept3;
+      if (this.accept4 == false) this.accept4 = !this.accept4;
+      if (this.acceptAll == false) {
+        this.accept1 = !this.accept1;
+        this.accept2 = !this.accept2;
+        this.accept3 = !this.accept3;
+        this.accept4 = !this.accept4;
+      }
+    },
+  },
 })
 export default class ProvisionPage extends Vue {
-  accept1 = ref(false);
-  accept2 = ref(false);
-  accept3 = ref(false);
-  accept4 = ref(false);
-  acceptAll = ref(false);
+  alert = false;
+
+  accept1 = false;
+  accept2 = false;
+  accept3 = false;
+  accept4 = false;
+  acceptAll = false;
 
   url = '/join/privacy';
 
   async created() {
     await this.$store.dispatch('setJoinToolbarName', '약관동의');
+  }
+
+  checkProvision() {
+    if (this.accept1 == true && this.accept2 == true)
+      void this.$router.push(this.url);
+    else this.alert = true;
   }
 }
 </script>

@@ -4,6 +4,7 @@ import AxiosService from 'src/service/axios.service';
 
 export interface moduleUserState {
     email: string;
+    password: string,
     nickname: string;
     loginState: boolean;
     signState: boolean;
@@ -31,6 +32,7 @@ const moduleUser: Module<moduleUserState, RootState> = {
     namespaced: true,
     state:{
         email: '',
+        password: '',
         nickname: '',
         loginState: false,
         signState: false
@@ -39,12 +41,18 @@ const moduleUser: Module<moduleUserState, RootState> = {
         setEmail(state, email: string){
             state.email = email;
         },
+        setPassword(state, password: string) {
+            state.password = password;
+        },
+        setNickname(state, nickname: string) {
+            state.nickname = nickname;
+        },
         setSignState(state, signState: boolean){
             state.signState = signState;
         },
         setLoginState(state, loginState: boolean){
             state.loginState = loginState;
-        }
+        },
     },
     actions: {
         async login({commit}, data: loginData){
@@ -53,23 +61,31 @@ const moduleUser: Module<moduleUserState, RootState> = {
                 commit('setLoginState', true);
             }
             commit('setEmail', data.email);
+            commit('setPassword', data.password);
         },
         async sign({commit}, data: signData){
-            const userRespone = await AxiosService.instance.post('/user', {
-                email: data.email,
-                password: data.password,
-                nickname: data.nickname
-            })
+            const emailresponse = await AxiosService.instance.get(`/user/${data.email}`);
 
-            const user: user = userRespone.data as user;
-
-            if(user.User_id){
+            if(emailresponse.data === 'success'){
                 commit('setSignState', true);
             }
+        },
+        // 메일로 인증번호를 보냄
+        async sendmail({commit}, email: string) {
+            commit('setEmail', email);
+            await AxiosService.instance.get(`/user/keys?userId=${email}`);
+        },
+        // 인증번호를 서버로 보냄
+        async certmail({state}, key: number) {
+            console.log("email and key", state.email, key);
+            console.log("header", `/user/certify?userId=${state.email}&key=${key}`);
+            return await AxiosService.instance.get(`/user/certify?userId=${state.email}&key=${key}`);
         }
     },
     getters: {
         email: (state):string => state.email,
+        password: (state):string => state.password,
+        nickname: (state):string => state.nickname,
         signState: (state):boolean => state.signState,
         loginState: (state):boolean => state.loginState
     }

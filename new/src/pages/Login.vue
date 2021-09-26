@@ -86,6 +86,7 @@ export default class LoginPage extends Vue {
   email = '';
   password = '';
   url = 'http://3.38.45.217:3000/userkakao';
+  dense = 'dense';
 
   changeBtn(type: number) {
     this.loginType = type;

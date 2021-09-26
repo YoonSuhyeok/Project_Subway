@@ -1,5 +1,5 @@
 <template>
-  <q-page id="page">
+  <q-page id="sign">
     <div>
       <q-card>
         <q-card-section class="text-center">
@@ -47,16 +47,14 @@ export default class Certify extends Vue {
   $store = useStore();
   certkey!: number;
 
-  created() {
-    console.log('store email is ', this.$store.getters['moduleUser/email']);
-  }
-
   async checkCert() {
     await this.$store.dispatch('moduleUser/certmail', this.certkey).then(
       (response) => {
         console.log(response, typeof response);
         console.log(response.data, typeof response.data);
-        if (response.data == true) void this.$router.push('/');
+        if (response.data === 'success') {
+          void this.$router.push('/join/complete');
+        }
       },
       (error) => {
         if (error.response.data === 'Invaild token') {

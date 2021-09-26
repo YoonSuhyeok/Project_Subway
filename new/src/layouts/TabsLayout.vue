@@ -1,26 +1,46 @@
 <template>
   <q-layout view="hHh lpR fFf">
     <q-page-container>
-      <router-view />
+      <q-page style="width: 100%; height: 80%; border: 1px solid red">
+        <router-view></router-view>
+      </q-page>
     </q-page-container>
 
     <q-footer elevated class="bg-white text-black">
       <q-tabs v-model="tab" class="text-black">
-        <q-tab
+        <q-route-tab
           style="width: 20%"
-          name="person"
+          name="user"
           icon="person"
           label="회원정보"
+          to="/tabs/tab1"
         />
-        <q-tab
+        <q-route-tab
           style="width: 20%"
-          name="layers"
+          name="make"
           icon="layers"
-          label="회원정보"
+          label="조합만들기"
+          to="/tabs/tab2"
         />
-        <q-tab style="width: 20%" name="star" icon="star" label="즐겨찾기" />
-        <q-tab style="width: 20%" name="movies" icon="movie" label="조합보기" />
-        <q-tab style="width: 20%" name="movies" icon="movie" label="순위표" />
+        <q-route-tab
+          style="width: 20%"
+          name="star"
+          icon="star"
+          label="즐겨찾기"
+          to="/tabs/tab3"
+        />
+        <q-route-tab
+          style="width: 20%"
+          name="view"
+          icon="movie"
+          label="조합보기"
+        />
+        <q-route-tab
+          style="width: 20%"
+          name="rank"
+          icon="movie"
+          label="순위표"
+        />
       </q-tabs>
     </q-footer>
   </q-layout>
@@ -31,10 +51,15 @@
   font-size: 10px;
   padding-bottom: 5%;
 }
+.q-footer {
+  width: 100%;
+}
 </style>
 
 <script lang="ts">
 import { Vue } from 'vue-class-component';
 
-export default class TabsLayout extends Vue {}
+export default class TabsLayout extends Vue {
+  tab = 'user';
+}
 </script>
