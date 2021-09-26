@@ -44,7 +44,7 @@ module.exports = {
 
     // https://github.com/prettier/eslint-config-prettier#installation
     // usage with Prettier, provided by 'eslint-config-prettier'.
-    'prettier'
+    'prettier',
   ],
 
   plugins: [
@@ -78,7 +78,7 @@ module.exports = {
     'prefer-promise-reject-errors': 'off',
 
     // TypeScript
-    quotes: ['warn', 'single', { avoidEscape: true }],
+    quotes: ['off', 'single', { avoidEscape: true }],
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
 

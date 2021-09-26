@@ -27,5 +27,7 @@
 </template>
 
 <script>
-export default {};
+import { Vue } from 'vue-class-component';
+
+export default class IdfindLayout extends Vue {}
 </script>

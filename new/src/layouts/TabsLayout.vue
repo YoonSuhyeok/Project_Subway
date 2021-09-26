@@ -32,3 +32,9 @@
   padding-bottom: 5%;
 }
 </style>
+
+<script lang="ts">
+import { Vue } from 'vue-class-component';
+
+export default class TabsLayout extends Vue {}
+</script>

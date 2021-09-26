@@ -107,7 +107,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options } from 'vue-class-component';
+import { Vue } from 'vue-class-component';
 
 export default class Provision1 extends Vue {}
 </script>
