@@ -1,23 +1,20 @@
 <template>
-  
-    <q-card class="item-card">
-      <!--<img style="padding: 1vh" src="../assets/img/tmp_item.png" />-->
-      <q-card-section class="item-card-section">
-        <img class="item-card-img" src="../assets/icons/빵.png" alt="임시 빵">
-        <div>로스트 치킨 아보카도</div>
-        <div>100kcal</div>
-      </q-card-section>
-    </q-card>
+  <q-card class="item-card">
+    <!--<img style="padding: 1vh" src="../assets/img/tmp_item.png" />-->
+    <q-card-section class="item-card-section">
+      <img class="item-card-img" src="../assets/icons/빵.png" alt="임시 빵" />
+      <div>{{ breadname }}</div>
+      <div>{{ kcal }} Kcal</div>
+    </q-card-section>
+  </q-card>
 </template>
 
-<style>
+<style scoped>
 .q-pa-md {
   padding: 0;
   margin: auto;
 }
-</style>
 
-<style scoped>
 .item-card {
   border-radius: 25%;
   width: 80px;
@@ -35,3 +32,15 @@
   width: 60px;
 }
 </style>
+
+<script lang="ts">
+import { Vue, Options } from 'vue-class-component';
+
+@Options({
+  props: { breadname: String, kcal: Number },
+})
+export default class Item extends Vue {
+  breadname?: string;
+  kcal?: number;
+}
+</script>

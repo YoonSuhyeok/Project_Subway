@@ -1,8 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-footer>
-
-    </q-footer>
+    <q-footer> </q-footer>
     <q-page-container>
       <router-view />
     </q-page-container>
@@ -10,13 +8,11 @@
 </template>
 
 <script lang="ts">
-import EssentialLink from 'components/EssentialLink.vue'
-
-import { Vue, Options } from 'vue-class-component'
+import EssentialLink from 'components/EssentialLink.vue';
+import { Vue, Options } from 'vue-class-component';
 
 @Options({
-  components: { EssentialLink }
+  components: { EssentialLink },
 })
-export default class MainLayout extends Vue {
-}
+export default class MainLayout extends Vue {}
 </script>

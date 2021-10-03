@@ -1,14 +1,6 @@
 <template>
-  <q-item
-    clickable
-    tag="a"
-    target="_blank"
-    :href="link"
-  >
-    <q-item-section
-      v-if="icon"
-      avatar
-    >
+  <q-item clickable tag="a" target="_blank" :href="link">
+    <q-item-section v-if="icon" avatar>
       <q-icon :name="icon" />
     </q-item-section>
 
@@ -22,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, prop, Options } from 'vue-class-component';
+import { Vue, prop } from 'vue-class-component';
 
 class Props {
   readonly title!: string;
@@ -31,6 +23,5 @@ class Props {
   readonly icon = prop({ default: '' });
 }
 
-@Options({})
 export default class EssentialLink extends Vue.with(Props) {}
 </script>

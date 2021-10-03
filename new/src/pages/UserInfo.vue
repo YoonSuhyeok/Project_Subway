@@ -50,8 +50,13 @@
       </q-card>
     </div>
 
-    <div class="flex flex-center">새로운 요소 추가 공간</div>
-    <div class="flex flex-center q-gutter-md bg-white">
+    <!-- 새로운 요소 추가 div -->
+    <div class="flex flex-center"></div>
+
+    <div
+      class="flex flex-center q-gutter-md bg-white"
+      style="position: absolute; bottom: 20px; width: 100%; margin: auto"
+    >
       <q-btn color="green" class="full-width">앱 환경설정</q-btn>
       <q-btn color="green" class="full-width">약관 및 정책</q-btn>
     </div>

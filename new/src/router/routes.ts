@@ -35,6 +35,8 @@ const routes: RouteRecordRaw[] = [
       {path: 'tab1', component: () => import('pages/UserInfo.vue')},
       {path: 'tab2', component: () => import('src/pages/Tab2.vue')},
       {path: 'tab3', component: () => import('src/pages/Tab3.vue')},
+      {path: 'tab4', component: () => import('src/pages/Tab4.vue')},
+      {path: 'tab5', component: () => import('src/pages/Tab5.vue')},
     ]
   },
   // Always leave this as last one,

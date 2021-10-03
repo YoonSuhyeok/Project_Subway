@@ -126,11 +126,13 @@
 import { Vue, Options } from 'vue-class-component';
 import CombiComponent from 'components/combiComponent.vue';
 
-@Options({ components: { CombiComponent } })
+@Options({
+  components: {
+    CombiComponent,
+  },
+})
 export default class PageIndex extends Vue {
   slide = 'style';
-  lorem =
-    'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque voluptatem totam, architecto cupiditate officia rerum, error dignissimos praesentium libero ab nemo.';
   navPos = 'bottom';
   navigationPositions = [
     { value: 'top', label: 'top' },
