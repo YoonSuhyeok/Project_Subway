@@ -40,12 +40,16 @@ export interface RootState {
 }
 
 import moduleUser from './user.store'
+import moduleBread from './bread.store'
+import moduleRecipe from './recipe.store'
 import createPersistedState from 'vuex-persistedstate';
 
 export default store(function (/* { ssrContext } */) {
   const Store = createStore<RootState>({
     modules: {
-      moduleUser
+      moduleUser,
+      moduleBread,
+      moduleRecipe,
     },
     state:{
       jocinToolbarName: '약관동의'

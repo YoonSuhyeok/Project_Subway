@@ -92,22 +92,26 @@ export default class PrivacyPage extends Vue {
       return;
     }
 
-    await this.$store.dispatch('moduleUser/sign', {
-      email: this.email,
-      password: this.password,
-      nickname: this.nickname,
-    });
+    const emailResponse = await this.$store.dispatch('moduleUser/checkEmail', this.email);
+    if(emailResponse.data === "success"){
+      await this.$store.dispatch('moduleUser/setUser', {
+        email: this.email,
+        password: this.password,
+        nickname: this.nickname
+      });
+
+      const sendResponse = await this.$store.dispatch('moduleUser/sendmail', this.email)
+      console.log(sendResponse)
+      if(sendResponse.data === "인증번호 발송"){
+        alert('입력하신 메일로 인증번호가 발송되었습니다.');
+        void this.$router.push('/join/certify');
+      }
+    }
 
     const signState = this.$store.getters['moduleUser/signState'];
 
     if (signState) {
-      this.$store.commit('moduleUser/email', this.email);
-      this.$store.commit('moduleUser/setNickname', this.nickname);
-      this.$store.commit('moduleUser/setPassword', this.password);
-      await this.$store
-        .dispatch('moduleUser/sendmail', this.email)
-        .then(void this.$router.push('/join/certify'));
-      alert('입력하신 메일로 인증번호가 발송되었습니다.');
+      
     }
   }
 

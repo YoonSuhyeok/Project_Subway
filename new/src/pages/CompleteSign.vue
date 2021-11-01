@@ -37,7 +37,7 @@ export default class CompleteSign extends Vue {
 
   async go() {
     await AxiosService.instance
-      .post('/user', {
+      .post('/user/sign', {
         email: this.$store.getters['moduleUser/email'],
         password: this.$store.getters['moduleUser/password'],
         nickname: this.$store.getters['moduleUser/nickname'],

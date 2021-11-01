@@ -1,13 +1,15 @@
 import { Module } from 'vuex';
 import { RootState } from './index';
+import { Recipe } from './recipe.store'
 import AxiosService from 'src/service/axios.service';
 
 export interface moduleUserState {
     email: string;
-    password: string,
+    password: string;
     nickname: string;
     loginState: boolean;
     signState: boolean;
+    recipes: Recipe[];
 }
 
 type loginData = {
@@ -35,7 +37,8 @@ const moduleUser: Module<moduleUserState, RootState> = {
         password: '',
         nickname: '',
         loginState: false,
-        signState: false
+        signState: false,
+        recipes: []
     },
     mutations: {
         setEmail(state, email: string){
@@ -53,6 +56,9 @@ const moduleUser: Module<moduleUserState, RootState> = {
         setLoginState(state, loginState: boolean){
             state.loginState = loginState;
         },
+        addRecipe(state, recipe: Recipe){
+            state.recipes.push(recipe);
+        }
     },
     actions: {
         async login({commit}, data: loginData){
@@ -64,22 +70,41 @@ const moduleUser: Module<moduleUserState, RootState> = {
             commit('setPassword', data.password);
         },
         async sign({commit}, data: signData){
-            const emailresponse = await AxiosService.instance.get(`/user/${data.email}`);
+            const signResponse = await AxiosService.instance.post(`/user/sign`, {
+                email: data.email,
+                password: data.password,
+                nickname: data.nickname
+            });
 
-            if(emailresponse.data === 'success'){
+            if(signResponse.data === 'success'){
                 commit('setSignState', true);
             }
+        },
+        setUser({commit}, data: signData) {
+            commit('setEmail', data.email);
+            commit('setPassword', data.password);
+            commit('setNickname', data.nickname);
+        },
+        // 이메일이 DB에 존재하는지 체크
+        async checkEmail({commit}, email: string) {
+            return await AxiosService.instance.get(`/user/${email}`);
         },
         // 메일로 인증번호를 보냄
         async sendmail({commit}, email: string) {
             commit('setEmail', email);
-            await AxiosService.instance.get(`/user/keys?userId=${email}`);
+            return await AxiosService.instance.get(`/user/keys?userId=${email}`);
         },
         // 인증번호를 서버로 보냄
         async certmail({state}, key: number) {
             console.log("email and key", state.email, key);
             console.log("header", `/user/certify?userId=${state.email}&key=${key}`);
             return await AxiosService.instance.get(`/user/certify?userId=${state.email}&key=${key}`);
+        },
+        pushRecipe({commit}, recipe: Recipe) {
+            commit('addRecipe', recipe);
+        },
+        async sendRecipe({}, recipe: Recipe) {
+            return await AxiosService.instance.post(`/recipe/add`, recipe);
         }
     },
     getters: {
@@ -87,7 +112,8 @@ const moduleUser: Module<moduleUserState, RootState> = {
         password: (state):string => state.password,
         nickname: (state):string => state.nickname,
         signState: (state):boolean => state.signState,
-        loginState: (state):boolean => state.loginState
+        loginState: (state):boolean => state.loginState,
+        recipes: (state):Recipe[] => state.recipes,
     }
 }
 

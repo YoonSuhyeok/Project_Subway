@@ -47,8 +47,8 @@ export default class Certify extends Vue {
   $store = useStore();
   certkey!: number;
 
-  async checkCert() {
-    await this.$store.dispatch('moduleUser/certmail', this.certkey).then(
+  checkCert() {
+    this.$store.dispatch('moduleUser/certmail', this.certkey).then(
       (response) => {
         console.log(response, typeof response);
         console.log(response.data, typeof response.data);

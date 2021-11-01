@@ -2,7 +2,7 @@
   <q-layout view="hHh lpR fFf">
     <q-page>
       <q-page-container>
-        <q-page style="width: 100%; height: 80%; border: 1px solid red">
+        <q-page style="width: 100%; height: 80%;">
           <router-view></router-view>
         </q-page>
       </q-page-container>

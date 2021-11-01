@@ -39,6 +39,13 @@ const routes: RouteRecordRaw[] = [
       {path: 'tab5', component: () => import('src/pages/Tab5.vue')},
     ]
   },
+  {
+    path: '/makesand',
+    component: () => import('src/layouts/MakeLayout.vue'),
+    children: [
+      {path: '', component: () => import('src/pages/Makesand.vue')}
+    ]
+  },
   // Always leave this as last one,
   // but you can also remove it
   {

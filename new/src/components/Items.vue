@@ -2,8 +2,8 @@
   <q-card class="item-card">
     <!--<img style="padding: 1vh" src="../assets/img/tmp_item.png" />-->
     <q-card-section class="item-card-section">
-      <img class="item-card-img" src="../assets/icons/빵.png" alt="임시 빵" />
-      <div>{{ breadname }}</div>
+      <img class="item-card-img" :src='image' alt="임시 빵" />
+      <div>{{ name }}</div>
       <div>{{ kcal }} Kcal</div>
     </q-card-section>
   </q-card>
@@ -30,17 +30,29 @@
 
 .item-card-img {
   width: 60px;
+  height: 40px;
 }
 </style>
 
 <script lang="ts">
-import { Vue, Options } from 'vue-class-component';
+  import { Vue, Options } from 'vue-class-component';
 
-@Options({
-  props: { breadname: String, kcal: Number },
-})
-export default class Item extends Vue {
-  breadname?: string;
-  kcal?: number;
-}
+  @Options({
+    props: { id: Number, name: String, kcal: Number, category: String },
+  })
+  export default class Item extends Vue {
+    id!: number;
+    name!: string;
+    kcal!: number;
+    image!: string;
+    category !: string;
+
+    setImage(category: string, id: number) {
+      this.image = `http://www.makesand.shop/${category}/img/${id}`;
+    }
+    
+    created() {
+      this.setImage(this.category, this.id);
+    }
+  }
 </script>
