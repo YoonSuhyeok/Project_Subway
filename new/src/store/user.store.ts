@@ -100,9 +100,11 @@ const moduleUser: Module<moduleUserState, RootState> = {
             console.log("header", `/user/certify?userId=${state.email}&key=${key}`);
             return await AxiosService.instance.get(`/user/certify?userId=${state.email}&key=${key}`);
         },
+        // recipe를 recipes[]에 넣음
         pushRecipe({commit}, recipe: Recipe) {
             commit('addRecipe', recipe);
         },
+        // recipe를 서버로 보냄
         async sendRecipe({}, recipe: Recipe) {
             return await AxiosService.instance.post(`/recipe/add`, recipe);
         }

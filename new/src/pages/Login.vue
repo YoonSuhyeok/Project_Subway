@@ -85,7 +85,6 @@ export default class LoginPage extends Vue {
   loginType = 0;
   email = '';
   password = '';
-  url = 'http://3.38.45.217:3000/userkakao';
   dense = 'dense';
 
   loginState(login: boolean) {

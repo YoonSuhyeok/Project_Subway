@@ -59,7 +59,8 @@ const moduleRecipe: Module<Recipe, RootState> = {
                 Ingredient: recipe.igdId,
                 Extra: recipe.extraId,
             });
-        }
+        },
+
     },
     getters: {
         Recipe: (state) => state,
