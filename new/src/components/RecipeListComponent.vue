@@ -65,49 +65,60 @@ export default class RecipeList extends Vue {
       `/menu/${recipe.menuId}`
     );
     this.baseMenu = menuResponse.data['Menu_name'];
+
     // Bread
     const breadResponse = await AxiosService.instance.get(
       `/bread/${recipe.breadId}`
     );
     this.baseBread = breadResponse.data['Bread_name'];
+
     // Extra
     for (let i = 0; i < recipe.extraId.length; i++) {
       let id: string = recipe.extraId.charAt(i);
       if (id === '1') {
-        const extraResponse = await AxiosService.instance.get(`extra/${id}`);
+        const extraResponse = await AxiosService.instance.get(`extra/${i}`);
         let temp: string = extraResponse.data['Extra_name'];
         this.baseExtra = this.baseExtra + temp + ' ';
       }
     }
+
     // IGD
-    for (let j = 0; j < recipe.igdId.length; j++) {
-      let id: string = recipe.igdId.charAt(j);
-      if (j < 9) {
-        if (id === '1') {
-          const igdResponse = await AxiosService.instance.get(
-            `vegetable/${id}`
-          );
-          let temp: string = igdResponse.data['Ingredient_name'];
-          this.baseIgd = this.baseIgd + temp + ' ';
-        }
-      } else if (j >= 9 && j < 12) {
-        if (id === '1') {
-          const igdResponse = await AxiosService.instance.get(`cheeze/${id}`);
-          let temp: string = igdResponse.data['Cheeze_name'];
-          this.baseIgd = this.baseIgd + temp + ' ';
-        }
-      } else {
-        if (id === '1') {
-          const igdResponse = await AxiosService.instance.get(`source/${id}`);
-          let temp: string = igdResponse.data['soruce_name'];
-          this.baseIgd = this.baseIgd + temp + ' ';
+    if (recipe.igdId === '00000000000000000000000000')
+      this.baseIgd = '추가 재료 없음';
+    else {
+      for (let j = 0; j < recipe.igdId.length; j++) {
+        let id: string = recipe.igdId.charAt(j);
+        if (j < 9) {
+          if (id === '1') {
+            const igdResponse = await AxiosService.instance.get(
+              `vegetable/${j}`
+            );
+            let temp: string = igdResponse.data['Ingredient_name'];
+            this.baseIgd = this.baseIgd + temp + ' ';
+          }
+        } else if (j >= 9 && j < 12) {
+          if (id === '1') {
+            const igdResponse = await AxiosService.instance.get(
+              `cheeze/${j - 9}`
+            );
+            let temp: string = igdResponse.data['Cheeze_name'];
+            this.baseIgd = this.baseIgd + temp + ' ';
+          }
+        } else {
+          if (id === '1') {
+            const igdResponse = await AxiosService.instance.get(
+              `source/${j - 12}`
+            );
+            let temp: string = igdResponse.data['source_name'];
+            this.baseIgd = this.baseIgd + temp + ' ';
+          }
         }
       }
     }
   }
 
   created() {
-    this.setRecipe(this.recipe).catch((err) => alert('error'));
+    this.setRecipe(this.recipe).catch((err) => console.log(err));
     this.setListImage(this.imagecode);
   }
 }

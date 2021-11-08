@@ -13,6 +13,7 @@ import { Vue, Options } from 'vue-class-component';
 import { useStore } from 'vuex';
 import { Recipe } from 'src/store/recipe.store';
 import RecipeList from 'components/RecipeListComponent.vue';
+import AxiosService from '../service/axios.service';
 
 @Options({
   components: { RecipeList },
@@ -24,7 +25,15 @@ export default class Tab4 extends Vue {
 
   created() {
     // 이걸 서버에서 받아오는 API로 수정
-    this.recipes = this.$store.getters['moduleUser/recipes'];
+    void this.loadRecipes();
+  }
+
+  async loadRecipes() {
+    const id = + this.$store.getters['moduleUser/email'];
+    const recipesResonse = await AxiosService.instance.get(
+      `/recipe/userall?id=${id}`
+    );
+    this.recipes = recipesResonse.data;
   }
 }
 </script>

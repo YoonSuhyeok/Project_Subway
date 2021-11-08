@@ -3,13 +3,10 @@
     <div>
       <q-card flat bordered>
         <q-card-section horizontal>
-          <q-item>
-            <q-item-section avatar>
-              <q-avatar>
-                <img src="../assets/img/ProfileEX.png" />
-              </q-avatar>
-            </q-item-section>
-          </q-item>
+          <q-card-section>
+            <q-img class="col" src="../assets/img/ProfileEX.png" />
+            <q-btn flat style="top: 20px; font-size: 14px; white-space: nowrap" @click="logout()">로그아웃</q-btn>
+          </q-card-section>
 
           <q-item class="flex column">
             <q-item-section>
@@ -40,9 +37,7 @@
               </q-item>
             </div>
             <div class="flex">
-              <q-btn class="text-caption" flat color="black" disable>{{
-                email
-              }}</q-btn>
+              <q-btn class="text-caption" flat color="black" disable>{{email}}</q-btn>
               <q-btn flat>비밀번호 변경</q-btn>
             </div>
           </q-item>
@@ -81,6 +76,12 @@ export default class UserInfoPage extends Vue {
 
   created() {
     this.init();
+  }
+
+  async logout() {
+    await this.$store.dispatch('moduleUser/logout');
+    alert("조합식을 만들고 싶다면 다시 로그인 해주세요!");
+    void this.$router.push('/login');
   }
 }
 </script>

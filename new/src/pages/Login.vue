@@ -54,8 +54,14 @@
       />
     </div>
 
-    <div style="margin-top: 3.5vh; text-align: center">
+    <div class="loginBtn">
+      <div style="color: #636363;">회원이 되고 싶으신가요?</div>
       <div style="color: #636363">아이디/PW를 잊으셨나요?</div>
+      <q-btn
+        flat
+        style="color: #2f2f2f; font-weight: bold"
+        label="회원가입"
+      />
       <q-btn
         flat
         style="color: #2f2f2f; font-weight: bold"
@@ -70,6 +76,16 @@
     </div> -->
   </q-page>
 </template>
+
+<style scoped>
+  .loginBtn {
+    display: grid; 
+    margin-top: 3.5vh; 
+    justify-items: center; 
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr 1fr;
+  }
+</style>
 
 <script lang="ts">
 import { Vue, Options } from 'vue-class-component';

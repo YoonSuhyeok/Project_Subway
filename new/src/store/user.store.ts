@@ -69,6 +69,13 @@ const moduleUser: Module<moduleUserState, RootState> = {
             commit('setEmail', data.email);
             commit('setPassword', data.password);
         },
+        logout({commit}){
+            commit('setLoginState', false);
+            commit('setEmail', '');
+            commit('setPassword', '');
+            commit('setNickname', '');
+
+        },
         async sign({commit}, data: signData){
             const signResponse = await AxiosService.instance.post(`/user/sign`, {
                 email: data.email,
