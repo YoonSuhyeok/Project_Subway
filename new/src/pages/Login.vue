@@ -113,7 +113,7 @@ export default class LoginPage extends Vue {
       password: this.password,
     });
     if (this.$store.getters['moduleUser/loginState']) {
-      window.location.href = '/';
+      window.location.href = '/tabs';
     }
   }
 }

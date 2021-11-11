@@ -28,7 +28,7 @@
       class="text-black rounded-borders"
       style="font-size: 1.2vh"
     >
-      <q-carousel-slide name="style" class="bg-purple column no-wrap flex">
+      <q-carousel-slide name="style" class="bg-grey column no-wrap flex">
         <div style="font-weight: bold; font-size: 2.4vh; text-align: center">
           이 달의 베스트조합
         </div>
@@ -42,37 +42,14 @@
               align-self: flex-end;
             "
           ></combi-component>
-          <q-card
-            class="my-card"
+          <combi-component
             style="
               margin-left: 1vw;
               margin-right: 1vw;
               height: 20vh;
               width: 40vw;
-              background: green;
-              box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-              border-radius: 15px;
             "
-          >
-            <img
-              style="
-                height: 8vh;
-                width: 30vw;
-                margin-top: 2vh;
-                margin-left: auto;
-                margin-right: auto;
-                image-rendering: optimizequality;
-              "
-              src="../assets/icons/빵.png"
-            />
-            <q-card-section
-              style="margin-top: -1vh; color: black; text-align: center"
-            >
-              <div style="font-size: 1vmax">손명 진갈대같다</div>
-              <div style="font-size: 1.5vmax">Our Changing</div>
-              <div style="font-size: 1vmax">by John Doe</div>
-            </q-card-section>
-          </q-card>
+          ></combi-component>
           <combi-component
             style="
               margin-left: 1vw;
@@ -87,7 +64,7 @@
 
       <q-carousel-slide name="tv" class="column no-wrap flex">
         <div style="font-weight: bold; font-size: 2.4vh; text-align: center">
-          아침은 드셨나요? 아침 꿀 조합
+          추가 조합
         </div>
         <div style="display: flex; margin-top: 5vh">
           <combi-component
@@ -124,7 +101,7 @@
 
 <script lang="ts">
 import { Vue, Options } from 'vue-class-component';
-import CombiComponent from 'components/combiComponent.vue';
+import CombiComponent from '../components/combiComponent.vue'
 
 @Options({
   components: {
