@@ -120,6 +120,7 @@ const moduleUser: Module<moduleUserState, RootState> = {
         async sendRecipe({}, recipe: Recipe) {
             return await AxiosService.instance.post(`/recipe/add`, recipe);
         },
+        // login state 접근성 테스트 코드
         setLS({commit}, bool: boolean) {
             commit('setLoginState', bool);
         }

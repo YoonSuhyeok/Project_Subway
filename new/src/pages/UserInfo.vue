@@ -89,6 +89,7 @@ export default class UserInfoPage extends Vue {
     void this.$router.push('/login');
   }
 
+  // login state 접근성 테스트 코드
   setLoginState(bool: boolean) {
     void this.$store.dispatch('moduleUser/setLS', bool);
   }
