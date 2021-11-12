@@ -58,6 +58,9 @@ const moduleUser: Module<moduleUserState, RootState> = {
         },
         addRecipe(state, recipe: Recipe){
             state.recipes.push(recipe);
+        },
+        delRecipe(state){
+            state.recipes = [];
         }
     },
     actions: {
@@ -68,12 +71,14 @@ const moduleUser: Module<moduleUserState, RootState> = {
             }
             commit('setEmail', data.email);
             commit('setPassword', data.password);
+            // 로그인 할 때 불러올 정보가 더 필요함
         },
         logout({commit}){
             commit('setLoginState', false);
             commit('setEmail', '');
             commit('setPassword', '');
             commit('setNickname', '');
+            commit('delRecipe');
 
         },
         async sign({commit}, data: signData){
@@ -114,6 +119,9 @@ const moduleUser: Module<moduleUserState, RootState> = {
         // recipe를 서버로 보냄
         async sendRecipe({}, recipe: Recipe) {
             return await AxiosService.instance.post(`/recipe/add`, recipe);
+        },
+        setLS({commit}, bool: boolean) {
+            commit('setLoginState', bool);
         }
     },
     getters: {

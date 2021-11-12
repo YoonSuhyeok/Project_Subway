@@ -181,8 +181,7 @@ import { useStore } from 'vuex';
 import { Recipe } from '../store/recipe.store'
 import { Vue, Options } from 'vue-class-component';
 import { ref } from 'vue';
-import Item from 'src/components/Items.vue';
-import { type } from 'os';
+import Item from '../components/Items.vue';
 // import MenuBtnActive from 'src/components/MenuBtnActive.vue';
 // import MenuBtn from 'src/components/MenuBtn.vue';
 
@@ -214,6 +213,13 @@ export default class Tab2 extends Vue {
   extraId: string[] = [ '0', '0', '0', '0', '0', '0', '0', '0'];
   igdId: string[] = [ '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
                       '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0' ]
+
+  created() {
+    if(this.$store.getters['moduleUser/loginState'] == false) {
+      alert("로그인이 필요한 서비스입니다.");
+      void this.$router.push('/login');
+    }
+  }
 
   selMenu(menuid: string) {
     this.menuId = menuid;

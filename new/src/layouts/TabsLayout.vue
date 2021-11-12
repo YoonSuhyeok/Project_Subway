@@ -27,8 +27,8 @@
             style="width: 20%"
             name="star"
             icon="star"
-            label="즐겨찾기"
-            to="/tabs/tab3"
+            label="홈"
+            to="/tabs"
           />
           <q-route-tab
             style="width: 20%"
@@ -40,8 +40,8 @@
           <q-route-tab
             style="width: 20%"
             name="rank"
-            icon="movie"
-            label="순위표"
+            icon="leaderboard"
+            label="준비중"
             to="/tabs/tab5"
           />
         </q-tabs>

@@ -52,8 +52,8 @@
       class="flex flex-center q-gutter-md bg-white"
       style="position: absolute; bottom: 20px; width: 100%; margin: auto"
     >
-      <q-btn color="green" class="full-width">앱 환경설정</q-btn>
-      <q-btn color="green" class="full-width">약관 및 정책</q-btn>
+      <q-btn color="green" class="full-width" @click="this.setLoginState(true)">앱 환경설정</q-btn>
+      <q-btn color="green" class="full-width" @click="this.setLoginState(false)">약관 및 정책</q-btn>
     </div>
   </q-page>
 </template>
@@ -63,6 +63,7 @@
 <script lang="ts">
 import { Vue } from 'vue-class-component';
 import { useStore } from 'vuex';
+import router from '../router';
 
 export default class UserInfoPage extends Vue {
   nickname = '';
@@ -75,13 +76,21 @@ export default class UserInfoPage extends Vue {
   }
 
   created() {
-    this.init();
+    if(this.$store.getters['moduleUser/loginState'] == false) {
+      alert("로그인이 필요한 서비스입니다.");
+      void this.$router.push('/login');
+    }
+    else this.init();
   }
 
   async logout() {
     await this.$store.dispatch('moduleUser/logout');
     alert("조합식을 만들고 싶다면 다시 로그인 해주세요!");
     void this.$router.push('/login');
+  }
+
+  setLoginState(bool: boolean) {
+    void this.$store.dispatch('moduleUser/setLS', bool);
   }
 }
 </script>
