@@ -61,11 +61,13 @@
         flat
         style="color: #2f2f2f; font-weight: bold"
         label="회원가입"
+        @click="signin()"
       />
       <q-btn
         flat
         style="color: #2f2f2f; font-weight: bold"
         label="아이디/PW찾기"
+        @click="non()"
       />
     </div>
 
@@ -115,6 +117,14 @@ export default class LoginPage extends Vue {
     if (this.$store.getters['moduleUser/loginState']) {
       window.location.href = '/tabs';
     }
+  }
+
+  signin() {
+    void this.$router.push('/join');
+  }
+
+  non() {
+    alert("미구현 기능입니다.");
   }
 }
 </script>

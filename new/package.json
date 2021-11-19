@@ -1,8 +1,8 @@
 {
   "name": "new",
   "version": "0.0.1",
-  "description": "A Quasar Framework app",
-  "productName": "Quasar App",
+  "description": "A Subway Master app",
+  "productName": "Subway Master",
   "author": "",
   "private": true,
   "scripts": {
